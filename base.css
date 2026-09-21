@@ -1,0 +1,80 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;700&family=Inter:wght@400;500;600;700&family=Lora:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+/* Reset base styles */
+html, body {
+    width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background: none !important;
+    background-color: #000 !important;
+}
+
+#content, .ast-container, .site-content, .page-content {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    z-index: 0 !important;
+}
+
+/* Global typography */
+body, p, li, a, span, div, input, textarea, button, label {
+    color: white !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+/* Unified button styles */
+.btn {
+    background-color: black !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 12px 24px !important;
+    text-decoration: none !important;
+    border-radius: 75px !important;
+    display: inline-block !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.44em !important;
+    text-align: center !important;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+    z-index: 1000 !important;
+}
+
+.btn:hover {
+    background-color: #1a1a1a !important;
+    color: #e0c77a !important;
+    border-color: #e0c77a !important;
+}
+
+.gold-link {
+    color: var(--imu-gold, #d6ba66) !important;
+    text-decoration: underline !important;
+    font-family: 'Montserrat', sans-serif !important;
+    z-index: 1000 !important;
+}
+
+.gold-link:hover {
+    color: #e0c77a !important;
+}
+/* ── NFT Single Page: compact action buttons — override global .btn sizing ── */
+/* base.css uses !important on font-size/padding. These higher-specificity rules
+   with !important take precedence per CSS cascade rules (same importance = 
+   specificity wins; #nft-single-page .nft-single-actions .btn = 3 classes + 1 id). */
+.nft-single-container .nft-single-actions .btn,
+body .nft-single-actions .btn {
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+    min-height: unset !important;
+    height: auto !important;
+    border-radius: 50px !important;
+}

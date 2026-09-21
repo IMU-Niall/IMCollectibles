@@ -1,0 +1,67 @@
+IM COLLECTIBLES MARKETPLACE — SOURCE-AVAILABLE LICENCE
+Copyright (c) 2024-2026 IMU, LLC. All rights reserved.
+
+This source code is made available for REVIEW, EVALUATION AND EDUCATIONAL
+PURPOSES ONLY. It is published so that judges, auditors, researchers and other
+developers can read, study and learn from how an XRP Ledger NFT marketplace is
+built in production.
+
+THIS IS NOT OPEN SOURCE SOFTWARE. No licence under the Open Source Definition
+is granted, and this licence is not compatible with any OSI-approved licence.
+
+1. WHAT YOU MAY DO
+
+   a. Read, study and analyse this source code.
+   b. Copy this repository for the sole purpose of (a).
+   c. Quote short excerpts in reviews, articles, academic work or security
+      reports, with attribution to IMU, LLC.
+
+2. WHAT YOU MAY NOT DO
+
+   Without the prior written permission of IMU, LLC, you may not:
+
+   a. Use this code, in whole or in part, in any product, service or
+      deployment, whether commercial or non-commercial.
+   b. Modify, adapt, translate or create derivative works from it.
+   c. Redistribute, sublicense, sell, lease or otherwise transfer it.
+   d. Remove or alter this licence, the NOTICE file, or any copyright,
+      attribution or patent notice.
+
+3. NO PATENT LICENCE IS GRANTED
+
+   IMU, LLC has patent applications pending covering certain inventions that
+   this software implements or interacts with. See the NOTICE file.
+
+   NOTHING IN THIS LICENCE GRANTS ANY LICENCE, RIGHT OR IMMUNITY, EXPRESS,
+   IMPLIED, BY ESTOPPEL OR OTHERWISE, UNDER ANY PATENT, PATENT APPLICATION OR
+   OTHER INTELLECTUAL PROPERTY RIGHT OWNED OR CONTROLLED BY IMU, LLC.
+
+   Publication of this source code is not an offer to license, a dedication to
+   the public, a waiver of any right, or evidence of any intent to abandon any
+   claim. IMU, LLC expressly reserves all patent rights.
+
+4. NO TRADEMARK LICENCE
+
+   No right is granted to use the names, logos or trademarks of IMU, LLC,
+   including IMU, IMUTV, IMUP3, XRPLAYR, IM Collectibles or NOXAEL.
+
+5. THIRD-PARTY COMPONENTS
+
+   This repository references third-party software that is NOT covered by this
+   licence and remains under its own terms. See the NOTICE file.
+
+6. NO WARRANTY
+
+   THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+   IMU, LLC BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+   ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+   WITH THIS SOFTWARE OR ITS USE.
+
+   This software interacts with a public blockchain and with digital assets of
+   real value. Nothing here is financial, legal or investment advice.
+
+7. CONTACT
+
+   Licensing and permission enquiries: legal@imutv.tv

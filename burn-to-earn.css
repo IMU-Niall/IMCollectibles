@@ -1,0 +1,1116 @@
+/* /public_html/wp-content/themes/astra/css/burn-to-earn.css */
+.burn-to-earn-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(26, 26, 26, 0.7);
+    border-radius: 10px;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+}
+
+.title-section {
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.burn-to-earn-container h1 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 62.4px;
+    color: #e0c77a;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #FFD700;
+    margin: 0;
+}
+
+.burn-to-earn-container h55 {
+    font-size: 17.28px;
+    color: #ffffff;
+    margin: 10px 0 0;
+    font-weight: normal;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.banner {
+    position: fixed;
+    width: 150px;
+    height: 675px;
+}
+
+.banner-left {
+    left: 5px;
+    background: url('https://imcollectibles.io/wp-content/uploads/2025/06/IMUTV-Tall-Squirrel.png') no-repeat center/cover;
+}
+
+.banner-right {
+    right: 5px;
+    background: url('https://imcollectibles.io/wp-content/uploads/2025/06/IMUTV-Tall-NTO.png') no-repeat center/cover;
+}
+
+#progress-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 20px 0;
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.counter {
+    text-align: center;
+    flex: 1;
+    max-width: 200px;
+    position: relative;
+    min-height: 150px;
+}
+
+.counter::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 112.5px;
+    height: 112.5px;
+    background: url('https://imcollectibles.io/wp-content/uploads/2025/08/1.png') no-repeat center;
+    background-size: contain;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 1;
+}
+
+.counter span {
+    font-size: 24px;
+    color: #e0c77a;
+    display: block;
+    margin: 50px 0 100px;
+    z-index: 11;
+}
+
+.counter p {
+    font-size: 16px;
+    color: var(--imu-gold, #d6ba66);
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+}
+
+.counter svg {
+    display: none;
+}
+
+#progress-bar-section {
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#progress-bar {
+    width: 600px;
+    height: 20px;
+    background: #1a1a1a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+
+#progress-bar .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FFD700);
+    width: 0;
+    transition: width 0.5s ease;
+    animation: flicker 2s infinite ease-in-out;
+}
+
+#progress-bar + p {
+    text-align: center;
+    color: var(--imu-gold, #d6ba66);
+    margin-top: 10px;
+}
+
+#burn-row {
+    display: none;
+    margin: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#burn-row h3 {
+    color: #e0c77a;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.burn-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin: 0 auto 10px;
+    max-width: 600px;
+}
+
+.burn-row-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.burn-row-item .nft-name {
+    flex: 1;
+    color: var(--imu-gold, #d6ba66);
+    font-size: 16px;
+}
+
+.burn-row-item .status {
+    color: #e0c77a;
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
+}
+
+.burn-row-item .burn-btn {
+    margin-left: auto;
+}
+
+.burn-qr {
+    text-align: center;
+    margin: 10px auto;
+    max-width: 600px;
+    position: relative;
+}
+
+#nft-grid-section {
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#nft-grid-section h3 {
+    color: #e0c77a;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.nft-controls {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#nft-filter {
+    padding: 10px 20px;
+    background: #1a1a1a;
+    color: #e0c77a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    font-family: Montserrat, sans-serif;
+    cursor: pointer;
+    width: 200px;
+}
+
+#nft-filter:hover {
+    background: #e0c77a;
+    color: #1a1a1a;
+}
+
+#nft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    /* No max-height/overflow — cards flow naturally down the page so the
+       browser can lazy-load images progressively as the user scrolls,
+       instead of cramming 100+ cards into a fixed 400px scroll-box. */
+}
+
+.nft-card {
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    animation: glow 12s infinite ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.nft-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.nft-card:hover {
+    transform: perspective(500px) rotateX(5deg) rotateY(5deg);
+    animation: rotateCard 10s infinite linear;
+}
+
+.nft-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    animation: smokeSwirl 8s infinite ease-in-out;
+}
+
+.nft-card:hover::before {
+    opacity: 0.6;
+}
+
+.nft-card.hidden {
+    display: none;
+}
+
+/* Responsive square image wrapper — padding-bottom trick maintains 1:1 ratio
+   at any card width. Matches the collection page card approach exactly. */
+.nft-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+
+.nft-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+    display: block;
+}
+
+.nft-loading-spinner {
+    display: none; /* hidden — shimmer overlay replaces it */
+}
+
+/* Shimmer overlay while image loads (matches trading-hub.css pattern) */
+.nft-image-wrapper.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, #1a1a2e 25%, #252545 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: b2eShimmer 1.5s ease-in-out infinite;
+    border-radius: 5px 5px 0 0;
+}
+
+@keyframes b2eShimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Hide image while shimmer is active; fade in once loaded */
+.nft-image-wrapper.loading .nft-image {
+    opacity: 0;
+}
+.nft-image-wrapper:not(.loading) .nft-image {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.nft-card h4 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 0;
+    font-size: 14px;
+    padding: 6px 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nft-card.selected {
+    border: 2px solid #e0c77a;
+    border-image: linear-gradient(45deg, #FF4500, #FFD700) 1;
+}
+
+.nft-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 20;
+    pointer-events: auto;
+    position: relative;
+    margin: 6px auto 8px;
+    display: block;
+}
+
+.burn-btn, #design-protector-btn, #history-toggle, #submission-toggle, .close-popup, .close-form, .submit-form {
+    padding: 10px 20px;
+    background: #1a1a1a;
+    color: #e0c77a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    z-index: 10;
+}
+
+.burn-btn:hover, #design-protector-btn:hover, #history-toggle:hover, #submission-toggle:hover, .close-popup:hover, .close-form:hover, .submit-form:hover {
+    background: #e0c77a;
+    color: #1a1a1a;
+}
+
+#burn-history-section, #submission-history-section {
+    margin: 20px 0;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#burn-history-section h3, #submission-history-section h3 {
+    color: #e0c77a;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#burn-history-table, #submission-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--imu-gold, #d6ba66);
+    background: transparent;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+#burn-history-table th, #burn-history-table td, #submission-history-table th, #submission-history-table td {
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 10px;
+    text-align: left;
+}
+
+#burn-history-table tr:nth-child(n+4), #submission-history-table tr:nth-child(n+4) {
+    display: none;
+}
+
+.history-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: rgba(26, 26, 26, 0.72);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.popup-content h3 {
+    color: #e0c77a;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.popup-content table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--imu-gold, #d6ba66);
+}
+
+.popup-content th, .popup-content td {
+    padding: 10px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+#design-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border: none;
+}
+
+#design-form.active {
+    display: flex;
+}
+
+#design-form .form-content {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    color: var(--imu-gold, #d6ba66);
+    font-family: Montserrat, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#design-form h3 {
+    color: #e0c77a;
+    font-size: 24px;
+    text-align: center;
+}
+
+#design-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+#design-form input, #design-form textarea {
+    width: 100%;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+}
+
+#design-form input[readonly] {
+    background: #333;
+    cursor: not-allowed;
+}
+
+#design-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#design-form .error-message {
+    color: #ff4500;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.background-carousel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.background-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.background-option img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 4px solid transparent;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.background-option img.selected {
+    border: 4px solid #e0c77a;
+}
+
+.dropzone {
+    border: 2px dashed var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    background: #1a1a1a;
+    color: var(--imu-gold, #d6ba66);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.dropzone.dragover {
+    background: #2a2a2a;
+}
+
+.dropzone-upload-btn {
+    padding: 10px 20px;
+    background: #1a1a1a;
+    color: #e0c77a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropzone-upload-btn:hover {
+    background: #e0c77a;
+    color: #1a1a1a;
+}
+
+.dz-preview {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.dz-image {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.dz-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.dz-details {
+    font-size: 12px;
+    color: var(--imu-gold, #d6ba66);
+    margin-top: 5px;
+}
+
+.dz-remove {
+    color: #ff4500;
+    font-size: 12px;
+    text-decoration: none;
+    margin-top: 5px;
+    display: block;
+    cursor: pointer;
+}
+
+.dz-remove:hover {
+    text-decoration: underline;
+}
+
+.dz-progress {
+    display: none;
+}
+
+.dz-error-message {
+    color: #ff4500;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.dz-success-mark, .dz-error-mark {
+    display: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-content {
+    text-align: center;
+    max-width: 90%;
+}
+
+.loading-content h2 {
+    color: #e0c77a;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.loading-bar {
+    width: 450px;
+    height: 22.5px;
+    background: #1a1a1a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.loading-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF4500, #FFD700);
+    animation: loading 2s infinite linear;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+
+/* ============================================================================
+   NFT LOADING VISUALIZER - Shows progress while fetching NFTs
+   ============================================================================ */
+
+.nft-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
+.nft-loading-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nft-loader-content {
+    text-align: center;
+    max-width: 450px;
+    padding: 2rem;
+}
+
+.fire-loader-animation {
+    font-size: 5rem;
+    animation: fire-flicker 0.5s ease-in-out infinite alternate;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 25px rgba(255, 100, 0, 0.9));
+}
+
+@keyframes fire-flicker {
+    0% {
+        transform: scale(1) rotate(-3deg);
+        filter: drop-shadow(0 0 20px rgba(255, 100, 0, 0.8));
+    }
+    100% {
+        transform: scale(1.15) rotate(3deg);
+        filter: drop-shadow(0 0 35px rgba(255, 150, 0, 1));
+    }
+}
+
+.nft-loading-title {
+    color: #e0c77a;
+    font-size: 2rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 15px rgba(224, 199, 122, 0.5);
+}
+
+.nft-loading-subtitle {
+    color: #aaa;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nft-progress-container {
+    width: 100%;
+    max-width: 350px;
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    height: 12px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.nft-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #FF4500, #FF6B00, #FFD700);
+    border-radius: 6px;
+    transition: width 0.3s ease-out;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
+    position: relative;
+}
+
+.nft-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    animation: progress-shimmer 1.5s infinite;
+}
+
+@keyframes progress-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.nft-progress-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    color: #888;
+    font-size: 0.9rem;
+    font-family: Montserrat, sans-serif;
+}
+
+.nft-progress-stats span {
+    transition: color 0.2s;
+}
+
+#nft-load-percent {
+    color: #e0c77a;
+    font-weight: 600;
+}
+
+.nft-batch-indicator {
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments for NFT loader */
+@media (max-width: 480px) {
+    .nft-loading-title {
+        font-size: 1.5rem;
+    }
+    
+    .fire-loader-animation {
+        font-size: 4rem;
+    }
+    
+    .nft-progress-container {
+        max-width: 280px;
+    }
+    
+    .nft-loader-content {
+        padding: 1rem;
+    }
+}
+
+/* ============================================================================ */
+
+@keyframes pulse {
+    0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+    100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 192, 203, 0.85); }
+    20% { box-shadow: 0 0 20px rgba(0, 255, 6, 0.85); }
+    40% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.85); }
+    60% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.85); }
+    80% { box-shadow: 0 0 20px rgba(128, 0, 128, 0.85); }
+    100% { box-shadow: 0 0 20px rgba(255, 192, 203, 0.85); }
+}
+
+@keyframes smokeSwirl {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10px, -10px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes text-glow {
+    0%, 100% { text-shadow: 0 0 5px rgba(var(--imu-gold-rgb), 0.5); }
+    50% { text-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.7); }
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; }
+    50% { opacity: 1; }
+    75% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 992px) {
+    .banner { display: none; }
+    .burn-to-earn-container h1 { font-size: 41.6px; }
+    .burn-to-earn-container h55 { font-size: 15.12px; }
+    .burn-row-item { max-width: 100%; }
+    #nft-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    #progress-bar { width: 100%; }
+    .background-option img { width: 80px; height: 80px; }
+    .background-carousel { grid-template-columns: repeat(2, 1fr); }
+    .nft-controls { justify-content: center; }
+    .loading-content h2 { font-size: 24px; }
+    .loading-bar { width: 300px; height: 15px; }
+    #design-form .form-content { max-width: 90%; }
+    .dz-image img { width: 80px; height: 80px; }
+}
+
+.burn-btn, #design-protector-btn, #history-toggle, #submission-toggle, .close-popup, .close-form, .submit-form {
+    padding: 10px 20px;
+    background: #1a1a1a;
+    color: #e0c77a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    z-index: 10;
+}
+
+.deeplink-button {
+    padding: 10px 20px;
+    background: #1a1a1a;
+    color: #e0c77a;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.burn-btn:hover, #design-protector-btn:hover, #history-toggle:hover, #submission-toggle:hover, .close-popup:hover, .close-form:hover, .submit-form:hover, .deeplink-button:hover {
+    background: #e0c77a;
+    color: #1a1a1a;
+}
+
+.dropzone .dz-message {
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 14px;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropzone {
+    min-height: 150px;
+    position: relative;
+    background: #1a1a1a !important;
+}
+
+.dz-preview .dz-details {
+    color: var(--imu-gold, #d6ba66);
+}
+
+.dz-remove:hover {
+    text-decoration: underline;
+}
+
+/* Ensure Dropzone preview fits within the reference box */
+.dropzone .dz-preview {
+    max-width: 150px;
+    margin: 10px auto;
+    background: #1a1a1a !important;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+}
+
+/* Style the remove button */
+.dropzone .dz-remove {
+    color: #ff4500;
+    font-size: 12px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.dropzone .dz-remove:hover {
+    text-decoration: underline;
+}
+
+/* Ensure error message appears below Dropzone */
+#dropzone-upload + .error-message {
+    color: #ff4500;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    display: none;
+}
+
+/* /public_html/wp-content/themes/astra/css/burn-to-earn.css */
+
+/* Ensure Dropzone preview fits within the reference box */
+.dropzone .dz-preview {
+    max-width: 300px;
+    margin: 10px auto;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Style the image container */
+.dropzone .dz-image {
+    flex: 0 0 auto;
+}
+
+/* Style the remove button */
+.dropzone .dz-remove {
+    color: #ff4500;
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Hover effect for remove button */
+.dropzone .dz-remove:hover {
+    text-decoration: underline;
+}
+
+/* Ensure error message appears below Dropzone */
+#dropzone-upload + .error-message {
+    color: #ff4500;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    display: none;
+}
+
+/* Hide default Dropzone message when button is present */
+.dropzone .dz-message {
+    display: none;
+}
+
+/* Ensure upload button visibility */
+.dropzone-upload-btn {
+    display: inline-block;
+}
+/* Retry button — matches trading-hub.css .refresh-nft pattern */
+.nft-card .refresh-nft {
+    display: block;
+    width: calc(100% - 1rem);
+    margin: 0.4rem auto 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+    transition: background 0.2s ease;
+}
+.nft-card .refresh-nft:hover {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+.nft-card .refresh-nft:active {
+    transform: scale(0.97);
+}
+.nft-card.error .nft-image {
+    opacity: 0.35;
+}

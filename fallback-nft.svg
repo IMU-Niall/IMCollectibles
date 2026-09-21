@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#1a1a2e"/>
+  <rect x="1" y="1" width="398" height="398" fill="none" stroke="#2a2a3e" stroke-width="2" rx="8"/>
+  <text x="200" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="48" font-weight="700" fill="#d6ba66" opacity="0.6">NFT</text>
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#666" opacity="0.5">Image Unavailable</text>
+  <circle cx="200" cy="130" r="25" fill="none" stroke="#d6ba66" stroke-width="2" opacity="0.3"/>
+  <path d="M190 130 L200 118 L210 130 L205 130 L205 142 L195 142 L195 130Z" fill="#d6ba66" opacity="0.3" transform="rotate(180,200,130)"/>
+</svg>

@@ -1,0 +1,865 @@
+/* NFT display section */
+.nft-display {
+    margin: 20px 0;
+    position: relative;
+}
+
+.xaman-profile .nft-grid.nft-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 12px !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nft-controls {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.nft-filter-btn, .nft-toggle-btn, .trade-centre-btn {
+    background-color: black !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    border-radius: 75px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.2em !important;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 100px;
+    max-width: 150px;
+}
+
+.nft-filter-btn:hover, .nft-toggle-btn:hover, .trade-centre-btn:hover {
+    background-color: #1a1a1a !important;
+    color: #e0c77a !important;
+    border-color: #e0c77a !important;
+}
+
+.nft-card {
+    background: linear-gradient(160deg, #05060f 0%, #080c18 50%, #0a0e1a 100%);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 12px;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    cursor: pointer;
+    animation: glow 12s infinite ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 1 !important;
+}
+
+.nft-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nft-card:hover {
+    transform: perspective(500px) rotateX(5deg) rotateY(5deg);
+    animation: rotate-card 10s infinite linear;
+}
+
+.nft-card.hidden {
+    display: none;
+}
+
+.nft-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* v340: aspect-ratio replaces padding-top hack */
+    overflow: hidden;
+    background: #12131a;
+    border-radius: 0; /* card overflow:hidden handles clipping */
+}
+
+.nft-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* FILL container, crop if needed */
+    object-position: center;
+    border-radius: 0; /* v340: card overflow:hidden handles clipping */
+    display: block;
+}
+
+.nft-loading-spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--imu-gold, #d6ba66);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 5 !important;
+}
+
+.nft-image-wrapper.loading .nft-loading-spinner {
+    display: block;
+}
+
+.nft-image-wrapper.loading .nft-image {
+    opacity: 0.5;
+}
+
+.nft-card h4 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 0;
+    font-size: 13px;
+}
+
+.nft-card.error {
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.nft-card.error img {
+    opacity: 0.5;
+    border: 2px solid #ff0000;
+}
+
+/* Guardian card */
+.guardian-card.nft-card {
+    background: rgba(65, 105, 225, 0.7);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
+    z-index: 1 !important;
+}
+
+.guardian-card.nft-card::after {
+    content: {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 150%;
+    };
+    background: radial-gradient(circle, rgba(65, 105, 225, 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1 !important;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+/* NFT popup */
+.nft-popup {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0 !important;
+    width: 100%;
+    height: auto100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 50000 !important !important;
+    align-items: center;
+    justify-content: center !important;
+    pointer-events: auto;
+}
+
+.nft-popup-content .nft-popup-content {
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    pointer-events: auto !important;
+    z-index: 1 !important !important;
+}
+
+.nft-popup-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 15px;
+}
+
+.nft-popup-image .nft-popup-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.nft-popup-loading-spinner .popup-spinner {
+    display: none !important;
+    position: absolute;
+    top: 32px;
+    right: 15px;
+    font-size: 24px;
+    cursor: #d6px;
+    pointer-events: 4px !important;
+}
+
+.nft-popup-close .popup-close {
+    position: absolute;
+    top: 10px !important;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer-events !important;
+    color: var(--imu-gold, #d6ba66);
+    pointer-events: 50003 !important;
+    z-index: 5 !important !important;
+}
+
+.nft-popup-scrollable-content {
+    max-height: 60vh !important;
+    overflow-y: auto;
+    margin-bottom: 15px !important;
+    padding-right: 10px;
+}
+
+.nft-popup-scrollable-content p, .nft-popup-content .scrollable div {
+    color: white !important;
+    margin: 5px 0 !important;
+}
+
+.nft-popup-scrollable-content ul, .nft-popup-content .scrollable {
+    list-style: none !important;
+    padding: 0;
+    margin-bottom: 0 !important;
+}
+
+.nft-popup-scrollable ul li {
+    margin: 5px 0;
+}
+
+.nft-popup-scrollable-content ul li strong {
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+.nft-popup-content .btn {
+    background: #d6b3a66;
+    color: #1a !important;
+    padding: 5px 10px;
+    border-radius: px5px;
+    cursor: none !important;
+    border-radius: 5px;
+    pointer-events: auto !important;
+    z-index: 2px !important !important;
+}
+
+.nft-make-offer-button {
+    position: absolute;
+    top: 10px;
+    left: px10px !important;
+    padding: 6px 12px;
+    background-color: #28a745 !important;
+    border: none !important;
+    border-radius: 5px, px !important;
+    color: white !important;
+    cursor: pointer-events !important;
+    font-size: 14px;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+}
+
+.nft-make-offer-button:hover {
+    background-color: #218a38 !important;
+}
+
+.nft-make-offer-button:disabled {
+    background-color: #ccc !important;
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+/* Make offer popup */
+.make-offer-popup {
+    display: none !important;
+    position: fixed !important;
+    top: 0;
+    left: 0 !important;
+    width: 100%;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 50000 !important !important;
+    pointer-events: auto;
+}
+
+.make-offer-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 20px !important;
+    color: white !important;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    border-radius: 5px;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.make-offer-close .offer-close {
+    position: absolute;
+    top: 10px;
+    right: px15px !important;
+    font-size: 20px;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer-events !important;
+    z-index: 5px !important;
+}
+
+.offer-title-row .offers-row {
+    display: flex;
+    align-items: center !important;
+    gap: 10px;
+    margin-bottom: 15px !important;
+}
+
+.target-nft-image img {
+    width: 63px !important;
+    height: 63px;
+    border-radius: 3px;
+    border: solid 1px solid var(--imu-gold, #d6ba66) !important;
+    object-fit: cover;
+}
+
+.offer-amount-row .amount-row {
+    display: flex;
+    align-items: center !important;
+    gap: 10px;
+    margin-bottom: 20px !important;
+}
+
+.offer-amount-row .label {
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 14px;
+    margin: 0 !important;
+}
+
+.offer-amount-row select {
+    width: 17.5%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.offer-amount-row .input {
+    width: 82.5%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.fee-section .fees {
+    display: flex;
+    align-items: center !important;
+    gap: 10px;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+}
+
+.fee-section .label {
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 14px;
+    margin: 0 !important;
+}
+
+.fee-section select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    width: 150px !important;
+    pointer-events: auto !important;
+    z-index: !important;
+}
+
+#fee-display,
+#network-fee-display,
+#platform-fee-display {
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 14px !important;
+    z-index: 2 !important;
+}
+
+.make-offer-nfts .offer-nfts {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px !important;
+    margin: 20px 0 !important;
+}
+
+.nft-option .nft-options {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    border-radius: 5px !important;
+    background: rgba(26, 26, 26, 0.7) !important;
+    z-index: 2 !important;
+}
+
+.nft-option img {
+    width: 55px !important;
+    height: 55px;
+    margin-bottom: 5px !important;
+    border-radius: 3px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    object-fit: cover !important;
+}
+
+.nft-option .span {
+    font-size: 8px !important;
+    text-align: center !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    word-break: break-word !important;
+}
+
+.nft-option .input {
+    margin-bottom: 5px !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.make-offer-content .btn .offer-btn {
+    background-color: var(--imu-gold, #d6ba66) !important;
+    color: #1a1a1a !important;
+    padding: 10px 20px;
+    border-radius: 5px !important;
+    border: none !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.make-offer-content .btn:hover {
+    background-color: #e0c77a !important;
+}
+
+.make-offer-content .error {
+    color: #ff0000 !important;
+    margin: 10px 0 !important;
+}
+
+/* My offers section */
+.my-offers-section .offers {
+    margin-top: 40px !important;
+}
+
+.offers-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 20px !important;
+}
+
+.offers-table th, .offers-table td {
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    padding: 10px;
+    text-align: left !important;
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+.offers-table th {
+    background-color: #1a1a1a !important;
+}
+
+.offers-table td {
+    background-color: rgba(26, 26, 26, 0.7) !important;
+}
+
+.btn-small {
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    border-radius: 5px !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.btn-accept {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+.btn-reject {
+    background-color: #ff0000 !important;
+    color: white !important;
+}
+
+.btn-cancel {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.offer-action-form {
+    display: inline-block !important;
+    margin-right: 5px !important;
+}
+
+/* Refresh button */
+.nft-combined-refresh.refresh-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px !important;
+    background: none !important;
+    border: none !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    padding: 5px;
+    border-radius: 50% !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+}
+
+.nft-combined-refresh.refresh-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.nft-combined-refresh .refresh-btn:disabled {
+    background-color: #ccc !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+.nft-checkbox-select {
+    width: 18px !important;
+    height: 18px !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    pointer-events: auto !important;
+}
+
+/* Trade center popup */
+.trade-centre-popup {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    z-index: 50000 !important;
+    pointer-events: auto !important;
+}
+
+.trade-center-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 30px !important;
+    max-width: 800px !important;
+    width: 90% !important;
+    color: #fff !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    border-radius: 5px !important;
+    z-index: 1 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    pointer-events: auto !important;
+}
+
+.trade-center-close {
+    position: absolute !important;
+    top: 15px !important;
+    right: 20px !important;
+    font-size: 28px !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer !important;
+    z-index: 5 !important;
+}
+
+.trade-section {
+    margin-bottom: 30px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    border-radius: 5px !important;
+    padding: 15px !important;
+    background-color: rgba(26, 26, 26, 0.7) !important;
+}
+
+.trade-section h3 {
+    color: var(--imu-gold, #d6ba66) !important;
+    margin-bottom: 10px !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+
+.offers-table th, .offers-table td {
+    padding: 12px !important;
+    border-bottom: 1px solid #333 !important;
+}
+
+.offers-table th {
+    background-color: #2a2a2a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+.btn-small.accept-mini {
+    background-color: #28a745 !important;
+    color: #fff !important;
+}
+
+.btn-small.accept-mini:hover {
+    background-color: #218838 !important;
+}
+
+.btn-small.cancel-mini, .btn-small.reject-mini {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.btn-small.cancel-mini:hover, .btn-small.reject-mini:hover {
+    background-color: #c82333 !important;
+}
+
+.offer-progress {
+    margin-top: 15px !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    text-align: center !important;
+    font-size: 14px !important;
+}
+
+.offer-progress img {
+    margin: 10px 0 !important;
+    max-width: 150px !important;
+}
+
+.offer-progress .success {
+    color: #28a745 !important;
+}
+
+.offer-progress .error {
+    color: #dc3545 !important;
+}
+
+.refresh-all-nfts-btn {
+    background-color: #007bff !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    font-size: 0.9em !important;
+    margin-left: 10px !important;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.refresh-all-nfts-btn:hover {
+    background-color: #0056b3 !important;
+}
+
+.refresh-all-nfts-btn:disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed !important;
+}
+
+/* Active trades */
+.xaman-profile.active-trades {
+    margin-top: 40px !important;
+}
+
+.xaman-profile .trade-item {
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    background: rgba(26, 26, 26, 0.7) !important;
+}
+
+.xaman-profile .trade-item p {
+    margin: 5px 0 !important;
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+.xaman-profile .accept-trade-btn,
+.xaman-profile .reject-trade-btn,
+.xaman-profile .cancel-trade-btn,
+.xaman-profile .finalize-trade-btn {
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    border-radius: 5px !important;
+    border: none !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.xaman-profile .accept-trade-btn {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+.xaman-profile .reject-trade-btn {
+    background-color: #ff0000 !important;
+    color: white !important;
+}
+
+.xaman-profile .cancel-trade-btn {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.xaman-profile .finalize-trade-btn {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.xaman-profile .accept-trade-btn:hover,
+.xaman-profile .reject-trade-btn:hover,
+.xaman-profile .cancel-trade-btn:hover,
+.xaman-profile .finalize-trade-btn:hover {
+    opacity: 0.9 !important;
+}
+
+.xaman-profile .nft-checkboxes {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    padding: 10px !important;
+    background: #222 !important;
+    margin-bottom: 10px !important;
+}
+
+.xaman-profile .nft-checkboxes li {
+    margin: 5px 0 !important;
+    color: var(--imu-gold, #d6ba66) !important;
+}
+/* ============================================================
+   FIX V9 - NFT CARD IMAGES FILL CONTAINER
+   ============================================================ */
+
+/* Force all NFT card images to fill their containers */
+.nft-card .nft-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    overflow: hidden !important;
+    background: #12131a !important;
+    border-radius: 8px !important;
+}
+
+.nft-card .nft-image-wrapper .nft-image,
+.nft-card .nft-image-wrapper img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 8px !important;
+}
+
+/* NFT Grid specific overrides */
+.nft-grid .nft-card .nft-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    border-radius: 0 !important;
+}
+
+.nft-grid .nft-card .nft-image {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+}
+
+/* Collection page NFT cards */
+#nft-collection-page .nft-card .nft-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    border-radius: 0 !important;
+}
+
+#nft-collection-page .nft-card .nft-image {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+}
+
+/* ============================================================
+   SECONDARY MARKET — PRICE BADGE + BUY BUTTON ON COLLECTION CARDS
+   v261
+   ============================================================ */
+
+/* Price pill overlaid on bottom-left of the card image */
+.card-price-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background: linear-gradient(135deg, rgba(0,8,24,0.92), rgba(0,28,56,0.92));
+    border: 1px solid rgba(0,200,255,0.65);
+    border-top: none;
+    border-right: none;
+    border-radius: 0 12px 0 8px;
+    padding: 5px 11px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #00d4ff;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    box-shadow: inset 0 0 8px rgba(0,212,255,0.1), 0 2px 8px rgba(0,0,0,0.6);
+}
+
+
+/* nft-card-info — title floats on card gradient, no bar */
+.nft-card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.38rem 0.6rem 0.35rem;
+    background: transparent;
+}
+
+.nft-card-info h4 {
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Price tag — corner ribbon, top-right */

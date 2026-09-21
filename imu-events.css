@@ -1,0 +1,960 @@
+/* Shared styles for .live-events and .event-replay */
+.live-events, .event-replay {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+   position: relative;
+    z-index: 10;
+}
+
+.live-events h2, .event-replay h2 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 0 0 10px;
+}
+
+.page-replay-background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.button-container {
+    margin: 10px 0;
+}
+
+.tip-button, .help-button, .chat-toggle, .trustline-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #000;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+
+.tip-button:hover, .help-button:hover, .chat-toggle:hover, .trustline-button:hover {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+}
+
+.tip-popup, .help-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    color: #fff;
+}
+
+.tip-popup {
+    max-width: 400px;
+    width: 90%;
+}
+
+.help-popup {
+    max-width: 1000px;
+    width: 90%;
+    text-align: left;
+}
+
+.tip-popup h3, .help-popup h3 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 0 0 10px;
+}
+
+.tip-popup label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #fff;
+}
+
+.tip-popup select, .tip-popup input, .tip-popup textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+}
+
+.tip-popup button, .help-popup button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+}
+
+.tip-popup button[type="submit"] {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+}
+
+.tip-popup .close-popup, .help-popup button {
+    background: #ccc;
+    color: #000;
+}
+
+.help-popup h5 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 10px 0 3px;
+}
+
+.help-popup p {
+    margin: 0 0 10px;
+}
+
+.media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 5px auto;
+    max-width: 1000px;
+    position: relative;
+}
+
+.banner {
+    width: 160px;
+    height: 675px;
+    object-fit: cover;
+    position: fixed;
+    top: 60px;
+    z-index: 999;
+    border: none;
+}
+
+.banner.left {
+    left: calc(50% - 340px - 380px);
+}
+
+.banner.right {
+    right: calc(50% - 340px - 380px);
+}
+
+.top-banner, .bottom-banner {
+    display: none;
+}
+
+.bottom-top-banner {
+    width: 100%;
+    max-width: 1000px;
+    height: 213px;
+    object-fit: cover;
+    margin: 5px auto;
+    display: none;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+}
+
+.twitch-embed, .dacast-embed, #live-stream, .video-js, iframe {
+    width: 100%;
+    height: 450px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+}
+/* Video.js Player Styles */
+.video-js {
+    width: 100%;
+    height: 450px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: #000;
+}
+
+/* Control Bar */
+.video-js .vjs-control-bar {
+    background: #000;
+    border-top: 1px solid var(--imu-gold, #d6ba66);
+    height: 48px; /* Increased height for better touch target */
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* General Button Styles */
+.video-js .vjs-control {
+    color: var(--imu-gold, #d6ba66);
+    width: 40px; /* Consistent width for buttons */
+    height: 40px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+    position: relative; /* For tooltips */
+}
+
+/* Hover Effect for Buttons */
+.video-js .vjs-control:hover {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+    cursor: pointer;
+}
+
+/* Big Play Button (Centered) */
+.video-js .vjs-big-play-button {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.video-js .vjs-big-play-button:hover {
+    background: #fff;
+    color: var(--imu-gold, #d6ba66);
+}
+
+/* Play/Pause Button */
+.vjs-play-control .vjs-icon-placeholder:before {
+    content: "\f101"; /* Video.js play icon */
+    font-family: VideoJS;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.vjs-playing .vjs-play-control .vjs-icon-placeholder:before {
+    content: "\f103"; /* Video.js pause icon */
+}
+
+/* Mute Toggle Button */
+.vjs-mute-control .vjs-icon-placeholder:before {
+    content: "\f104"; /* Video.js volume icon */
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder:before {
+    content: "\f107"; /* Video.js mute icon */
+}
+
+/* Volume Panel */
+.vjs-volume-panel .vjs-volume-bar {
+    background: var(--imu-gold, #d6ba66);
+    height: 6px;
+    border-radius: 3px;
+}
+
+.vjs-volume-panel .vjs-volume-level {
+    background: #fff;
+}
+
+/* Fullscreen Toggle */
+.vjs-fullscreen-control .vjs-icon-placeholder:before {
+    content: "\f108"; /* Video.js fullscreen icon */
+    font-size: 20px;
+    line-height: 40px;
+}
+
+/* Picture-in-Picture Toggle */
+.vjs-picture-in-picture-control .vjs-icon-placeholder:before {
+    content: "\f10c"; /* Fallback box icon for PIP; test and adjust if needed */
+    font-size: 20px;
+    line-height: 40px;
+}
+
+/* Quality Selector (if using videojs-hls-quality-selector) */
+.vjs-quality-selector .vjs-icon-placeholder:before {
+    content: "\f110"; /* Custom gear icon for quality */
+    font-family: VideoJS;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+/* Tooltips for Accessibility */
+.vjs-control::after {
+    content: attr(data-tooltip);
+    visibility: hidden;
+    position: absolute;
+    bottom: 50px;
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.vjs-control:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Progress Bar */
+.vjs-progress-control .vjs-progress-holder {
+    background: #333;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.vjs-progress-control .vjs-play-progress {
+    background: var(--imu-gold, #d6ba66);
+}
+
+.vjs-progress-control .vjs-load-progress {
+    background: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .video-js {
+        height: 300px;
+    }
+
+    .video-js .vjs-control-bar {
+        height: 40px;
+    }
+
+    .video-js .vjs-control {
+        width: 32px;
+        height: 32px;
+    }
+
+    .video-js .vjs-big-play-button {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+    }
+
+    .vjs-control::after {
+        font-size: 10px;
+        bottom: 40px;
+    }
+}
+
+
+
+.stream-error {
+    color: #ff4444;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #ff4444;
+    border-radius: 5px;
+}
+
+.reaction-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    pointer-events: none;
+}
+
+.reaction-emoji {
+    font-size: 32px;
+    position: absolute;
+    animation: floatUp 3s ease-out forwards;
+}
+
+.chat-container {
+    position: fixed;
+    top: 60px;
+    left: calc(50% + 340px + 10px);
+    width: 400px;
+    height: 600px;
+    background: #000;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    z-index: 2147483647;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+    padding: 5px;
+    cursor: move;
+    font-size: 14px;
+    text-align: center;
+    user-select: none;
+}
+
+#event-chat-messages {
+    flex-grow: 1;
+    overflow-y: scroll;  /* Always show scrollbar for clarity */
+    padding: 10px;
+    font-size: 13px;
+    color: #fff;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    max-height: calc(100% - 50px);
+    will-change: scroll-position;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    min-height: 0;  /* Allow flex shrink */
+}
+
+#event-chat-messages p {
+    margin: 5px 0;
+    text-align: left;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+#event-chat-messages .username {
+    color: var(--imu-gold, #d6ba66);
+    font-weight: bold;
+}
+
+#event-chat-form {
+    margin-top: 5px;
+    padding: 5px;
+    display: flex !important;
+    gap: 5px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1002;
+}
+
+#event-chat-message {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    min-height: 30px;
+    display: block !important;
+}
+
+#event-chat-message::placeholder {
+    color: #999;
+}
+
+.emoji-toggle {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    background: #000;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1003;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.emoji-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.emoji-btn:hover {
+    background: var(--imu-gold, #d6ba66);
+    border-radius: 3px;
+}
+
+#event-chat-form button[type="submit"] {
+    padding: 6px 12px;
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.chat-container .resize-tl,
+.chat-container .resize-tr,
+.chat-container .resize-bl,
+.chat-container .resize-br {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--imu-gold, #d6ba66);
+    z-index: 1001;
+}
+
+.chat-container .resize-tl { top: -5px; left: -5px; cursor: nw-resize; }
+.chat-container .resize-tr { top: -5px; right: -5px; cursor: ne-resize; }
+.chat-container .resize-bl { bottom: -5px; left: -5px; cursor: sw-resize; }
+.chat-container .resize-br { bottom: -5px; right: -5px; cursor: se-resize; }
+
+.reactions-container, .audience-container, .tip-instructions {
+    max-width: 1000px;
+    margin: 5px auto;
+    background: #000;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.reactions-container h3, .audience-container h3, .tip-instructions h3 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 0 0 5px;
+}
+
+#reactions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.reaction-btn {
+    padding: 5px 10px;
+    font-size: 18px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: #f9f9f9;
+    color: var(--imu-gold, #d6ba66);
+    cursor: pointer;
+}
+
+.reaction-btn:hover {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+}
+
+#reaction-counts {
+    margin: 5px 0;
+    padding: 5px;
+    color: #fff;
+    background: #000;
+}
+
+.audience-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.audience-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+    margin: 5px;
+}
+
+.audience-member img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.audience-member span {
+    font-size: 12px;
+    color: #fff;
+    margin-top: 5px;
+    word-break: break-all;
+    text-align: center;
+}
+
+.tip-instructions {
+    font-size: 14px;
+    color: #fff;
+}
+
+.tip-instructions p {
+    margin: 10px 0;
+}
+
+.trustline-qr {
+    display: none;
+    margin-top: 15px;
+}
+
+.trustline-qr img {
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.trustline-qr a, .xaman-link {
+    color: var(--imu-gold, #d6ba66);
+    text-decoration: underline;
+}
+
+.tip-success {
+    text-align: center;
+    color: #fff;
+}
+
+.checkmark {
+    font-size: 60px;
+    color: #28a745;
+    margin: 20px 0;
+}
+
+.section {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    background: #000;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: gold;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.tip-qr-image {
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.trustline-set {
+    color: #28a745;
+}
+
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background: #000;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    z-index: 10000;
+}
+
+.toast-success {
+    background: #28a745;
+    color: #fff;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-200px); opacity: 0; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.fade-out {
+    animation: fadeOut 2s ease-in-out forwards;
+}
+
+@media (min-width: 769px) {
+    .bottom-top-banner {
+        display: block;
+    }
+}
+
+@media (max-width: 1200px) {
+    .banner {
+        width: 120px;
+        height: 450px;
+    }
+    .banner.left {
+        left: calc(50% - 340px - 380px);
+    }
+    .banner.right {
+        right: calc(50% - 340px - 380px);
+    }
+    .chat-container {
+        left: calc(50% + 340px + 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .media-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .banner {
+        display: none;
+    }
+    .top-banner {
+        display: block;
+        max-width: 320px;
+        height: 100px;
+        margin: 5px auto;
+    }
+    .bottom-top-banner {
+        display: none;
+    }
+    .bottom-banner {
+        display: block;
+        width: 100%;
+        max-width: 1000px;
+        height: 100px;
+        object-fit: cover;
+        margin: 5px auto;
+        border: 1px solid var(--imu-gold, #d6ba66);
+    }
+    .video-container, .reactions-container, .audience-container, .tip-instructions {
+        max-width: 100%;
+        margin: 5px auto;
+    }
+    .video-js, iframe {
+        height: 300px;
+    }
+    .chat-container {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        height: 300px;
+        min-height: 200px;
+        margin: 5px auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1000;
+    }
+    #event-chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 10px;
+        font-size: 11px;
+        display: flex;
+        flex-direction: column;
+        min-height: 150px;
+        will-change: scroll-position;
+    }
+    #event-chat-messages p {
+        margin: 5px 0;
+        width: 100%;
+        word-wrap: break-word;
+    }
+    #event-chat-form {
+        display: flex !important;
+        gap: 5px;
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 40px;
+        z-index: 1002;
+    }
+    #event-chat-message {
+        display: block !important;
+        flex: 1;
+        padding: 6px;
+        border: 1px solid var(--imu-gold, #d6ba66);
+        border-radius: 5px;
+        background: #000;
+        color: #fff;
+        font-size: 11px;
+        min-height: 30px;
+    }
+    .tip-button, .help-button, .chat-toggle {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    .chat-container .resize-tl, .chat-container .resize-tr,
+    .chat-container .resize-bl, .chat-container .resize-br {
+        display: none;
+    }
+    .chat-header {
+        cursor: default;
+    }
+    .reaction-btn, .emoji-btn {
+        font-size: 16px;
+        padding: 5px;
+    }
+    .emoji-picker {
+        bottom: 40px;
+        z-index: 1003;
+    }
+    .audience-member {
+        width: 60px;
+    }
+    .audience-member img {
+        width: 40px;
+        height: 40px;
+    }
+    .audience-member span {
+        font-size: 10px;
+    }
+    .tip-instructions {
+        font-size: 12px;
+        padding: 15px;
+    }
+    .checkmark {
+        font-size: 40px;
+    }
+    .help-popup {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .top-banner, .bottom-banner {
+        height: 60px;
+    }
+    .chat-container {
+        height: 200px;
+    }
+    #event-chat-messages {
+        height: 150px;
+    }
+}
+
+/* Volume Button */
+.video-js .vjs-mute-control {
+    background: #000;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-js .vjs-mute-control:hover {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+}
+
+/* Fullscreen Button */
+.video-js .vjs-fullscreen-control {
+    background: #000;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-js .vjs-fullscreen-control:hover {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+}
+
+/* Picture-in-Picture Button (if plugin enabled) */
+.video-js .vjs-picture-in-picture-control {
+    background: #000;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-js .vjs-picture-in-picture-control:hover {
+    background: var(--imu-gold, #d6ba66);
+    color: #000;
+}
+
+#event-chat-messages {
+    overscroll-behavior: contain; /* Prevents browser pull-to-refresh during scroll */
+}
+
+/* Ensure buttons are visible and styled prominently */
+.video-js .vjs-mute-control,
+.video-js .vjs-fullscreen-control,
+.video-js .vjs-picture-in-picture-control {
+    opacity: 1 !important; /* Override any default fade */
+    transition: opacity 0.3s;
+}
+.video-js:hover .vjs-control {
+    opacity: 1;
+}
+/* Icon Fixes (if font issues) */
+.video-js .vjs-mute-control .vjs-icon-placeholder:before {
+    content: "\f104"; /* Ensure correct icon */
+}
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder:before {
+    content: "\f108";
+}
+.video-js .vjs-picture-in-picture-control .vjs-icon-placeholder:before {
+    content: "\f109"; /* Custom if needed */
+}
+
+.video-container:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.video-container:fullscreen .chat-toggle {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    color: var(--imu-gold, #d6ba66);
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.video-container:fullscreen .chat-container {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* SVG Icon Enhancements (for experimentalSvgIcons) */
+.video-js .vjs-icon-placeholder {
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    fill: var(--imu-gold, #d6ba66) !important;  /* Gold color for icons */
+    transition: fill 0.3s !important;
+}
+.video-js .vjs-control:hover .vjs-icon-placeholder {
+    fill: #000 !important;  /* Black on hover */
+}
+.video-js .vjs-icon-placeholder svg {
+    fill: var(--imu-gold, #d6ba66) !important;
+    transition: fill 0.3s !important;
+}
+
+.video-js .vjs-control:hover .vjs-icon-placeholder svg {
+    fill: #000 !important;
+}

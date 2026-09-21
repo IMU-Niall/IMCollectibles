@@ -1,0 +1,653 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xrpl.org/schema/xls24-music-v1.json",
+  "title": "XLS-24 Music NFT Metadata Standard v1.0",
+  "description": "Comprehensive music NFT metadata standard for the XRP Ledger with full PRO reporting support",
+  "type": "object",
+  "required": ["name", "description", "image", "audio", "nftType", "collection", "music"],
+  
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "NFT display name (e.g., 'Track Title (feat. Artist)')"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full description of the NFT"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI to cover art image (IPFS recommended)"
+    },
+    "audio": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI to audio file - ROOT LEVEL for universal marketplace playback"
+    },
+    "animation_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI to audio file for OpenSea compatibility"
+    },
+    "external_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Link to view NFT on creator's site or marketplace"
+    },
+    "license": {
+      "type": "string",
+      "description": "Short license identifier"
+    },
+    "schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI to this schema file"
+    },
+    "nftType": {
+      "type": "string",
+      "const": "music.v1",
+      "description": "NFT type identifier"
+    },
+    
+    "downloadable": {
+      "type": "boolean",
+      "default": true,
+      "description": "CONTENT PROTECTION FLAG: When false, marketplaces and platforms SHOULD NOT provide download functionality for the media files. This protects creators' content from unauthorized distribution. Platforms should respect this flag and hide/disable download buttons when set to false. Default is true for backwards compatibility with existing NFTs."
+    },
+    
+    "collection": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Collection or album name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Collection description"
+        }
+      }
+    },
+    
+    "attributes": {
+      "type": "array",
+      "description": "NFT traits for rarity, editions, etc.",
+      "items": {
+        "type": "object",
+        "required": ["trait_type", "value"],
+        "properties": {
+          "trait_type": {
+            "type": "string"
+          },
+          "value": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "number" }
+            ]
+          },
+          "display_type": {
+            "type": "string"
+          },
+          "max_value": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    
+    "properties": {
+      "type": "object",
+      "description": "Marketplace compatibility properties",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uri": { "type": "string" },
+              "type": { "type": "string" }
+            }
+          }
+        },
+        "category": {
+          "type": "string",
+          "const": "audio"
+        },
+        "creators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "address": { "type": "string" },
+              "share": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    
+    "music": {
+      "type": "object",
+      "required": ["version", "track", "artists", "credits", "master_recording", "rights", "samples", "ai_disclosure"],
+      "properties": {
+        
+        "version": {
+          "type": "string",
+          "const": "1.0",
+          "description": "Schema version"
+        },
+        
+        "track": {
+          "type": "object",
+          "required": ["title", "duration_ms", "work_type"],
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Track title"
+            },
+            "alternative_titles": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Alternative titles for PRO matching"
+            },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Duration in milliseconds"
+            },
+            "work_type": {
+              "type": "string",
+              "enum": ["original", "cover", "arrangement", "remix", "medley", "translation"],
+              "description": "Type of musical work - affects royalty rates"
+            },
+            "explicit": {
+              "type": "boolean",
+              "description": "Explicit content flag"
+            },
+            "language": {
+              "type": "string",
+              "pattern": "^[a-z]{2}$",
+              "description": "ISO 639-1 language code"
+            },
+            "genre": {
+              "type": "string",
+              "description": "Primary genre"
+            },
+            "subgenre": {
+              "type": "string",
+              "description": "Subgenre"
+            },
+            "bpm": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Beats per minute"
+            },
+            "key": {
+              "type": "string",
+              "description": "Musical key (e.g., 'C Major', 'A Minor')"
+            },
+            "lyrics": {
+              "type": "string",
+              "description": "Full lyrics text"
+            },
+            "creation_date": {
+              "type": "string",
+              "format": "date",
+              "description": "Date track was created"
+            }
+          }
+        },
+        
+        "identifiers": {
+          "type": "object",
+          "description": "Industry standard identifiers",
+          "properties": {
+            "isrc": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}[A-Z0-9]{3}[0-9]{7}$",
+              "description": "International Standard Recording Code"
+            },
+            "iswc": {
+              "type": "string",
+              "pattern": "^T-[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]$",
+              "description": "International Standard Musical Work Code"
+            },
+            "upc": {
+              "type": "string",
+              "description": "Universal Product Code"
+            }
+          }
+        },
+        
+        "artists": {
+          "type": "object",
+          "required": ["primary"],
+          "properties": {
+            "primary": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/artist" },
+              "description": "Primary performing artists"
+            },
+            "featured": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/artist" },
+              "description": "Featured artists"
+            }
+          }
+        },
+        
+        "credits": {
+          "type": "object",
+          "required": ["writers"],
+          "properties": {
+            "performers": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/basic_credit" },
+              "description": "Performers"
+            },
+            "writers": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/writer_credit" },
+              "description": "Songwriters and composers with PRO information"
+            },
+            "producers": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/basic_credit" },
+              "description": "Producers"
+            },
+            "engineers": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/engineer_credit" },
+              "description": "Recording, mixing, and mastering engineers"
+            },
+            "musicians": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/musician_credit" },
+              "description": "Session musicians"
+            }
+          }
+        },
+        
+        "publishing": {
+          "type": "object",
+          "properties": {
+            "publishers": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/publisher" },
+              "description": "Music publishers"
+            },
+            "copyright_line": {
+              "type": "string",
+              "description": "Copyright notice (e.g., '© 2025 Artist Name')"
+            },
+            "copyright_year": {
+              "type": "integer",
+              "description": "Copyright year"
+            }
+          }
+        },
+        
+        "master_recording": {
+          "type": "object",
+          "required": ["owner"],
+          "description": "Sound recording (master) ownership",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Master recording owner name"
+            },
+            "owner_xrpl": {
+              "type": "string",
+              "description": "Owner's XRPL account address"
+            },
+            "label": {
+              "type": "string",
+              "description": "Record label name"
+            },
+            "label_xrpl": {
+              "type": "string",
+              "description": "Label's XRPL account address"
+            },
+            "controlled_composition": {
+              "type": "boolean",
+              "description": "Subject to controlled composition clause"
+            },
+            "phonographic_line": {
+              "type": "string",
+              "description": "Phonographic copyright notice (e.g., '℗ 2025 Label Name')"
+            },
+            "phonographic_year": {
+              "type": "integer",
+              "description": "Phonographic copyright year"
+            }
+          }
+        },
+        
+        "release": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date",
+              "description": "Release date"
+            },
+            "first_release_territory": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code of first release"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["single", "ep", "album", "compilation", "mixtape"],
+              "description": "Release type"
+            },
+            "album_name": {
+              "type": "string",
+              "description": "Album name if part of a release"
+            },
+            "track_number": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Track position on release"
+            },
+            "total_tracks": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Total tracks on release"
+            }
+          }
+        },
+        
+        "rights": {
+          "type": "object",
+          "required": ["commercial_rights"],
+          "properties": {
+            "commercial_rights": {
+              "type": "boolean",
+              "description": "Creator has commercial rights to this work"
+            },
+            "license_type": {
+              "type": "string",
+              "enum": ["all_rights_reserved", "personal_use", "creative_commons", "sync_ready", "exclusive"],
+              "description": "License type"
+            },
+            "permissions": {
+              "type": "object",
+              "properties": {
+                "streaming": { "type": "boolean" },
+                "download": { "type": "boolean" },
+                "remix": { "type": "boolean" },
+                "sync": { "type": "boolean" },
+                "commercial_use": { "type": "boolean" }
+              }
+            },
+            "territories": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Allowed territories (ISO 3166-1 codes or 'worldwide')"
+            },
+            "exclusivity": {
+              "type": "boolean",
+              "description": "Exclusive rights"
+            }
+          }
+        },
+        
+        "royalties": {
+          "type": "object",
+          "properties": {
+            "transfer_fee": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 50,
+              "description": "On-chain transfer fee percentage (0-50%)"
+            },
+            "payment_splits": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/payment_split" },
+              "description": "On-chain royalty payment distribution"
+            }
+          }
+        },
+        
+        "samples": {
+          "type": "object",
+          "required": ["contains_samples"],
+          "properties": {
+            "contains_samples": {
+              "type": "boolean",
+              "description": "Track contains samples"
+            },
+            "cleared": {
+              "type": "boolean",
+              "description": "Samples are cleared"
+            },
+            "clearance_proof_uri": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI to clearance documentation"
+            },
+            "sample_details": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/sample" }
+            }
+          }
+        },
+        
+        "ai_disclosure": {
+          "type": "object",
+          "required": ["ai_used"],
+          "description": "AI usage disclosure for consumer protection",
+          "properties": {
+            "ai_used": {
+              "type": "boolean",
+              "description": "AI was used in creation"
+            },
+            "platform": {
+              "type": "string",
+              "description": "AI platform used"
+            },
+            "ai_created_elements": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["full_song", "lyrics", "melody", "vocal_performance", "harmony", "rhythm"]
+              },
+              "description": "Elements created by AI"
+            },
+            "human_created_elements": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["lyrics", "melody", "vocal_performance", "harmony", "rhythm"]
+              },
+              "description": "Elements created by humans"
+            }
+          }
+        }
+      }
+    }
+  },
+  
+  "$defs": {
+    "artist": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Artist name"
+        },
+        "xrpl_account": {
+          "type": "string",
+          "description": "XRPL account address"
+        }
+      }
+    },
+    
+    "basic_credit": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "xrpl_account": {
+          "type": "string"
+        }
+      }
+    },
+    
+    "writer_credit": {
+      "type": "object",
+      "required": ["name", "role", "ownership_share"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Writer name"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["C", "A", "CA", "AR", "SA", "TR"],
+          "description": "Writer role: C=Composer, A=Author/Lyricist, CA=Both, AR=Arranger, SA=Sub-Arranger, TR=Translator"
+        },
+        "ownership_share": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Copyright ownership percentage"
+        },
+        "ipi": {
+          "type": "string",
+          "description": "IPI/CAE number"
+        },
+        "pro": {
+          "type": "string",
+          "description": "PRO affiliation (ASCAP, BMI, SESAC, PRS, GEMA, SACEM, SOCAN, APRA, etc.)"
+        },
+        "xrpl_account": {
+          "type": "string",
+          "description": "XRPL account address"
+        }
+      }
+    },
+    
+    "engineer_credit": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["recording", "mixing", "mastering"]
+        },
+        "xrpl_account": {
+          "type": "string"
+        }
+      }
+    },
+    
+    "musician_credit": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "instrument": {
+          "type": "string"
+        },
+        "xrpl_account": {
+          "type": "string"
+        }
+      }
+    },
+    
+    "publisher": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Publisher name"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["OP", "SP", "AM", "SE"],
+          "description": "Publisher type: OP=Original, SP=Sub-Publisher, AM=Administrator, SE=Self-Published"
+        },
+        "ownership_share": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Publishing ownership percentage"
+        },
+        "ipi": {
+          "type": "string",
+          "description": "Publisher IPI number"
+        },
+        "pro": {
+          "type": "string",
+          "description": "Publisher PRO affiliation"
+        },
+        "xrpl_account": {
+          "type": "string"
+        }
+      }
+    },
+    
+    "payment_split": {
+      "type": "object",
+      "required": ["xrpl_account", "percentage"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Recipient name"
+        },
+        "role": {
+          "type": "string",
+          "description": "Recipient role"
+        },
+        "xrpl_account": {
+          "type": "string",
+          "description": "XRPL account for payment"
+        },
+        "percentage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Payment percentage"
+        }
+      }
+    },
+    
+    "sample": {
+      "type": "object",
+      "properties": {
+        "original_track": {
+          "type": "string",
+          "description": "Original track title"
+        },
+        "original_artist": {
+          "type": "string",
+          "description": "Original artist"
+        },
+        "original_isrc": {
+          "type": "string",
+          "description": "Original track ISRC"
+        },
+        "clearance_type": {
+          "type": "string",
+          "enum": ["licensed", "lease", "royalty_free", "public_domain"],
+          "description": "Type of sample clearance"
+        }
+      }
+    }
+  }
+}

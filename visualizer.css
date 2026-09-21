@@ -1,0 +1,287 @@
+:root{
+  --bg:#0e1116;      /* very dark grey */
+  --card:#141922;    /* dark card */
+  --muted:#a7b2c4;
+  --text:#f1f5fb;    /* white-ish */
+  --accent:#d8b04e;  /* gold */
+  --edge:#242c3b;
+  --card-ink:#0b0f16; /* ultra dark for inner tier/table cards */
+}
+
+#imu-rewards{ 
+  background: radial-gradient(1200px 700px at -10% -20%, #1b2334 0%, transparent 60%), var(--bg);
+  color: var(--text);
+  padding: 28px;
+  border-radius: 16px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+#imu-rewards h1{
+  margin:0 0 12px;
+  font-family: 'Cinzel Decorative', 'Cinzel', 'Times New Roman', serif;
+  font-size:28px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  background: linear-gradient(180deg, #ffe066 0%, var(--imu-gold, #d6ba66) 40%, #996515 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.4));
+}
+#imu-rewards .sub{ color:var(--muted); margin-bottom:18px }
+#imu-rewards .gold{ color:var(--accent) }
+
+/* Layout: stack cards vertically */
+#imu-rewards .shell{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* Generic card */
+#imu-rewards .card{
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent 60%), var(--card);
+  border:1px solid var(--edge);
+  border-radius:18px;
+  padding:20px 18px 16px;
+  box-shadow:0 12px 32px rgba(0,0,0,.28);
+  width:100%;
+}
+#imu-rewards h2{
+  margin:0 0 12px;
+  font-family: 'Cinzel', 'Times New Roman', serif;
+  font-size:18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: linear-gradient(180deg, #ffe066 0%, var(--imu-gold, #d6ba66) 40%, #996515 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.25));
+}
+
+/* Inputs grid: 3 → 2 → 1 */
+#imu-rewards .grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 1100px){
+  #imu-rewards .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px){
+  #imu-rewards .grid{ grid-template-columns: 1fr; }
+}
+
+#imu-rewards .field{ display:flex; flex-direction:column; gap:6px }
+#imu-rewards label{ font-size:12px; color:var(--muted) }
+#imu-rewards input[type="number"],
+#imu-rewards select{
+  background:#0f141c; border:1px solid #2a3447; color:var(--text);
+  padding:10px 12px; border-radius:10px; font-size:14px; outline:none;
+}
+#imu-rewards input[type="number"]:focus,
+#imu-rewards select:focus{
+  border-color:#3e5175; box-shadow:0 0 0 3px rgba(62,81,117,.25);
+}
+
+/* Reset button inside the grid: bottom right */
+#imu-rewards .field--actions{
+  grid-column: 3 / 4;
+  align-self: end;
+  justify-self: end;
+}
+@media (max-width: 1100px){
+  #imu-rewards .field--actions{ grid-column: 2 / 3; }
+}
+@media (max-width: 640px){
+  #imu-rewards .field--actions{ grid-column: 1 / -1; justify-self: end; }
+}
+
+/* Buttons */
+#imu-rewards .btn{
+  background:linear-gradient(180deg, #2a344a, #222b3f);
+  border:1px solid #33405a;
+  color:#eaf3ff;
+  border-radius:10px;
+  padding:10px 12px; /* desktop default */
+  cursor:pointer;
+  font-weight:700;
+}
+#imu-rewards .btn:hover{ filter:brightness(1.05) }
+#imu-rewards #btn_reset.btn--reset{
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border-radius: 8px;
+  line-height: 1.1;
+}
+
+/* KPIs */
+#imu-rewards .foot{
+  margin-top:12px;
+  display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+}
+#imu-rewards .foot-centered{ justify-content:center; }
+#imu-rewards .kpi{
+  background:linear-gradient(180deg, rgba(216,176,78,.1), transparent), #101521;
+  border:1px solid #2d3750; padding:12px; border-radius:12px; min-width:170px;
+  text-align:center;
+}
+#imu-rewards .kpi .label{ color:var(--muted); font-size:12px }
+#imu-rewards .kpi .value{ font-size:20px; font-weight:800; color:var(--accent) }
+
+/* --------------------
+   Tier cards (NEW)
+   -------------------- */
+#imu-rewards .tier-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:12px;
+}
+@media (max-width: 720px){
+  #imu-rewards .tier-grid{ grid-template-columns: 1fr; }
+}
+#imu-rewards .tier-card{
+  background: var(--card-ink);
+  border:1px solid #222a39;
+  border-radius: 14px;
+  padding: 12px;
+}
+#imu-rewards .tier-head{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom: 8px;
+}
+#imu-rewards .tier-title{ font-weight:700; color:#fff; font-size:14px }
+#imu-rewards .tier-current{ color:#fff; font-size:13px }
+#imu-rewards .tier-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px }
+#imu-rewards .tier-line{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 10px;
+  border:1px solid #1b2336;
+  border-radius:10px;
+  background:#0c1220;
+}
+#imu-rewards .tier-line .range{ color:#fff }
+#imu-rewards .tier-line .boost{ color: var(--accent); font-weight:800 }
+#imu-rewards .tier-line.active{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(216,176,78,.35), 0 6px 18px rgba(0,0,0,.35);
+  background: #0f141c;
+}
+
+/* Notes */
+#imu-rewards .note{ color:#9db3d4; font-size:12px; margin-top:8px }
+
+/* --------------------
+   Breakdown table styling
+   -------------------- */
+#imu-rewards table{
+  width:100%; border-collapse:collapse; margin-top:8px; font-size:14px;
+  background: var(--card-ink); /* darker, consistent with tier cards */
+  border-radius:12px; overflow:hidden;
+}
+#imu-rewards thead th{
+  background:#10151f; color:#ffffff; font-weight:700; text-align:left; padding:10px; border-bottom:1px solid #1f2940;
+}
+#imu-rewards tbody td{ padding:10px; border-bottom:1px dashed #1a2335; color:#fff }
+#imu-rewards tbody tr:last-child td{ border-bottom:none }
+#imu-rewards .right{ text-align:right }
+
+/* Keep the rewards section above overlay (-5) and video (-1000) */
+#imutv-rewards-page,
+#imu-rewards { position: relative !important; z-index: 10 !important; }
+
+/* Pill (kept) */
+#imu-rewards .pill{
+  display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #2d3750; color:#bfcef0; background:#0b1324; margin-right:6px; margin-top:6px;
+}
+
+@media (max-width: 980px){
+  #imu-rewards .shell{ grid-template-columns:1fr }
+}
+
+/* =========================================================
+   SKINNY / THIN MOBILE LAYOUT (portrait phones)
+   ========================================================= */
+@media (max-width: 420px){
+
+  /* Gap below menu */
+  #imu-rewards{
+    margin-top: calc(56px + env(safe-area-inset-top));
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  #imu-rewards h1{ font-size: 22px; margin-bottom: 8px; }
+  #imu-rewards .sub{ font-size: 12px; line-height: 1.4; margin-bottom: 12px; }
+
+  /* Card padding */
+  #imu-rewards .card{ padding: 14px 12px 12px; border-radius: 12px; }
+  #imu-rewards h2{ font-size: 16px; margin-bottom: 10px; }
+
+  /* Inputs: single column */
+  #imu-rewards .grid{ grid-template-columns: 1fr; gap: 10px; }
+  #imu-rewards label{ font-size: 11px; }
+  #imu-rewards input[type="number"],
+  #imu-rewards select{ padding: 9px 10px; font-size: 13px; border-radius: 8px; }
+
+  /* Reset button: stay bottom-right */
+  #imu-rewards .field--actions{ grid-column: 1 / -1; justify-self: end; align-self: center; margin-top: 4px; }
+  #imu-rewards #btn_reset.btn--reset{ font-size: 0.8rem; padding: 5px 7px; border-radius: 7px; }
+
+  /* KPIs smaller */
+  #imu-rewards .foot{ gap: 8px; margin-top: 10px; }
+  #imu-rewards .kpi{ min-width: 120px; padding: 10px; border-radius: 10px; }
+  #imu-rewards .kpi .label{ font-size: 11px } 
+  #imu-rewards .kpi .value{ font-size: 18px }
+
+  /* Tier grid: single column */
+  #imu-rewards .tier-grid{ grid-template-columns: 1fr; }
+  #imu-rewards .tier-line{ padding: 8px 10px; }
+
+  /* Breakdown: stacked cards per row (clean, readable) */
+  #imu-rewards table thead{ display: none; }
+  #imu-rewards tbody tr{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 10px 10px 12px;
+    margin: 10px 0;
+    border: 1px solid #222a39;
+    border-radius: 10px;
+    background: var(--card-ink);
+  }
+  #imu-rewards tbody td{
+    display:flex; justify-content: space-between; align-items:center; gap: 10px;
+    padding: 0; border: none; font-size: 13px; color:#fff;
+  }
+  #imu-rewards tbody td::before{
+    content: attr(data-label); color: #9db3d4; font-size: 12px;
+  }
+  /* Provide labels via nth-child */
+  #imu-rewards tbody tr td:nth-child(1)::before{ content: "Collection"; }
+  #imu-rewards tbody tr td:nth-child(2)::before{ content: "Count"; }
+  #imu-rewards tbody tr td:nth-child(3)::before{ content: "Base % / NFT"; }
+  #imu-rewards tbody tr td:nth-child(4)::before{ content: "Boost Applied"; }
+  #imu-rewards tbody tr td:nth-child(5)::before{ content: "Final % / NFT"; }
+  #imu-rewards tbody tr td:nth-child(6)::before{ content: "Total %"; }
+  #imu-rewards tbody tr td:nth-child(7)::before{ content: "Est. Return"; }
+
+  /* Emphasize collection title */
+  #imu-rewards tbody tr td:nth-child(1){ font-weight: 700; color: var(--accent); justify-content: flex-start; }
+  #imu-rewards tbody tr td:nth-child(1)::before{ display:none; }
+
+  /* Right-align numerics */
+  #imu-rewards tbody tr td:nth-child(n+2){ text-align: right; }
+
+  /* Footer stacked */
+  #imu-rewards tfoot{ display: block; margin-top: 6px; }
+  #imu-rewards tfoot tr{
+    display: grid; grid-template-columns: 1fr; gap: 6px;
+    padding: 10px; border: 1px solid #222a39; border-radius: 10px; background: var(--card-ink);
+  }
+  #imu-rewards tfoot th{ display:flex; justify-content: space-between; align-items:center; font-size: 13px; padding: 0; color:#fff; }
+  #imu-rewards #ft_final_pernft::before{ content: "Avg % / NFT"; margin-right: 8px; color:#9db3d4; font-weight: 400; }
+  #imu-rewards #ft_total::before{ content: "Grand Total %"; margin-right: 8px; color:#9db3d4; font-weight: 400; }
+  #imu-rewards #ft_total_return::before{ content: "Grand Total Return"; margin-right: 8px; color:#9db3d4; font-weight: 400; }
+}

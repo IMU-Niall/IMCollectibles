@@ -1,0 +1,1208 @@
+/**
+ * Frequency Fountain v2.0 - Enhanced XFT Claim Animation
+ * IMProtectors.com
+ * 
+ * Premium, immersive claiming experience with:
+ * - Polished ornate fountain design
+ * - Cascading water down tiers
+ * - Stacking coin pile system
+ * - Persistent completion state
+ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    --ff-gold: #d4af37;
+    --ff-gold-light: #f4d03f;
+    --ff-gold-dark: #996515;
+    --ff-gold-shine: #ffe066;
+    --ff-bronze: #cd7f32;
+    --ff-bg-dark: rgba(10, 8, 5, 0.98);
+    --ff-bg-gradient: radial-gradient(ellipse at center top, #1a1510 0%, #0a0805 100%);
+    --ff-text-primary: #fff8e7;
+    --ff-text-secondary: #b8a88a;
+    --ff-accent: #ffd700;
+    --ff-success: #4ade80;
+    --ff-error: #ef4444;
+    --ff-water: #5ba3c0;
+    --ff-water-light: #7ec8e3;
+    --ff-water-dark: #3d7a94;
+    --ff-water-glow: rgba(91, 163, 192, 0.4);
+}
+
+/* ============================================
+   MODAL OVERLAY
+   ============================================ */
+.frequency-fountain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ff-bg-dark);
+    background-image: var(--ff-bg-gradient);
+    backdrop-filter: blur(12px);
+    z-index: 999999;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ff-gold-dark) transparent;
+}
+
+.frequency-fountain-overlay::-webkit-scrollbar {
+    width: 6px;
+}
+
+.frequency-fountain-overlay::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.frequency-fountain-overlay::-webkit-scrollbar-thumb {
+    background: var(--ff-gold-dark);
+    border-radius: 3px;
+}
+
+.frequency-fountain-overlay::-webkit-scrollbar-thumb:hover {
+    background: var(--ff-gold);
+}
+
+.frequency-fountain-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.frequency-fountain-overlay.closing {
+    opacity: 0;
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.frequency-fountain-container {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 30px;
+    overflow: visible;
+}
+
+/* Ambient light effect */
+.frequency-fountain-container::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Background particles */
+.ff-background-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.ff-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--ff-gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ff-particle-float 6s ease-in-out infinite;
+}
+
+@keyframes ff-particle-float {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.3);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-120px) scale(1);
+    }
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.ff-header {
+    text-align: center;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+.ff-title {
+    font-family: 'Cinzel Decorative', 'Cinzel', 'Times New Roman', serif;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--ff-gold);
+    text-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 0 0 6px 0;
+    letter-spacing: 4px;
+    background: linear-gradient(180deg, 
+        var(--ff-gold-shine) 0%, 
+        var(--ff-gold) 40%, 
+        var(--ff-gold-dark) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ff-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: var(--ff-text-secondary);
+    margin: 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* ============================================
+   FOUNTAIN WRAPPER
+   ============================================ */
+.ff-fountain-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 280px;
+    z-index: 5;
+    padding-top: 5px;
+    flex-shrink: 0;
+}
+
+/* When completed, reduce wrapper size to show more completion content */
+.ff-fountain-wrapper.compact {
+    min-height: 200px;
+}
+
+.ff-fountain-wrapper.compact .ff-fountain {
+    transform: scale(0.75);
+    transform-origin: top center;
+    margin-bottom: -60px;
+}
+
+/* ============================================
+   FOUNTAIN STRUCTURE - PREMIUM DESIGN
+   ============================================ */
+.ff-fountain {
+    position: relative;
+    width: 280px;
+    height: 340px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ff-fountain-svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+    z-index: 2;
+}
+
+/* ============================================
+   CASCADING WATER SYSTEM
+   ============================================ */
+.ff-water-system {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Top spout water */
+.ff-water-spout {
+    position: absolute;
+    top: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 0;
+    background: linear-gradient(180deg,
+        var(--ff-water-light) 0%,
+        var(--ff-water) 100%
+    );
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.8s ease-out;
+    box-shadow: 
+        0 0 15px var(--ff-water-glow),
+        0 0 30px var(--ff-water-glow);
+}
+
+.ff-fountain.active .ff-water-spout {
+    height: 25px;
+    opacity: 1;
+}
+
+/* Tier 1 cascade (top to middle) */
+.ff-water-cascade-1 {
+    position: absolute;
+    top: 77px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.6s ease-out 0.3s;
+}
+
+.ff-fountain.active .ff-water-cascade-1 {
+    height: 35px;
+    opacity: 1;
+}
+
+.ff-water-cascade-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        var(--ff-water) 20%,
+        var(--ff-water-light) 50%,
+        var(--ff-water) 80%,
+        transparent 100%
+    );
+    border-radius: 0 0 20px 20px;
+    animation: ff-cascade-flow 1s ease-in-out infinite;
+}
+
+/* Tier 2 cascade (middle to bottom) */
+.ff-water-cascade-2 {
+    position: absolute;
+    top: 117px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.6s ease-out 0.5s;
+}
+
+.ff-fountain.active .ff-water-cascade-2 {
+    height: 40px;
+    opacity: 1;
+}
+
+.ff-water-cascade-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 100%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        var(--ff-water) 15%,
+        var(--ff-water-light) 50%,
+        var(--ff-water) 85%,
+        transparent 100%
+    );
+    border-radius: 0 0 30px 30px;
+    animation: ff-cascade-flow 1.2s ease-in-out infinite 0.2s;
+}
+
+/* Basin water surface */
+.ff-water-basin {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 0;
+    background: linear-gradient(180deg,
+        var(--ff-water-light) 0%,
+        var(--ff-water) 50%,
+        var(--ff-water-dark) 100%
+    );
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s ease-out 0.7s;
+    box-shadow: 
+        inset 0 5px 15px rgba(255, 255, 255, 0.3),
+        0 0 20px var(--ff-water-glow);
+}
+
+.ff-fountain.active .ff-water-basin {
+    height: 12px;
+    opacity: 0.8;
+    animation: ff-basin-ripple 2s ease-in-out infinite;
+}
+
+@keyframes ff-cascade-flow {
+    0%, 100% {
+        opacity: 0.7;
+        transform: translateX(-50%) scaleY(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scaleY(1.1);
+    }
+}
+
+@keyframes ff-basin-ripple {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(1);
+    }
+    50% {
+        transform: translateX(-50%) scaleX(1.05);
+    }
+}
+
+/* Water droplets falling from edges */
+.ff-water-droplets {
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    pointer-events: none;
+}
+
+.ff-droplet {
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    background: var(--ff-water-light);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    opacity: 0;
+}
+
+.ff-fountain.active .ff-droplet {
+    animation: ff-droplet-fall 1.5s ease-in infinite;
+}
+
+.ff-droplet:nth-child(1) { left: 15%; animation-delay: 0s; }
+.ff-droplet:nth-child(2) { left: 35%; animation-delay: 0.3s; }
+.ff-droplet:nth-child(3) { left: 55%; animation-delay: 0.6s; }
+.ff-droplet:nth-child(4) { left: 75%; animation-delay: 0.9s; }
+.ff-droplet:nth-child(5) { left: 25%; animation-delay: 0.15s; }
+.ff-droplet:nth-child(6) { left: 65%; animation-delay: 0.45s; }
+
+@keyframes ff-droplet-fall {
+    0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(45px) scale(0.5);
+    }
+}
+
+/* ============================================
+   COIN SYSTEM - FALLING & STACKING
+   ============================================ */
+.ff-coins-container {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 280px;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Falling coins */
+.ff-coin {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background: linear-gradient(145deg, 
+        var(--ff-gold-shine) 0%, 
+        var(--ff-gold-light) 25%,
+        var(--ff-gold) 50%, 
+        var(--ff-gold-dark) 100%
+    );
+    border-radius: 50%;
+    border: 2px solid var(--ff-gold-dark);
+    box-shadow: 
+        inset 0 3px 6px rgba(255, 255, 255, 0.5),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.5),
+        0 0 8px rgba(212, 175, 55, 0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ff-gold-dark);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+    z-index: 15;
+}
+
+.ff-coin::before {
+    content: 'X';
+}
+
+.ff-coin.falling {
+    animation: ff-coin-fall var(--fall-duration, 1.8s) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes ff-coin-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(0.6);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(40px) rotate(60deg) scale(1);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(230px) rotate(300deg) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(260px) rotate(360deg) scale(1);
+    }
+}
+
+/* ============================================
+   COIN PILE SYSTEM
+   ============================================ */
+.ff-coin-pile {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 80px;
+    pointer-events: none;
+    z-index: 8;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.ff-pile-coin {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(145deg, 
+        var(--ff-gold-shine) 0%, 
+        var(--ff-gold-light) 25%,
+        var(--ff-gold) 50%, 
+        var(--ff-gold-dark) 100%
+    );
+    border-radius: 50%;
+    border: 2px solid var(--ff-gold-dark);
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ff-gold-dark);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ff-pile-coin::before {
+    content: 'X';
+}
+
+.ff-pile-coin.visible {
+    opacity: 1;
+}
+
+/* Pile glow effect */
+.ff-pile-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 50px;
+    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 7;
+}
+
+.ff-fountain.active .ff-pile-glow {
+    opacity: 1;
+}
+
+/* ============================================
+   LIVE COUNTER
+   ============================================ */
+.ff-live-counter-wrapper {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.ff-fountain.active .ff-live-counter-wrapper {
+    opacity: 1;
+}
+
+.ff-live-counter {
+    font-family: 'Orbitron', 'Courier New', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ff-gold);
+    text-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ff-live-counter-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    color: var(--ff-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+/* ============================================
+   PROGRESS SECTION
+   ============================================ */
+.ff-progress-section {
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    padding: 15px 0;
+    z-index: 10;
+}
+
+.ff-progress-message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ff-text-primary);
+    margin-bottom: 12px;
+    min-height: 22px;
+    transition: opacity 0.3s ease;
+}
+
+.ff-progress-message.changing {
+    opacity: 0;
+}
+
+.ff-progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.ff-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, 
+        var(--ff-gold-dark), 
+        var(--ff-gold), 
+        var(--ff-gold-light),
+        var(--ff-gold)
+    );
+    background-size: 200% 100%;
+    border-radius: 3px;
+    transition: width 0.4s ease-out;
+    box-shadow: 0 0 12px var(--ff-gold);
+    animation: ff-progress-shimmer 2s linear infinite;
+}
+
+@keyframes ff-progress-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   COMPLETION STATE - FOUNTAIN PERSISTS
+   ============================================ */
+.ff-completion {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px 20px;
+    z-index: 10;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.ff-completion.visible {
+    display: flex;
+    animation: ff-completion-enter 0.6s ease-out;
+}
+
+@keyframes ff-completion-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ff-completion-amount {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--ff-gold);
+    text-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.8),
+        0 0 60px rgba(212, 175, 55, 0.4);
+    margin-bottom: 0;
+    animation: ff-amount-pulse 2s ease-in-out infinite;
+    line-height: 1.1;
+}
+
+@keyframes ff-amount-pulse {
+    0%, 100% { 
+        transform: scale(1); 
+        text-shadow: 
+            0 0 30px rgba(212, 175, 55, 0.8),
+            0 0 60px rgba(212, 175, 55, 0.4);
+    }
+    50% { 
+        transform: scale(1.03); 
+        text-shadow: 
+            0 0 40px rgba(212, 175, 55, 1),
+            0 0 80px rgba(212, 175, 55, 0.6);
+    }
+}
+
+.ff-completion-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: var(--ff-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+}
+
+/* Claim Streak Display */
+.ff-completion-streak {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    padding: 6px 16px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+}
+
+.ff-streak-fire {
+    font-size: 1.1rem;
+    animation: ff-fire-flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes ff-fire-flicker {
+    0% { transform: scale(1) rotate(-5deg); }
+    100% { transform: scale(1.1) rotate(5deg); }
+}
+
+.ff-streak-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ff-gold);
+}
+
+.ff-streak-count {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+}
+
+.ff-completion-message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ff-success);
+    margin-bottom: 12px;
+}
+
+/* Next Claim Timer */
+.ff-next-claim {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 12px;
+}
+
+.ff-next-claim-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    color: var(--ff-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+}
+
+.ff-next-claim-timer {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    color: var(--ff-text-primary);
+}
+
+/* Action Buttons */
+.ff-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ff-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ff-btn-primary {
+    background: linear-gradient(135deg, var(--ff-gold) 0%, var(--ff-gold-dark) 100%);
+    color: #1a1510;
+}
+
+.ff-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.ff-btn-secondary {
+    background: transparent;
+    color: var(--ff-text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ff-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--ff-gold);
+}
+
+/* ============================================
+   ERROR STATE
+   ============================================ */
+.ff-error {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 10;
+}
+
+.ff-error.visible {
+    display: flex;
+    animation: ff-error-shake 0.5s ease;
+}
+
+@keyframes ff-error-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.ff-error-icon {
+    font-size: 3.5rem;
+    margin-bottom: 18px;
+    animation: ff-error-flicker 2s ease-in-out infinite;
+}
+
+@keyframes ff-error-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.ff-error-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--ff-error);
+    margin-bottom: 10px;
+}
+
+.ff-error-message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ff-text-secondary);
+    margin-bottom: 25px;
+    max-width: 280px;
+}
+
+/* ============================================
+   RECHARGING STATE
+   ============================================ */
+.ff-recharging {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    z-index: 10;
+}
+
+.ff-recharging.visible {
+    display: flex;
+}
+
+.ff-recharging-icon {
+    font-size: 4.5rem;
+    margin-bottom: 18px;
+    opacity: 0.5;
+    animation: ff-recharge-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ff-recharge-pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.ff-recharging-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--ff-gold);
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.ff-recharging-message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ff-text-secondary);
+    margin-bottom: 22px;
+}
+
+.ff-recharging-timer {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    color: var(--ff-text-primary);
+    margin-bottom: 22px;
+}
+
+/* ============================================
+   CLOSE BUTTON
+   ============================================ */
+.ff-close-btn {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: var(--ff-text-primary);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000;
+}
+
+.ff-close-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--ff-gold);
+    color: var(--ff-gold);
+}
+
+/* ============================================
+   NAVIGATION WARNING
+   ============================================ */
+.ff-nav-warning {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ff-bg-dark);
+    border: 2px solid var(--ff-gold);
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    max-width: 380px;
+    z-index: 1000000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.ff-nav-warning.visible {
+    display: block;
+    animation: ff-warning-enter 0.3s ease;
+}
+
+@keyframes ff-warning-enter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.ff-nav-warning-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--ff-gold);
+    margin-bottom: 12px;
+}
+
+.ff-nav-warning-message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ff-text-secondary);
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.ff-nav-warning-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* ============================================
+   CONFETTI CANVAS
+   ============================================ */
+.ff-confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000001;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 480px) {
+    .frequency-fountain-container {
+        padding: 15px 12px 25px;
+        height: 100vh;
+        max-height: none;
+    }
+
+    .ff-header {
+        margin-bottom: 10px;
+    }
+
+    .ff-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .ff-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .ff-fountain {
+        width: 240px;
+        height: 300px;
+    }
+
+    .ff-fountain-wrapper {
+        min-height: 240px;
+    }
+
+    .ff-fountain-wrapper.compact .ff-fountain {
+        transform: scale(0.65);
+        margin-bottom: -80px;
+    }
+
+    .ff-coins-container {
+        width: 140px;
+        height: 220px;
+    }
+
+    .ff-coin {
+        width: 22px;
+        height: 22px;
+        font-size: 9px;
+    }
+
+    .ff-pile-coin {
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+    }
+
+    .ff-live-counter {
+        font-size: 1.5rem;
+    }
+
+    .ff-live-counter-wrapper {
+        bottom: 70px;
+    }
+
+    .ff-completion-amount {
+        font-size: 2rem;
+    }
+
+    .ff-completion-label {
+        font-size: 0.7rem;
+    }
+
+    .ff-completion-streak {
+        padding: 5px 12px;
+        margin-bottom: 8px;
+    }
+
+    .ff-streak-fire {
+        font-size: 1rem;
+    }
+
+    .ff-streak-text {
+        font-size: 0.8rem;
+    }
+
+    .ff-completion-message {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+
+    .ff-next-claim {
+        padding: 8px 16px;
+        margin-bottom: 10px;
+    }
+
+    .ff-next-claim-timer {
+        font-size: 1.1rem;
+    }
+
+    .ff-actions {
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .ff-btn {
+        flex: 1;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        justify-content: center;
+    }
+}
+
+/* Extra small screens */
+@media (max-height: 650px) {
+    .ff-fountain-wrapper {
+        min-height: 200px;
+    }
+
+    .ff-fountain {
+        width: 220px;
+        height: 260px;
+    }
+
+    .ff-fountain-wrapper.compact .ff-fountain {
+        transform: scale(0.55);
+        margin-bottom: -100px;
+    }
+
+    .ff-header {
+        margin-bottom: 5px;
+    }
+
+    .ff-title {
+        font-size: 1.4rem;
+    }
+
+    .ff-progress-section {
+        padding: 10px 0;
+    }
+
+    .ff-completion {
+        padding: 5px 15px 15px;
+    }
+
+    .ff-completion-amount {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   COMPLETION STATE - KEEP FOUNTAIN VISIBLE
+   ============================================ */
+.ff-fountain.completed {
+    /* Fountain stays visible on completion */
+}
+
+.ff-fountain.completed .ff-water-spout,
+.ff-fountain.completed .ff-water-cascade-1,
+.ff-fountain.completed .ff-water-cascade-2,
+.ff-fountain.completed .ff-water-basin {
+    /* Water continues gently */
+    animation-play-state: running;
+}
+
+.ff-fountain.completed .ff-live-counter-wrapper {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}

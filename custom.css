@@ -1,0 +1,7078 @@
+/* Google Fonts loaded via base.css — do not duplicate here */
+
+/* --- RESET BASE STYLES --- */
+html, body {
+    width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background: none !important; /* Prevent background interference */
+    background-color: #000 !important;
+}
+
+#content, .ast-container, .site-content, .page-content {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important; /* Ensure no background conflicts */
+    z-index: 0 !important; /* Baseline stacking context */
+}
+
+/* --- BACKGROUND OVERLAYS --- */
+/* Default overlay (40% opacity jet black) */
+html body::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    height: -webkit-fill-available !important;
+    background: rgba(0, 0, 0, 0.4) !important; /* DEBUG: Default jet black overlay */
+    z-index: -5 !important;
+    pointer-events: none !important;
+    display: block !important;
+}
+
+/* 50% opacity jet black overlay for specific pages */
+html body #home-page::before,
+html body #profile-page::before,
+html body #frequency-fountain-page::before,
+html body #champion-page::before,
+html body #protectors-page::before,
+html body #premium-videos-page::before,
+html body #how-to-join-page::before,
+html body #mission-page::before,
+html body #how-to-mint-page::before,
+html body #imutv-rewards-page::before,
+html body.home::before, /* WordPress homepage */
+html body.page-id-home::before,
+html body.page-id-imutv-rewards-visualizer::before,
+html body.page-id-profile::before,
+html body.page-id-frequency-fountain::before,
+html body.page-id-champion::before,
+html body.page-id-protectors::before,
+html body.page-id-premium-videos::before,
+html body.page-id-how-to-join::before,
+html body.page-id-mission::before,
+html body.page-id-how-to-mint::before,
+html body.page-template-mission::before, /* Potential template class */
+html body.page-template-how-to-mint::before,
+html body.page-template-frequency-fountain::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    height: -webkit-fill-available !important;
+    background: rgba(0, 0, 0, 0.5) !important; /* DEBUG: 50% jet black overlay */
+    z-index: -5 !important;
+    pointer-events: none !important;
+    display: block !important;
+}
+
+html, body {
+    width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background-image: none !important;
+    background-color: #000 !important;
+}
+
+#content, .ast-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.site-header, .ast-site-header, .main-header-bar, .ast-main-header-wrap, .ast-header-break-point .main-header-bar,
+.ast-mobile-header-wrap, .ast-mobile-menu-buttons, .main-navigation, .ast-mobile-header,
+.ast-header-break-point .main-header-bar-navigation, .ast-nav-menu, .ast-header-custom-nav,
+.ast-above-header, .ast-below-header, .entry-header, .entry-title {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+body, p, li, a, span, div, input, textarea, button, label {
+    color: white !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+header {
+    position: relative;
+    padding: 20px;
+    z-index: 20;
+    display: block !important;
+}
+
+#page, .site-content, .hero, .section, .footer {
+    position: relative;
+    z-index: 10;
+}
+
+.hero, .section, .footer { padding: 20px; margin: 0 auto; max-width: 1200px; width: 100% !important; }
+.section { margin-bottom: 40px; }
+.hero { margin-bottom: 80px; }
+.hero h1 { font-size: 4.32em; line-height: 1.2; margin-bottom: 0; font-weight: 400; }
+.hero h1 span { display: block; font-size: 0.8em; }
+body.home .hero h1 span { font-weight: 400 !important; }
+.hero p { margin-top: 40px; font-size: 1.44em; }
+.hero p span.italic { font-style: italic; }
+.hero .btn { margin-top: 40px; }
+.stats { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; }
+.stats div { text-align: center; }
+.stats h3 { margin: 0; font-size: 2em; }
+.stats p { margin: 5px 0 0; font-size: 1em; }
+.perks, .imu, .metaverse { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; }
+.perks > div, .imu > div, .metaverse > div { flex: 1; min-width: 300px; }
+.perks img, .imu img, .metaverse img { max-width: 100%; height: auto; }
+.minting { text-align: center; padding: 20px; max-width: 1200px; margin: 0 auto 40px; }
+.minting h2, .minting p, .minting .wide-image, .minting a.btn { margin: 20px auto; display: block; }
+.minting .wide-image { width: 100%; max-width: 800px; background: #333; height: 200px; color: var(--imu-gold, #d6ba66); display: flex; align-items: center; justify-content: center; }
+.minting a.btn { display: inline-block; }
+.interface { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.interface > div { flex: 1; min-width: 250px; }
+body.home p, body.home li, body.home a, body.home span, body.home div { font-weight: bold !important; }
+
+.site-logo { position: absolute; top: 20px; left: 20px; z-index: 10001; }
+.dropdown { position: absolute; top: 20px; right: 20px; font-family: 'Montserrat', sans-serif; z-index: 10000 !important; display: block !important; }
+.dropbtn { background-color: black; color: var(--imu-gold, #d6ba66); border: 2px solid var(--imu-gold, #d6ba66); padding: 10px 20px 20px; font-size: 1.2em; cursor: pointer; border-radius: 5px; font-family: 'Montserrat', sans-serif; display: block; position: relative; z-index: 10001 !important; }
+.dropbtn::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 100%; height: 15px; background: transparent; z-index: 10001 !important; }
+.dropdown-content { display: none; position: absolute; right: 0; top: 100%; margin-top: -2px; background-color: black !important; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10000 !important; border: 1px solid var(--imu-gold, #d6ba66) !important; border-radius: 5px; }
+.dropdown-content a { color: var(--imu-gold, #d6ba66) !important; padding: 12px 16px; text-decoration: none; display: block; font-family: 'Montserrat', sans-serif !important; font-size: 1em; position: relative; background: none !important; border: none !important; }
+.dropdown-content a::before, .dropdown-content a::after, .dropdown-content .menu-item::before, .dropdown-content .menu-item::after, .main-navigation ul::before, .main-navigation ul::after, .main-navigation .sub-menu::before, .main-navigation .sub-menu::after { content: none !important; display: none !important; background: none !important; }
+.main-navigation ul, .main-navigation .menu-item, .main-navigation .sub-menu, .dropdown-content .menu-item { list-style: none !important; }
+.main-navigation .menu-item a, .main-navigation .menu-item a::before, .main-navigation .menu-item a::after { background: none !important; border: none !important; content: none !important; display: none !important; }
+.dropdown-content a:hover { background-color: #1a1a1a !important; }
+.dropdown:hover .dropdown-content, .dropdown-content:hover { display: block !important; }
+.dropdown:hover .dropbtn { background-color: #1a1a1a; color: #e0c77a; border-color: #e0c77a; }
+
+.xaman-profile input[type="text"], .xaman-profile textarea { background-color: #333; border: 1px solid var(--imu-gold, #d6ba66); padding: 5px; border-radius: 3px; }
+.xaman-profile input[type="file"] { color: white; }
+.footer { position: relative; z-index: 10; padding: 20px; margin: 40px auto 0; width: 100% !important; max-width: 1200px; box-sizing: border-box; background: rgba(0, 0, 0, 0.8) !important; }
+.footer .social-links a { color: var(--imu-gold, #d6ba66) !important; }
+.footer .social-links a:hover { color: #e0c77a !important; }
+.footer a[href^="mailto:"] { color: white !important; }
+.footer a[href^="mailto:"]:hover { color: #e0c77a !important; }
+.mission-h1 { font-family: 'Lora', serif !important; color: var(--imu-gold, #d6ba66) !important; font-size: 4.32em; text-shadow: 0 0 0.5px black; margin-bottom: 0; }
+.mission-h2 { font-family: 'Lora', serif !important; color: white !important; font-size: 2.5em; margin-top: -16px; }
+.mission-h3 { font-family: 'Lora', serif !important; color: var(--imu-gold, #d6ba66) !important; font-size: 1.5em; font-weight: bold; }
+.mission-h4 { font-family: 'Montserrat', sans-serif !important; color: white !important; font-size: 1.2em; line-height: 1.5; font-weight: normal; }
+.mission-h5 { font-family: 'Montserrat', sans-serif !important; color: white !important; font-size: 1em; font-weight: bold; }
+.mission-page { position: relative; z-index: 10; text-align: center; padding: 0 20px 80px; margin: 0 auto; min-height: 100vh; width: 100% !important; max-width: none !important; overflow: visible !important; transform: none !important; box-sizing: border-box; }
+.mission-hero { margin-bottom: 60px; }
+.mission-carousel .carousel-placeholder { background: #333; padding: 50px; margin: 20px 0; color: var(--imu-gold, #d6ba66); }
+.mission-intro { display: flex; justify-content: space-between; align-items: center; margin: 60px 0; }
+.mission-intro .intro-text { width: 50%; }
+.mission-intro .intro-image { width: 50%; height: auto; max-width: 100%; }
+
+/* Requirement 2.2: Center image in right half on desktop */
+@media (min-width: 769px) {
+    .mission-intro .intro-image {
+        margin-left: auto;
+        margin-right: 0;
+        display: block;
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+.mission-nft, .mission-artistry, .mission-perks-intro, .mission-gaming, .mission-champions, .mission-tokenised, .mission-guardians { margin: 60px 0; }
+.mission-perks-grid { display: flex; justify-content: space-between; margin: 60px 0; gap: 20px; }
+.perks-column { flex: 1; min-width: 0; box-sizing: border-box; }
+.perk-item { margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; width: 100%; }
+.perk-item .perk-media { background: #333; width: 100%; height: 200px; margin-bottom: 10px; color: var(--imu-gold, #d6ba66); display: flex; align-items: center; justify-content: center; object-fit: cover; }
+.perk-item .mission-h3, .perk-item .mission-h5 { width: 100%; text-align: center; }
+.perk-link { text-decoration: underline !important; color: var(--imu-gold, #d6ba66) !important; font-family: 'Lora', serif !important; font-weight: bold !important; }
+.perk-link:hover { color: #e0c77a !important; }
+.highlight-gold-italic { color: var(--imu-gold, #d6ba66) !important; font-style: italic !important; }
+.highlight-gold { color: var(--imu-gold, #d6ba66) !important; }
+.highlight-bold-italic { font-weight: bold !important; font-style: italic !important; }
+.mission-gaming-grid { display: flex; justify-content: space-between; margin: 60px 0; }
+.game-item { width: 32%; }
+.game-item .game-image { background: #333; height: 150px; margin-bottom: 10px; color: var(--imu-gold, #d6ba66); display: flex; align-items: center; justify-content: center; }
+.mission-guardians .mission-h4 { margin-bottom: 20px; }
+.mission-guardians .guardians-question { font-size: 1.8em; margin: 20px 0; color: var(--imu-gold, #d6ba66) !important; font-weight: normal !important; }
+.mission-spacer { height: 40px; }
+.whitepaper-button { text-align: center; margin: 60px 0; }
+.whitepaper-btn { display: inline-block; background-color: black !important; color: var(--imu-gold, #d6ba66) !important; border: 2px solid var(--imu-gold, #d6ba66) !important; padding: 15px 40px; text-decoration: none !important; border-radius: 75px !important; font-family: 'Lora', serif !important; font-size: 1.8em; font-weight: normal; }
+.whitepaper-btn:hover { background-color: #1a1a1a !important; color: #e0c77a !important; border-color: #e0c77a !important; }
+div.champion-title { font-family: 'Cinzel Decorative', 'Cinzel', 'Times New Roman', serif !important; font-size: 2.2em; font-weight: 700 !important; text-align: center; line-height: 1.2; margin: 40px 0; background: linear-gradient(180deg, #ffe066 0%, var(--imu-gold, #d6ba66) 40%, #996515 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.4)); }
+.champions { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin: 40px 0; }
+.champions ul { list-style: none; padding: 0; margin: 0; flex: 1; min-width: 300px; }
+.champions li { color: white !important; font-family: 'Montserrat', sans-serif !important; font-weight: bold !important; font-size: 1em; margin-bottom: 10px; }
+a.gold-link { color: var(--imu-gold, #d6ba66) !important; text-decoration: underline !important; font-family: 'Montserrat', sans-serif !important; }
+a.gold-link:hover { color: #e0c77a !important; }
+.minting a.gold-link { color: var(--imu-gold, #d6ba66) !important; text-decoration: underline !important; font-family: 'Montserrat', sans-serif !important; }
+.minting a.gold-link:hover { color: #e0c77a !important; }
+
+/* --- SHARED AND UPDATED STYLES --- */
+
+/* Shared page styles */
+.page-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 20px 80px;
+    margin: 0 auto;
+    min-height: 100vh;
+    width: 100% !important;
+    max-width: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    box-sizing: border-box;
+}
+
+#how-to-mint-page, #how-to-mint-xmart, #champion-page, #how-to-join-page, #profile-page, #frequency-fountain-page {}
+
+/* Unified button styles */
+.btn {
+    background-color: black !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 12px 24px !important;
+    text-decoration: none !important;
+    border-radius: 75px !important;
+    display: inline-block !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.44em !important;
+    text-align: center !important;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+}
+.btn:hover {
+    background-color: #1a1a1a !important;
+    color: #e0c77a !important;
+    border-color: #e0c77a !important;
+}
+#how-to-mint-xmart .minting-hero .btn {
+    font-size: 1.8em !important;
+    padding: 15px 30px !important;
+    border-radius: 75px !important;
+}
+
+/* New styles for Frequency Fountain page */
+H21 {
+    font-family: 'Lora', serif !important;
+    font-size: 4.32em;
+    color: white !important;
+    font-weight: bold !important;
+    margin: 20px 0;
+}
+H22 {
+    font-family: 'Lora', serif !important;
+    font-size: 3.5em;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-weight: 500 !important;
+    margin: 20px 0;
+}
+H23 {
+    font-family: 'Lora', serif !important;
+    font-size: 2em;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-weight: 500 !important;
+    margin: 30px 0 10px;
+}
+H23 a {
+    color: var(--imu-gold, #d6ba66) !important;
+    text-decoration: underline !important;
+}
+H23 a:hover {
+    color: #e0c77a !important;
+}
+H24 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.44em;
+    color: white !important;
+    font-weight: bold !important;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+H25 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.44em;
+    color: white !important;
+    font-weight: normal !important;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+HL {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.2em;
+    color: var(--imu-gold, #d6ba66) !important;
+    text-decoration: underline !important;
+    display: block;
+    margin: 10px 0;
+}
+HL:hover {
+    color: #e0c77a !important;
+}
+
+/* Live XFT Chart Section */
+.live-xft-chart {
+    position: relative;
+    z-index: 15;
+    margin: 40px auto;
+    max-width: 1200px;
+    width: 100%;
+}
+.live-xft-chart .btn.chart-btn {
+    margin-top: 20px !important;
+}
+
+/* Split glow animations */
+@keyframes text-glow {
+    0%, 100% { text-shadow: 0 0 5px rgba(var(--imu-gold-rgb), 0.5), 0 0 10px rgba(var(--imu-gold-rgb), 0.3); }
+    50% { text-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.7), 0 0 20px rgba(var(--imu-gold-rgb), 0.5); }
+}
+
+@keyframes box-glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.3); }
+    50% { box-shadow: 0 0 20px rgba(var(--imu-gold-rgb), 0.5); }
+}
+
+/* Apply text-glow to protector-specific elements only */
+.mission-h1, .mission-h3, .mission-guardians .guardians-question, .highlight-gold,
+.highlight-gold-italic, .perk-link, a.gold-link, .whitepaper-btn, div.champion-title,
+h16, h17, h19, H21, H22, H23 {
+    animation: text-glow 2s infinite ease-in-out;
+}
+
+/* Minting layout */
+h16 { font-size: 48px; color: var(--imu-gold, #d6ba66); font-family: 'Lora', serif; margin-bottom: 20px; text-align: center; }
+h17 { font-size: 32px; color: var(--imu-gold, #d6ba66); font-weight: 500; font-family: 'Lora', serif; margin-bottom: 15px; text-align: center; }
+h18 { font-size: 16px; color: white; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-bottom: 10px; line-height: 1.5; }
+h19 { font-size: 16px; color: var(--imu-gold, #d6ba66); font-weight: bold; font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }
+
+#how-to-mint-xmart h16 { font-size: 69px; }
+#how-to-mint-xmart h17 { font-size: 46px; }
+#how-to-mint-xmart h18 { font-size: 23px; }
+#how-to-mint-xmart h19 { font-size: 18.4px; }
+
+/* Increase text size by 30% on How to Mint page */
+#how-to-mint-page h16 {
+    font-size: 62.4px;
+}
+#how-to-mint-page h17 {
+    font-size: 41.6px;
+}
+#how-to-mint-page h18 {
+    font-size: 20.8px;
+}
+#how-to-mint-page h19 {
+    font-size: 20.8px;
+}
+#how-to-mint-page p {
+    font-size: 20.8px;
+}
+
+.minting-hero { margin: 100px auto 80px; max-width: 1200px; }
+.minting-step { margin-bottom: 80px; }
+.minting-cta { text-align: center; margin-bottom: 60px; }
+.step-content { display: flex; justify-content: center; align-items: center; gap: 10px; max-width: 1200px; margin: 0 auto; }
+.step-text, .step-image { flex: 0 0 50%; padding: 20px; text-align: center; box-sizing: border-box; }
+.step-images { display: flex; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto; }
+
+/* Fix Step 2 images */
+.step-2 .step-images { flex-wrap: nowrap; }
+.step-2 .step-images img { flex: 0 0 calc(50% - 10px); max-width: 600px; }
+
+.large-image-placeholder { max-width: 600px; max-height: 350px; width: 100%; height: auto; display: block; margin: 10px auto; }
+.medium-image-placeholder { max-width: 500px; max-height: 350px; width: 100%; height: auto; display: block; margin: 10px auto; }
+.tall-image-placeholder { max-width: 350px; max-height: 500px; width: 100%; height: auto; display: block; margin: 10px auto; }
+.small-wide-image-placeholder { max-width: 500px; max-height: 250px; width: 100%; height: auto; display: block; margin: 10px auto; }
+
+.step-1 .step-image, .step-3 .step-image, .step-4 .step-image, .step-6 .step-image { display: flex; justify-content: center; align-items: center; padding: 10px; }
+.step-1 .step-content { flex-direction: row; }
+.step-2 .step-text { width: 100%; }
+.step-2 .step-images { margin-top: 20px; }
+.step-3 .step-content, .step-6 .step-content { flex-direction: row-reverse; }
+.step-4 .step-content { flex-direction: row; }
+.step-4 .step-content img.tall-image-placeholder { max-height: 700px; }
+.step-5 .step-content { flex-direction: column; }
+.step-images img { flex: 1; max-width: 600px; margin: 10px 0; }
+
+.minting-final-images .final-images-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+}
+.final-left { flex: 0 0 50%; display: flex; justify-content: center; align-items: center; }
+.final-left img.tall-image-placeholder { max-height: 700px; }
+.final-right { flex: 0 0 50%; display: flex; flex-direction: column; gap: 20px; justify-content: center; align-items: center; }
+.final-right img { max-width: 500px; }
+
+/* Champion page iframe */
+#champion-page .rhythm-game {
+    position: relative;
+    z-index: 15;
+    margin: 20px auto;
+    max-width: 600px;
+    width: 100%;
+}
+#champion-page .rhythm-game-iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    display: block !important;
+    position: relative;
+    z-index: 15;
+}
+
+/* Mobile adjustments (general) */
+@media only screen and (max-width: 768px) {
+    #champion-page .rhythm-game-iframe {
+        height: 400px !important;
+        max-height: 70vh !important;
+    }
+    .xft-chart-iframe {
+        height: 400px !important;
+        max-height: 70vh !important;
+    }
+}
+
+/* How To Join page */
+#how-to-join-page h10 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--imu-gold, #d6ba66) !important;
+    -webkit-text-stroke: 0.5px black;
+    text-shadow: none;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+#how-to-join-page h11 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--imu-gold, #d6ba66) !important;
+    margin: 40px 0 20px;
+}
+#how-to-join-page h12 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 24px;
+    font-weight: 600;
+    color: white !important;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+/* Mobile adjustments (general) */
+@media (max-width: 768px) {
+    .step-content, .step-images, .minting-final-images .final-images-container { flex-direction: column; gap: 10px; }
+    .step-text, .step-image, .final-left, .final-right { flex: none; width: 100%; max-width: 400px; }
+    .step-2 .step-images img { flex: none; width: 100%; }
+    .step-images img, .final-right img { max-width: 400px; }
+    .final-left img.tall-image-placeholder { max-height: 500px; }
+    #how-to-join-page h10 { font-size: 36px; }
+    #how-to-join-page h11 { font-size: 24px; }
+    #how-to-join-page h12 { font-size: 18px; }
+    H21 { font-size: 3em; }
+    H22 { font-size: 2.5em; }
+    H23 { font-size: 1.5em; }
+    H24, H25 { font-size: 1.2em; }
+}
+
+/* Mobile portrait-specific adjustments for Home Page */
+@media (max-width: 768px) and (orientation: portrait) {
+    #home-page .hero h1 {
+        font-size: 2.592em;
+    }
+    #home-page .hero h1 span {
+        font-size: 0.48em;
+    }
+    #home-page .mobile-perks-image {
+        display: block !important;
+        max-width: 100%;
+        height: auto;
+        margin: 20px auto;
+    }
+    #home-page .perks-image {
+        display: none;
+    }
+    #home-page .protector-stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #home-page .protector-stats-image {
+        order: -1;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    #home-page, 
+    #home-page .hero,
+    #home-page .section,
+    #home-page .stats div,
+    #home-page .perks-text,
+    #home-page .imu div,
+    #home-page .metaverse div,
+    #home-page .champions,
+    #home-page .whitepaper-button,
+    #home-page .minting {
+        text-align: center !important;
+    }
+    #home-page h1, 
+    #home-page h2, 
+    #home-page h3, 
+    #home-page p, 
+    #home-page li, 
+    #home-page a, 
+    #home-page H19 {
+        text-align: center !important;
+    }
+    #home-page ul {
+        list-style-position: inside;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+    #home-page li {
+        display: block;
+        text-align: center !important;
+    }
+    #home-page H19 {
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: -5px;
+        text-align: center !important;
+    }
+}
+
+/* Mobile portrait-specific adjustments for Mission Page */
+@media (max-width: 768px) and (orientation: portrait) {
+    .mission-page .mission-h1 {
+        margin-top: 50px;
+        font-size: 2.7024em;
+    }
+    .mission-page .mission-h2 {
+        font-size: 1.75em;
+    }
+    .mission-page .mission-intro {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mission-page .mission-intro .intro-text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .mission-page .mission-intro .intro-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .mission-page .mission-gaming-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mission-page .mission-gaming-grid .game-item {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+    .mission-page .mission-guardians .guardians-question {
+        font-size: 1.62em;
+    }
+}
+
+/* Mobile portrait-specific adjustments for Champion Page */
+@media (max-width: 768px) and (orientation: portrait) {
+    #champion-page .champion-title {
+        font-size: 1.98em;
+    }
+    #champion-page, 
+    #champion-page .section,
+    #champion-page h1,
+    #champion-page h2,
+    #champion-page h3,
+    #champion-page h4,
+    #champion-page h5,
+    #champion-page h6,
+    #champion-page p,
+    #champion-page li,
+    #champion-page a {
+        font-size: 80% !important;
+    }
+}
+
+/* Mobile portrait-specific adjustments for How to Mint Page */
+@media (max-width: 768px) and (orientation: portrait) {
+    #how-to-mint-page h16 {
+        font-size: 43.68px;
+    }
+    #how-to-mint-page h17 {
+        font-size: 29.12px;
+    }
+    #how-to-mint-page h17 a.gold-link {
+        font-size: 20px;
+    }
+}
+
+/* Mobile portrait-specific adjustments for How to Mint Sub-Pages */
+@media (max-width: 768px) and (orientation: portrait) {
+    #how-to-mint-xmart h16 {
+        font-size: 47px !important;
+    }
+    #how-to-mint-xmart h17 {
+        font-size: 28px !important;
+    }
+    [id^="how-to-mint-"] h16 {
+        font-size: 47px !important;
+    }
+    [id^="how-to-mint-"] h17 {
+        font-size: 28px !important;
+    }
+    [id^="how-to-mint-"] .step-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    [id^="how-to-mint-"] .step-content .step-text,
+    [id^="how-to-mint-"] .step-content .step-image {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+    }
+}
+
+/* Mobile portrait-specific adjustments for How to Join Page */
+@media (max-width: 768px) and (orientation: portrait) {
+    #how-to-join-page.page-content img[src*="Join1.png"] {
+        width: 100% !important;
+        max-width: 480px !important;
+        height: auto !important;
+        display: block !important;
+        position: relative !important;
+        left: 50% !important;
+        transform: translateX(-50%) scale(1.2) !important;
+        transform-origin: center !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* Mobile portrait-specific adjustments for Frequency Fountain Page */
+@media (max-width: 768px) and (orientation: portrait) {
+    #frequency-fountain-page H22 {
+        font-size: 1.57em !important;
+    }
+    #frequency-fountain-page .mission-h2 {
+        font-size: 1.375em !important;
+    }
+}
+
+/* Ensure animation is defined globally */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Landscape adjustments */
+@media (max-width: 600px) and (orientation: landscape) {
+    #champion-page .rhythm-game { max-width: calc(100vh * (7 / 14)); }
+}
+
+
+/* Profile page */
+#profile-page,
+#profile-page.logged-in {
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 1.1em;
+}
+
+/* Target text elements explicitly for glow */
+.xaman-profile p,
+.xaman-profile li,
+.xaman-profile a,
+.xaman-profile span,
+.xaman-profile h2,
+.xaman-profile h3,
+.xaman-profile .nft-counters p,
+.xaman-profile .nft-counters a,
+.xaman-profile .social-links a,
+.xaman-profile .claim-section p,
+.xaman-profile .claim-section span {
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+/* Define glow animations */
+@keyframes text-glow {
+    0% { text-shadow: 0 0 5px var(--imu-gold, #d6ba66); }
+    50% { text-shadow: 0 0 10px #e0c77a; }
+    100% { text-shadow: 0 0 5px var(--imu-gold, #d6ba66); }
+}
+
+@keyframes box-glow {
+    0% { box-shadow: 0 0 5px var(--imu-gold, #d6ba66); }
+    50% { box-shadow: 0 0 10px #e0c77a; }
+    100% { box-shadow: 0 0 5px var(--imu-gold, #d6ba66); }
+}
+
+/* Profile Header */
+.xaman-profile .profile-header h2 {
+    font-size: 1.65em;
+    margin-bottom: 12px !important;
+}
+
+.xaman-profile .profile-header p,
+.xaman-profile .profile-header .account,
+.xaman-profile .profile-header .bio {
+    font-size: 1.27em;
+    margin: 12px 0 !important;
+}
+
+.xaman-profile .nft-counters p,
+.xaman-profile p.bio,
+.xaman-profile p.account {
+    font-size: 1.27em;
+    margin: 12px 0 !important;
+}
+
+/* Profile Image */
+.xaman-profile .profile-header img {
+    width: 372.3px !important;
+    height: 372.3px !important;
+    border-radius: 50% !important;
+    margin-top: -75px !important;
+}
+
+/* Standardize buttons */
+.xaman-profile .btn,
+.xaman-profile button,
+.xaman-profile input[type="submit"],
+.xaman-profile .profile-action-buttons .btn,
+.xaman-profile #edit-profile-toggle.btn,
+.xaman-profile .logout-section a.btn,
+.xaman-profile .balance-buttons .btn,
+.nft-controls .nft-filter-btn,
+.nft-controls .nft-toggle-btn,
+.nft-controls .trade-centre-btn {
+    font-size: 14.4px !important;
+    padding: 9.6px 19.2px !important;
+    border-radius: 4px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.5 !important;
+    transition: background-color 0.3s, color 0.3s;
+    animation: box-glow 2s infinite ease-in-out;
+    pointer-events: auto;
+    z-index: 1000 !important; /* Lowered */
+}
+
+/* Larger Claim buttons */
+.xaman-profile .balance-buttons .claim-xft {
+    font-size: 17.28px !important;
+    padding: 11.52px 23.04px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    position: relative;
+    overflow: visible;
+    z-index: 1000 !important;
+    animation: box-glow 2s infinite ease-in-out;
+}
+
+.xaman-profile .balance-buttons .claim-xft[disabled] {
+    background-color: #151515 !important;
+    color: #666 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    animation: none !important;
+}
+
+.xaman-profile .balance-buttons .claim-imutv {
+    font-size: 17.28px !important;
+    padding: 11.52px 23.04px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    position: relative;
+    overflow: visible;
+    z-index: 1000 !important;
+    animation: box-glow 2s infinite ease-in-out;
+}
+
+.xaman-profile .balance-buttons .claim-imutv[disabled] {
+    background-color: #151515 !important;
+    color: #666 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    animation: none !important;
+}
+
+/* Red border for Refresh Balances */
+.xaman-profile .refresh-balances {
+    border: 1px solid red !important;
+}
+
+.xaman-profile .btn:hover,
+.xaman-profile button:hover,
+.xaman-profile input[type="submit"]:hover,
+.xaman-profile .profile-action-buttons .btn:hover,
+.xaman-profile #edit-profile-toggle.btn:hover,
+.xaman-profile .logout-section a.btn:hover,
+.xaman-profile .balance-buttons .btn:hover,
+.nft-controls .nft-filter-btn:hover,
+.nft-controls .nft-toggle-btn:hover,
+.nft-controls .trade-centre-btn:hover {
+    background-color: #e0c77a !important;
+    color: #1a1a1a !important;
+}
+
+/* Coming Soon banner */
+.xaman-profile .coming-soon-banner {
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff0000;
+    color: #fff;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    animation: circleBanner 4s infinite linear;
+    transform-origin: center center;
+    white-space: nowrap;
+}
+
+@keyframes circleBanner {
+    0% { transform: translateX(-50%) rotate(0deg) translateY(-15px) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg) translateY(-15px) rotate(-360deg); }
+}
+
+/* Profile Action Buttons */
+.xaman-profile .profile-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Balance Buttons */
+.xaman-profile .balance-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+/* Form inputs and textareas */
+.xaman-profile input[type="text"],
+.xaman-profile input[type="url"],
+.xaman-profile textarea {
+    background-color: #333;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 5px;
+    border-radius: 3px;
+    color: var(--imu-gold, #d6ba66) !important;
+    pointer-events: auto !important;
+    z-index: 50002 !important;
+}
+
+/* File inputs */
+.xaman-profile input[type="file"] {
+    color: var(--imu-gold, #d6ba66) !important;
+    pointer-events: auto !important;
+    z-index: 50002 !important;
+}
+
+/* Disabled buttons */
+.xaman-profile button[disabled] {
+    background-color: #ccc !important;
+    color: #666 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    animation: none !important;
+    pointer-events: none !important;
+}
+
+/* Edit Profile Pop-Up */
+.edit-profile-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 50000 !important; /* Increased */
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.edit-profile-popup.active {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+.edit-profile-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    border-radius: 10px;
+    position: relative;
+    color: #fff;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(var(--imu-gold-rgb), 0.3);
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    z-index: 50001 !important;
+    pointer-events: auto !important;
+}
+
+.edit-profile-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--imu-gold, #d6ba66);
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    z-index: 50003 !important;
+    pointer-events: auto !important;
+}
+
+.edit-profile-close:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.edit-profile-content h3,
+.edit-profile-content h4 {
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Lora', serif;
+    margin: 20px 0 10px;
+}
+
+.edit-profile-content label {
+    display: block;
+    margin: 10px auto;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 400px;
+    pointer-events: auto !important;
+    z-index: 50002 !important;
+}
+
+.edit-profile-content input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--imu-gold, #d6ba66);
+    pointer-events: auto !important;
+    z-index: 50002 !important;
+}
+
+.edit-profile-content input[type="checkbox"] + label {
+    display: inline-block;
+    text-align: left;
+    margin: 10px 0;
+    max-width: none;
+    pointer-events: auto !important;
+}
+
+.edit-profile-content input[type="email"],
+.edit-profile-content input[type="text"],
+.edit-profile-content textarea,
+.edit-profile-content input[type="file"] {
+    padding: 8px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: auto !important;
+    z-index: 50002 !important;
+}
+
+.edit-profile-content .email-required {
+    background-color: #4a4a4a !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 10px !important;
+    text-align: center;
+    max-width: 500px;
+    margin: 10px auto;
+}
+
+.edit-profile-content p {
+    margin: 5px auto;
+    max-width: 400px;
+    pointer-events: auto !important;
+}
+
+/* Premium Features */
+.xaman-profile .premium-features {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.xaman-profile .premium-features h4 {
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Lora', serif;
+    margin-bottom: 10px;
+}
+
+.xaman-profile .premium-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.xaman-profile .premium-links .gold-link {
+    font-size: 14.4px !important;
+    padding: 9.6px 19.2px !important;
+    border-radius: 4px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.5 !important;
+    transition: background-color 0.3s, color 0.3s;
+    animation: box-glow 2s infinite ease-in-out;
+    z-index: 1000 !important;
+}
+
+/* Notification messages */
+.xaman-profile .xaman-notification-message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--imu-gold, #d6ba66) !important;
+    animation: box-glow 2s infinite ease-in-out;
+}
+
+.xaman-profile .xaman-notification-message.success {
+    background-color: #333;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.xaman-profile .xaman-notification-message.error {
+    background-color: #4a2c2c;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+/* Spinner */
+.xaman-profile .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 5px;
+}
+
+/* Email Input */
+.xaman-profile .email-oval {
+    background-color: black !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 8px 15px;
+    border-radius: 75px !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 300px;
+    margin: 5px auto;
+    display: block;
+    animation: box-glow 2s infinite ease-in-out;
+    pointer-events: auto !important;
+    z-index: 50002 !important;
+}
+
+.xaman-profile .email-oval:focus {
+    outline: none;
+    border-color: #e0c77a !important;
+    animation: none !important;
+}
+
+.xaman-profile .email-oval::placeholder {
+    color: var(--imu-gold, #d6ba66) !important;
+    opacity: 0.7;
+}
+
+/* Logout Section */
+.xaman-profile .logout-section {
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+/* Hide gold-link in logout-section */
+.xaman-profile .logout-section a.gold-link {
+    display: none;
+}
+
+/* Prevent glow on non-logged-in profile */
+.xaman-profile .section:not(.claim-section):not(.profile-header):not(.nft-counters) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+/* Ensure xaman-profile container doesn't add space */
+.xaman-profile {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+
+.profile-background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    object-fit: cover;
+}
+
+/* Existing profile rules */
+#profile-page .username-link {
+    text-decoration: underline;
+}
+
+#profile-page .edit-profile-toggle {
+    cursor: pointer;
+    margin: 20px 0;
+    font-size: 1.44em;
+}
+
+#profile-page .owner-only {
+    display: none;
+}
+
+#profile-page.owner-view .owner-only {
+    display: inline-block;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .xaman-profile .profile-header h2 {
+        font-size: 1.50em;
+    }
+
+    .xaman-profile .profile-header p,
+    .xaman-profile .profile-header .account,
+    .xaman-profile .profile-header .bio {
+        font-size: 1.15em;
+        margin: 12px 0 !important;
+    }
+
+    .xaman-profile .nft-counters p,
+    .xaman-profile p.bio,
+    .xaman-profile p.account {
+        font-size: 1.15em;
+        margin: 12px 0 !important;
+    }
+
+    .xaman-profile .profile-header img {
+        width: 297.5px !important;
+        height: 297.5px !important;
+        max-width: 90vw !important;
+        margin-top: -60px !important;
+    }
+
+    .xaman-profile .premium-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .xaman-profile .email-oval {
+        max-width: 250px;
+        padding: 6px 12px;
+        font-size: 1em;
+    }
+
+    .xaman-profile .email-required {
+        margin: 8px auto;
+        padding: 6px 12px;
+        max-width: 400px;
+        font-size: 1em;
+        border-radius: 8px !important;
+    }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .xaman-profile .profile-header h2 {
+        font-size: 1.35em;
+    }
+
+    .xaman-profile .profile-header p,
+    .xaman-profile .profile-header .account,
+    .xaman-profile .profile-header .bio {
+        font-size: 1.035em;
+        margin: 12px 0 !important;
+    }
+
+    .xaman-profile .nft-counters p,
+    .xaman-profile p.bio,
+    .xaman-profile p.account {
+        font-size: 1.035em;
+        margin: 12px 0 !important;
+    }
+
+    .xaman-profile .profile-header img {
+        width: 223.55px !important;
+        height: 223.55px !important;
+        max-width: 80vw !important;
+        margin-top: -50px !important;
+    }
+
+    .xaman-profile .email-oval {
+        max-width: 200px;
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+
+    .xaman-profile .email-required {
+        margin: 5px auto;
+        padding: 5px 10px;
+        max-width: 350px;
+        font-size: 0.9em;
+        border-radius: 8px !important;
+    }
+}
+
+/* NFT Display Section */
+.nft-display {
+    margin: 20px 0;
+    position: relative;
+}
+
+.xaman-profile .nft-grid.nft-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important; /* Ensure 5 NFTs per row */
+    gap: 12px !important;
+    max-width: 1200px; /* Constrain grid width */
+    margin: 0 auto; /* Center grid for side gaps */
+    padding: 0 20px; /* Side gaps */
+}
+
+@media (max-width: 1200px) {
+    .xaman-profile .nft-grid.nft-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .xaman-profile .nft-grid.nft-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 NFTs per row on mobile */
+    }
+}
+
+.nft-controls {
+    max-width: 1200px; /* Match grid width */
+    margin: 0 auto; /* Center */
+    padding: 0 20px; /* Align with grid content */
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    align-items: center;
+    gap: 8px; /* Gap for desktop */
+    margin-bottom: 20px; /* Space below buttons */
+}
+
+.nft-filter-btn, .nft-toggle-btn, .trade-centre-btn {
+    background-color: black !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    border-radius: 75px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.2em !important;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+    flex: 1; /* Equal width */
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping */
+    min-width: 100px; /* Minimum width for consistency */
+    max-width: 150px; /* Cap width to prevent stretching */
+}
+
+.nft-filter-btn:hover, .nft-toggle-btn:hover, .trade-centre-btn:hover {
+    background-color: #1a1a1a !important;
+    color: #e0c77a !important;
+    border-color: #e0c77a !important;
+}
+
+@media (max-width: 768px) {
+    .nft-controls {
+        padding: 0 20px;
+        gap: 6px; /* Tighter gap for mobile */
+    }
+    .nft-filter-btn, .nft-toggle-btn, .trade-centre-btn {
+        padding: 8px 10px !important; /* Tighter padding */
+        font-size: 0.9em !important; /* Slightly smaller font */
+        flex: 1;
+        min-width: 80px; /* Smaller min-width for mobile */
+        max-width: 120px; /* Smaller max-width */
+        white-space: nowrap;
+        overflow: hidden; /* Handle long text */
+        text-overflow: ellipsis; /* Truncate long text */
+    }
+}
+
+.nft-card {
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    cursor: pointer;
+    animation: glow 12s infinite ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 1000 !important;
+}
+
+@media (max-width: 768px) {
+    .nft-card {
+        padding: 10px;
+    }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    .nft-card {
+        background: rgba(26, 26, 26, 0.9);
+    }
+}
+
+.nft-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nft-card:hover {
+    transform: perspective(500px) rotateX(5deg) rotateY(5deg);
+    animation: rotateCard 10s infinite linear;
+}
+
+.nft-card.hidden {
+    display: none;
+}
+
+.nft-card.hidden .nft-image-wrapper {
+    display: none;
+}
+
+.nft-card.hidden.visible .nft-image-wrapper {
+    display: block;
+}
+
+.nft-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .nft-image-wrapper {
+        height: 150px;
+    }
+}
+
+.nft-image {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .nft-image {
+        max-height: 150px;
+    }
+}
+
+.nft-loading-spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--imu-gold, #d6ba66);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 1001 !important;
+}
+
+.nft-image-wrapper.loading .nft-loading-spinner {
+    display: block;
+}
+
+.nft-image-wrapper.loading .nft-image {
+    opacity: 0.5;
+}
+
+.nft-card h4 {
+    color: var(--imu-gold, #d6ba66);
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .nft-card h4 {
+        font-size: 14px;
+    }
+}
+
+.nft-card.error {
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.nft-card.error img {
+    opacity: 0.5;
+    border: 2px solid #ff0000;
+}
+
+/* Glowing Border Animation */
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 192, 203, 0.85); } /* Pink */
+    20% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.85); } /* Green */
+    40% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.85); } /* Red */
+    60% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.85); } /* Blue */
+    80% { box-shadow: 0 0 20px rgba(128, 0, 128, 0.85); } /* Purple */
+    100% { box-shadow: 0 0 20px rgba(255, 192, 203, 0.85); } /* Pink (loop) */
+}
+
+/* Vary animation timing for pseudo-random effect */
+.nft-card:nth-child(3n) {
+    animation-delay: 0.5s;
+}
+
+.nft-card:nth-child(3n+1) {
+    animation-delay: 1s;
+}
+
+.nft-card:nth-child(3n+2) {
+    animation-delay: 1.5s;
+}
+
+/* Smoke Effect */
+.nft-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    animation: smokeSwirl 8s infinite ease-in-out;
+    -webkit-animation: smokeSwirl 8s infinite ease-in-out;
+}
+
+.nft-card:hover::before {
+    opacity: 0.6;
+}
+
+@keyframes smokeSwirl {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10px, -10px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@-webkit-keyframes smokeSwirl {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10px, -10px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes rotateCard {
+    0% { transform: perspective(500px) rotateX(5deg) rotateY(5deg); }
+    50% { transform: perspective(500px) rotateX(-5deg) rotateY(-5deg); }
+    100% { transform: perspective(500px) rotateX(5deg) rotateY(5deg); }
+}
+
+/* Guardian Card Styling */
+.guardian-card {
+    background: rgba(65, 105, 225, 0.7);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
+    z-index: 1000 !important;
+}
+
+.guardian-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(65, 105, 225, 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+    100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+}
+
+
+/* NFT Controls */
+.nft-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    z-index: 1000 !important;
+}
+
+/* NFT Pop-Up */
+.nft-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 50000 !important;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.nft-popup-content {
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    pointer-events: auto;
+    z-index: 50001 !important;
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    .nft-popup-content {
+        background: rgba(26, 26, 26, 1);
+    }
+}
+
+.nft-popup-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 15px;
+}
+
+.nft-popup-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.nft-popup-loading-spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    border: 4px solid var(--imu-gold, #d6ba66);
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 50002 !important;
+}
+
+.nft-popup-image-wrapper.loading .nft-popup-loading-spinner {
+    display: block;
+}
+
+.nft-popup-image-wrapper.loading .nft-popup-image {
+    opacity: 0.5;
+}
+
+.nft-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--imu-gold, #d6ba66);
+    pointer-events: auto;
+    z-index: 50003 !important;
+}
+
+.nft-popup-scrollable {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 10px;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar-thumb {
+    background: var(--imu-gold, #d6ba66);
+    border-radius: 4px;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #b89b4e;
+}
+
+.nft-popup-scrollable p, .nft-popup-scrollable div {
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+.nft-popup-scrollable ul {
+    list-style: none;
+    padding: 0;
+    color: #ffffff;
+}
+
+.nft-popup-scrollable ul li {
+    margin: 5px 0;
+}
+
+.nft-popup-scrollable ul li strong {
+    color: var(--imu-gold, #d6ba66);
+}
+
+.nft-popup-content .btn {
+    background: var(--imu-gold, #d6ba66);
+    color: #1a1a1a;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.nft-popup-content .btn:hover {
+    background: #e0c77a;
+}
+
+/* Make Offer Button */
+.nft-make-offer {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 6px 12px;
+    background: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+    z-index: 1001 !important;
+    pointer-events: auto;
+}
+
+.nft-make-offer:hover {
+    background: #218838;
+}
+
+.nft-make-offer:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Make Offer Pop-Up */
+.make-offer-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 50000 !important;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.make-offer-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 20px rgba(var(--imu-gold-rgb), 0.3);
+    animation: popupFadeIn 0.3s ease-out;
+    pointer-events: auto;
+    z-index: 50001 !important;
+}
+
+.make-offer-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--imu-gold, #d6ba66);
+    transition: color 0.3s, transform 0.2s;
+    pointer-events: auto;
+    z-index: 50003 !important;
+}
+
+.make-offer-close:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.offer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.target-nft-image img {
+    width: 63px;
+    height: 63px;
+    border-radius: 3px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    object-fit: cover;
+}
+
+.offer-title-row h2 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--imu-gold, #d6ba66);
+}
+
+.offer-amount-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.offer-amount-row label {
+    color: var(--imu-gold, #d6ba66);
+    font-size: 14px;
+    margin: 0;
+}
+
+.offer-amount-row select {
+    width: 17.5%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    background: #1a1a1a;
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Montserrat', sans-serif;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.offer-amount-row input {
+    width: 82.5%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    background: #1a1a1a;
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Montserrat', sans-serif;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.fee-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.fee-section label {
+    color: var(--imu-gold, #d6ba66);
+    font-size: 14px;
+    margin: 0;
+}
+
+.fee-section select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    background: #1a1a1a;
+    color: var(--imu-gold, #d6ba66);
+    width: 150px;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+#fee-display,
+#network-fee-display,
+#platform-fee-display {
+    color: var(--imu-gold, #d6ba66);
+    font-size: 14px;
+    z-index: 50002 !important;
+}
+
+.make-offer-nfts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.nft-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: rgba(26, 26, 26, 0.7);
+    z-index: 50002 !important;
+}
+
+.nft-option img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    object-fit: cover;
+}
+
+.nft-option span {
+    font-size: 8px;
+    text-align: center;
+    color: var(--imu-gold, #d6ba66);
+    word-break: break-word;
+}
+
+.nft-option input {
+    margin-bottom: 5px;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.make-offer-content .btn {
+    background: var(--imu-gold, #d6ba66);
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.make-offer-content .btn:hover {
+    background: #e0c77a;
+}
+
+.make-offer-content .error {
+    color: #ff0000;
+    margin: 10px 0;
+}
+
+.make-offer-content #offer-progress {
+    color: #28a745;
+    margin: 10px 0;
+}
+
+/* My Offers Section */
+.my-offers-section {
+    margin-top: 40px;
+}
+
+.offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.offers-table th, .offers-table td {
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 10px;
+    text-align: left;
+    color: var(--imu-gold, #d6ba66);
+}
+
+.offers-table th {
+    background: #1a1a1a;
+}
+
+.offers-table td {
+    background: rgba(26, 26, 26, 0.7);
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.btn-accept {
+    background: #28a745;
+    color: white;
+}
+
+.btn-reject {
+    background: #ff0000;
+    color: white;
+}
+
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+}
+
+.offer-action-form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Refresh Button */
+.nft-combined-refresh {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: var(--imu-gold, #d6ba66);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 1001 !important;
+    pointer-events: auto;
+}
+
+.nft-combined-refresh:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.nft-combined-refresh:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.nft-combined-refresh .spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-top: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* General Button Styling */
+.btn {
+    background: var(--imu-gold, #d6ba66);
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.btn:hover {
+    background: #e0c77a;
+}
+
+.gold-link {
+    color: var(--imu-gold, #d6ba66);
+    text-decoration: none;
+    z-index: 1000 !important;
+}
+
+.gold-link:hover {
+    text-decoration: underline;
+}
+
+.toggle-btn {
+    background: var(--imu-gold, #d6ba66);
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px 0;
+    width: 100%;
+    text-align: left;
+    transition: background 0.3s;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.toggle-btn:hover {
+    background: #e0c77a;
+}
+
+.collapsible {
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+}
+
+.collapsible[style*="display: block"] {
+    opacity: 1;
+    max-height: 200px;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-top: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Xaman Profile Additions */
+.xaman-profile input[type="number"]::-webkit-inner-spin-button,
+.xaman-profile input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.xaman-profile input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.xaman-profile select {
+    width: 100%;
+    padding: 8px;
+    background: #333;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.xaman-profile .account,
+.xaman-profile .bio {
+    margin: 10px 0;
+}
+
+.xaman-profile label {
+    display: block;
+    margin: 10px 0;
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.xaman-profile .nft-checkboxes {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 10px;
+    background: #222;
+    margin-bottom: 10px;
+}
+
+.xaman-profile .nft-checkboxes label {
+    display: block;
+    margin: 5px 0;
+    color: var(--imu-gold, #d6ba66);
+}
+
+#fee-display {
+    color: var(--imu-gold, #d6ba66);
+    margin: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+}
+
+.xaman-profile .nft-display {
+    position: relative;
+}
+
+.xaman-profile .make-offer-nfts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.xaman-profile .nft-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: rgba(26, 26, 26, 0.7);
+    z-index: 50002 !important;
+}
+
+.xaman-profile .nft-option img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.xaman-profile .nft-option span {
+    font-size: 8px;
+    text-align: center;
+    color: var(--imu-gold, #d6ba66);
+    word-break: break-word;
+}
+
+.xaman-profile .nft-option input {
+    margin-bottom: 5px;
+}
+
+.xaman-profile .active-trades-section {
+    margin-top: 40px;
+}
+
+.xaman-profile .trade-item {
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(26, 26, 26, 0.7);
+}
+
+.xaman-profile .trade-item p {
+    margin: 5px 0;
+    color: var(--imu-gold, #d6ba66);
+}
+
+.xaman-profile .accept-trade-btn,
+.xaman-profile .reject-trade-btn,
+.xaman-profile .cancel-trade-btn,
+.xaman-profile .finalize-trade-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.xaman-profile .accept-trade-btn {
+    background: #28a745;
+    color: white;
+}
+
+.xaman-profile .reject-trade-btn {
+    background: #ff0000;
+    color: white;
+}
+
+.xaman-profile .cancel-trade-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.xaman-profile .finalize-trade-btn {
+    background: #007bff;
+    color: white;
+}
+
+.xaman-profile .accept-trade-btn:hover,
+.xaman-profile .reject-trade-btn:hover,
+.xaman-profile .cancel-trade-btn:hover,
+.xaman-profile .finalize-trade-btn:hover {
+    opacity: 0.9;
+}
+
+.xaman-profile .spinner {
+    margin-right: 5px;
+}
+
+/* Trade Centre Pop-Up */
+.trade-centre-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 50000 !important;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.trade-centre-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    padding: 30px;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 10px;
+    position: relative;
+    color: #fff;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(var(--imu-gold-rgb), 0.3);
+    animation: popupFadeIn 0.3s ease-out;
+    z-index: 50001 !important;
+    font-family: 'Montserrat', sans-serif;
+    pointer-events: auto;
+}
+
+.trade-centre-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--imu-gold, #d6ba66);
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    z-index: 50003 !important;
+    pointer-events: auto;
+}
+
+.trade-centre-close:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Modal open state */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Adjust pointer-events for modal-open */
+body.modal-open .xaman-profile:not(.edit-profile-popup):not(.nft-popup):not(.make-offer-popup):not(.trade-centre-popup) {
+    pointer-events: none;
+}
+
+/* Trade Sections */
+.trade-section {
+    margin-bottom: 30px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    padding: 15px;
+    background: rgba(26, 26, 26, 0.7);
+}
+
+.trade-section h3 {
+    color: var(--imu-gold, #d6ba66);
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: transparent;
+}
+
+.offers-table th,
+.offers-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    color: #fff;
+}
+
+.offers-table th {
+    background-color: #2a2a2a;
+    color: var(--imu-gold, #d6ba66);
+    font-weight: 600;
+}
+
+.offers-table td {
+    color: #fff;
+}
+
+/* Button Styles */
+.btn-small {
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    pointer-events: auto;
+    z-index: 50002 !important;
+}
+
+.btn-accept {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+.btn-accept:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.btn-cancel,
+.btn-reject {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.btn-cancel:hover,
+.btn-reject:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Offer Progress */
+.offer-progress {
+    margin-top: 15px;
+    color: var(--imu-gold, #d6ba66);
+    text-align: center;
+    font-size: 14px;
+}
+
+.offer-progress img {
+    margin: 10px 0;
+    max-width: 150px;
+}
+
+.offer-progress .success {
+    color: #28a745;
+}
+
+.offer-progress .error {
+    color: #dc3545;
+}
+
+/* Animation */
+@keyframes popupFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ensure parent doesn’t interfere */
+.xaman-profile {
+    position: static;
+    z-index: 1 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .trade-centre-content {
+        padding: 20px;
+        width: 95%;
+    }
+    .trade-centre-content h2 {
+        font-size: 20px;
+    }
+    .trade-section h3 {
+        font-size: 16px;
+    }
+    .offers-table {
+        font-size: 12px;
+    }
+    .offers-table th,
+    .offers-table td {
+        padding: 8px;
+    }
+    .btn-small {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    .xaman-profile .make-offer-nfts {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .xaman-profile .trade-item {
+        font-size: 14px;
+    }
+}
+
+.refresh-all-nfts-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-left: 10px;
+    pointer-events: auto;
+    z-index: 1000 !important;
+}
+
+.refresh-all-nfts-btn:hover {
+    background-color: #0056b3;
+}
+
+.refresh-all-nfts-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Ensure checkbox click doesn't trigger card click */
+.nft-select-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 1001 !important;
+    pointer-events: auto;
+}
+
+/* Force non-pop-up fixed/sticky elements below pop-ups */
+*[style*="position: fixed"], *[style*="position: sticky"] {
+    z-index: 1000 !important;
+}
+
+.edit-profile-popup, .nft-popup, .make-offer-popup, .trade-centre-popup,
+.edit-profile-popup *, .nft-popup *, .make-offer-popup *, .trade-centre-popup * {
+    z-index: 50000 !important;
+}
+
+.edit-profile-content, .nft-popup-content, .make-offer-content, .trade-centre-content {
+    z-index: 50001 !important;
+}
+
+.edit-profile-close, .nft-popup-close, .make-offer-close, .trade-centre-close {
+    z-index: 50003 !important;
+}
+
+.edit-profile-content input, .edit-profile-content textarea, .edit-profile-content select,
+.edit-profile-content button, .edit-profile-content label, .edit-profile-content [type="checkbox"],
+.nft-popup-content input, .nft-popup-content button,
+.make-offer-content input, .make-offer-content select, .make-offer-content button,
+.make-offer-content .nft-option, .make-offer-content .nft-option input,
+.trade-centre-content button, .trade-centre-content input, .trade-centre-content select {
+    z-index: 50002 !important;
+}
+
+/* NFT Counters */
+.xaman-profile .nft-counters p,
+.xaman-profile p.bio,
+.xaman-profile p.account {
+    font-size: 1.27em;
+    margin: 12px 0 !important;
+}
+
+.xaman-profile .nft-counters-box {
+    background: rgba(26, 26, 26, 0.85) !important; /* Less transparent as requested */
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    border-radius: 10px !important;
+    padding: 15px !important;
+    margin: 20px auto !important;
+    max-width: 600px !important;
+    text-align: center !important;
+    animation: box-glow 2s infinite ease-in-out !important;
+    z-index: 1000 !important;
+    position: relative !important;
+    box-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.3) !important;
+}
+
+.xaman-profile .nft-counters-box p {
+    font-size: 1.27em !important;
+    margin: 10px 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.xaman-profile .nft-counters-box .counter-name {
+    color: #fff !important; /* White for counter names */
+}
+
+.xaman-profile .nft-counters-box p,
+.xaman-profile .nft-counters-box a,
+.xaman-profile .nft-counters-box span:not(.counter-name) {
+    color: var(--imu-gold, #d6ba66) !important; /* Gold for quantities and other spans/links */
+}
+
+/* Responsive adjustments for NFT Counters Box */
+@media (max-width: 768px) {
+    .xaman-profile .nft-counters-box {
+        padding: 12px !important;
+        margin: 15px auto !important;
+    }
+
+    .xaman-profile .nft-counters-box p {
+        font-size: 1.15em !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .xaman-profile .nft-counters-box {
+        padding: 10px !important;
+        margin: 10px auto !important;
+    }
+
+    .xaman-profile .nft-counters-box p {
+        font-size: 1.035em !important;
+    }
+}
+
+
+    /* Rewards box styling: Gradient background, shadows, hover effects, mobile responsiveness */
+    #rewards-box {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+    }
+    #rewards-box:hover {
+        transform: translateY(-5px);
+    }
+    #claim-button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+    #rewards-breakdown table {
+        border: 1px solid #FFD700;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    #rewards-breakdown th, #rewards-breakdown td {
+        padding: 8px;
+        border-bottom: 1px solid #444444;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+        #rewards-box {
+            max-width: 90vw;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+        #rewards-breakdown table {
+            font-size: 0.8em;
+        }
+        #claim-button {
+            width: 100%;
+            padding: 12px;
+        }
+    }
+    
+    #champion-page {
+    position: relative; /* Establishes positioning context for the video */
+    overflow: hidden; /* Clips the video if it overflows the container */
+}
+
+.champion-background-video {
+    position: absolute; /* Positions video as background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the container without distortion */
+    z-index: -1; /* Already set inline, but reinforce if needed */
+}
+
+#rewards-box {
+    position: relative; /* Ensures it's in the normal flow and above the video */
+    z-index: 1; /* Lower than iframe (15) but above video (-1) */
+    /* Existing styles remain */
+}
+
+/* ============================================
+   NFT POPUP IMPROVEMENTS - Attributes Grid Style
+   ============================================ */
+
+/* Attributes Grid - Like /my-claim page */
+.nft-attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.nft-attributes-grid .nft-attribute {
+    background: #0a0a0f;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.3);
+}
+
+.nft-attributes-grid .nft-attribute-label {
+    font-size: 0.7rem;
+    color: #71717a;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nft-attributes-grid .nft-attribute-value {
+    font-size: 0.85rem;
+    color: var(--imu-gold, #d6ba66);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nft-attributes-grid .no-attributes {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #71717a;
+    font-style: italic;
+    padding: 1rem;
+}
+
+/* Description Box */
+.nft-description-box {
+    background: #0a0a0f;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.3);
+}
+
+.nft-description-box p {
+    color: #e4e4e7;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Popup Buttons Row */
+.nft-popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.nft-popup-buttons .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+}
+
+/* Mobile responsiveness for attributes */
+@media (max-width: 480px) {
+    .nft-attributes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .nft-attributes-grid .nft-attribute {
+        padding: 0.5rem;
+    }
+    
+    .nft-attributes-grid .nft-attribute-label {
+        font-size: 0.6rem;
+    }
+    
+    .nft-attributes-grid .nft-attribute-value {
+        font-size: 0.75rem;
+    }
+}
+
+
+
+
+/* ============================================
+   NFT POPUP FIX - Add to end of custom.css
+   ============================================ */
+
+/* CRITICAL: Override any display:none with !important */
+.nft-popup[style*="display: flex"],
+.nft-popup[style*="display:flex"] {
+    display: flex !important;
+}
+
+/* NFT Popup - Fixed positioning and z-index */
+.nft-popup {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    z-index: 999999 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Popup Content Container - Constrained height */
+.nft-popup-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    max-width: 450px !important;
+    width: 95% !important;
+    max-height: 90vh !important;
+    overflow: hidden !important;
+    position: relative !important;
+    z-index: 1000000 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Close Button - Always visible */
+.nft-popup-close {
+    position: absolute !important;
+    top: 10px !important;
+    right: 15px !important;
+    font-size: 28px !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer !important;
+    z-index: 1000001 !important;
+    pointer-events: auto !important;
+    background: rgba(0,0,0,0.5) !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    transition: all 0.3s !important;
+}
+
+.nft-popup-close:hover {
+    background: var(--imu-gold, #d6ba66) !important;
+    color: #1a1a1a !important;
+    transform: scale(1.1) !important;
+}
+
+/* Popup Title */
+#nft-popup-title,
+.nft-popup-content h2 {
+    font-family: 'Lora', serif !important;
+    font-size: 1.25rem !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    margin: 0 0 1rem 0 !important;
+    padding-right: 40px !important;
+    text-align: center !important;
+}
+
+/* Image Wrapper - Fixed height */
+.nft-popup-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    max-height: 200px !important;
+    margin-bottom: 1rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+}
+
+.nft-popup-image {
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 200px !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.3) !important;
+}
+
+/* Scrollable Content Area */
+.nft-popup-scrollable,
+#nft-popup-scrollable {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: calc(90vh - 400px) !important;
+    padding-right: 5px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Custom Scrollbar */
+.nft-popup-scrollable::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar-track {
+    background: #1a1a1a !important;
+    border-radius: 3px !important;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar-thumb {
+    background: var(--imu-gold, #d6ba66) !important;
+    border-radius: 3px !important;
+}
+
+.nft-popup-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #e0c77a !important;
+}
+
+/* Attributes Grid - 2 columns */
+.nft-attributes-grid,
+#nft-popup-attributes-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.nft-attributes-grid .nft-attribute,
+#nft-popup-attributes-grid .nft-attribute {
+    background: #0a0a0f !important;
+    padding: 0.6rem !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.2) !important;
+}
+
+.nft-attribute-label {
+    font-size: 0.65rem !important;
+    color: #71717a !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.2rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+    line-height: 1.2 !important;
+}
+
+.nft-attribute-value {
+    font-size: 0.75rem !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-weight: 600 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    line-height: 1.3 !important;
+    word-break: break-word !important;
+}
+
+.nft-attributes-grid .no-attributes {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    color: #71717a !important;
+    font-style: italic !important;
+    padding: 1rem !important;
+}
+
+/* Description Box - Collapsible */
+.nft-description-box,
+#nft-popup-description {
+    background: #0a0a0f !important;
+    padding: 0.75rem !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.2) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.nft-description-box p,
+#nft-popup-description p {
+    color: #a1a1aa !important;
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    /* Truncate to 3 lines by default */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Expanded description */
+.nft-description-box.expanded p,
+#nft-popup-description.expanded p {
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+}
+
+/* Show More/Less Button */
+.description-toggle-btn {
+    display: block !important;
+    width: 100% !important;
+    background: transparent !important;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.3) !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    padding: 0.4rem !important;
+    margin-top: 0.5rem !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 0.75rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s !important;
+}
+
+.description-toggle-btn:hover {
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+    border-color: var(--imu-gold, #d6ba66) !important;
+}
+
+/* Popup Buttons */
+.nft-popup-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+}
+
+.nft-popup-buttons .btn,
+.nft-popup-content .btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    padding: 0.6rem 1rem !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    border-radius: 8px !important;
+    background: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s !important;
+    cursor: pointer !important;
+}
+
+.nft-popup-buttons .btn:hover,
+.nft-popup-content .btn:hover {
+    background: var(--imu-gold, #d6ba66) !important;
+    color: #1a1a1a !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .nft-popup {
+        padding: 0.5rem !important;
+    }
+    
+    .nft-popup-content {
+        padding: 1rem !important;
+        max-height: 95vh !important;
+        border-radius: 12px !important;
+    }
+    
+    .nft-popup-image-wrapper {
+        max-height: 150px !important;
+    }
+    
+    .nft-popup-image {
+        max-height: 150px !important;
+    }
+    
+    .nft-attributes-grid,
+    #nft-popup-attributes-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.4rem !important;
+    }
+    
+    .nft-attribute-label {
+        font-size: 0.6rem !important;
+    }
+    
+    .nft-attribute-value {
+        font-size: 0.7rem !important;
+    }
+    
+    #nft-popup-title,
+    .nft-popup-content h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    .nft-popup-scrollable,
+    #nft-popup-scrollable {
+        max-height: calc(95vh - 350px) !important;
+    }
+}
+
+/* Hide old toggle buttons if they exist */
+#toggle-description,
+#toggle-attributes,
+.nft-popup-scrollable .toggle-btn {
+    display: none !important;
+}
+
+/* Hide old attributes list style */
+#nft-popup-attributes,
+.nft-popup-scrollable ul {
+    display: none !important;
+}
+
+/* ============================================
+   NFT POPUP - WIDER ON DESKTOP ONLY
+   Add to end of custom.css
+   ============================================ */
+
+/* Desktop: Popup card twice as wide */
+@media (min-width: 769px) {
+    .nft-popup-content {
+        max-width: 900px !important;
+        width: 90% !important;
+        padding: 2rem !important;
+    }
+    
+    .nft-popup-image-wrapper {
+        max-height: 350px !important;
+    }
+    
+    .nft-popup-image {
+        max-height: 350px !important;
+    }
+    
+    #nft-popup-title,
+    .nft-popup-content h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .nft-attributes-grid,
+    #nft-popup-attributes-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .nft-attribute-label {
+        font-size: 0.75rem !important;
+    }
+    
+    .nft-attribute-value {
+        font-size: 0.9rem !important;
+    }
+    
+    .nft-popup-buttons {
+        flex-direction: row !important;
+        gap: 1rem !important;
+    }
+    
+    .nft-popup-buttons .btn {
+        flex: 1 !important;
+    }
+}
+
+
+/* ============================================
+   IMPROTECTORS UNIFIED HEADER STYLES
+   Version: 2.0 - Larger Header (25% increase)
+   Add this to the END of custom.css
+   ============================================ */
+
+/* --- REMOVE OLD HEADER STYLES --- */
+/* Comment out or remove these old dropdown styles if they exist:
+   .site-logo { ... }
+   .dropdown { ... }
+   .dropbtn { ... }
+   .dropdown-content { ... }
+*/
+
+/* --- NEW HEADER: CSS VARIABLES --- */
+:root {
+    --imp-gold: var(--imu-gold, #d6ba66);
+    --imp-gold-light: #e8d38a;
+    --imp-gold-dark: #b89d4a;
+    --imp-bg-dark: #0a0a0f;
+    --imp-bg-card: #12121a;
+    --imp-border: rgba(var(--imu-gold-rgb), 0.15);
+    --imp-border-gold: rgba(var(--imu-gold-rgb), 0.3);
+    --imp-text: #e8e6e3;
+    --imp-text-muted: #8a8a8a;
+    --imp-success: #10b981;
+    --imp-error: #ef4444;
+    
+    /* Header sizing - 25% larger */
+    --imp-header-height: 75px;
+    --imp-logo-size: 45px;
+    --imp-font-nav: 1.125rem;
+    --imp-font-dropdown: 1.05rem;
+    --imp-font-wallet: 1.05rem;
+    --imp-font-mobile: 1.2rem;
+}
+
+/* --- BODY PADDING FOR FIXED HEADER --- */
+body.has-imp-header {
+    padding-top: var(--imp-header-height) !important;
+}
+
+/* --- TOP BAR / HEADER --- */
+.imp-top-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: var(--imp-header-height) !important;
+    background: rgba(10, 10, 15, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--imp-border) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 2rem !important;
+    z-index: 10000 !important;
+}
+
+/* --- LOGO --- */
+.imp-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    text-decoration: none !important;
+    color: var(--imp-gold) !important;
+    font-weight: 600 !important;
+    font-size: 1.375rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.imp-logo img {
+    width: var(--imp-logo-size) !important;
+    height: var(--imp-logo-size) !important;
+    border-radius: 50% !important;
+}
+
+.imp-logo:hover {
+    color: var(--imp-gold-light) !important;
+}
+
+.imp-logo span {
+    color: var(--imp-gold) !important;
+}
+
+/* --- DESKTOP NAVIGATION --- */
+.imp-nav-center {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.imp-nav-center > a {
+    color: var(--imp-text-muted) !important;
+    text-decoration: none !important;
+    padding: 0.625rem 1.1rem !important;
+    border-radius: 10px !important;
+    font-size: var(--imp-font-nav) !important;
+    font-weight: 500 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s !important;
+    background: none !important;
+    border: none !important;
+}
+
+.imp-nav-center > a:hover,
+.imp-nav-center > a.active {
+    color: var(--imp-gold) !important;
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+}
+
+/* --- DROPDOWN MENU --- */
+.imp-nav-dropdown {
+    position: relative !important;
+}
+
+.imp-nav-dropdown-btn {
+    color: var(--imp-text-muted) !important;
+    background: none !important;
+    border: none !important;
+    padding: 0.625rem 1.1rem !important;
+    border-radius: 10px !important;
+    font-size: var(--imp-font-nav) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.imp-nav-dropdown-btn:hover {
+    color: var(--imp-gold) !important;
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+}
+
+.imp-nav-dropdown-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    transition: transform 0.3s !important;
+}
+
+.imp-nav-dropdown:hover .imp-nav-dropdown-btn svg {
+    transform: rotate(180deg) !important;
+}
+
+.imp-nav-dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    margin-top: 0.625rem !important;
+    background: var(--imp-bg-card) !important;
+    border: 1px solid var(--imp-border-gold) !important;
+    border-radius: 14px !important;
+    padding: 0.625rem !important;
+    min-width: 275px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+    transition: all 0.3s !important;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5) !important;
+    z-index: 10001 !important;
+}
+
+.imp-nav-dropdown:hover .imp-nav-dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.imp-nav-dropdown-menu a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    color: var(--imp-text-muted) !important;
+    text-decoration: none !important;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 10px !important;
+    font-size: var(--imp-font-dropdown) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.2s !important;
+    background: none !important;
+    border: none !important;
+}
+
+.imp-nav-dropdown-menu a:hover,
+.imp-nav-dropdown-menu a.active {
+    color: var(--imp-gold) !important;
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+}
+
+.imp-nav-dropdown-menu .divider {
+    height: 1px !important;
+    background: var(--imp-border) !important;
+    margin: 0.625rem 0 !important;
+}
+
+/* --- WALLET AREA --- */
+.imp-wallet-area {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
+}
+
+.imp-wallet-status {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.625rem !important;
+    padding: 0.625rem 1.25rem !important;
+    background: var(--imp-bg-card) !important;
+    border: 1px solid var(--imp-border) !important;
+    border-radius: 50px !important;
+    font-size: var(--imp-font-wallet) !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.imp-wallet-status .dot {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    background: var(--imp-error) !important;
+}
+
+.imp-wallet-status.connected .dot {
+    background: var(--imp-success) !important;
+}
+
+.imp-wallet-status .address {
+    color: var(--imp-text-muted) !important;
+}
+
+.imp-wallet-status.connected .address {
+    color: var(--imp-gold) !important;
+}
+
+.imp-connect-btn {
+    padding: 0.625rem 1.5rem !important;
+    background: linear-gradient(135deg, var(--imp-gold-dark), var(--imp-gold)) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+    font-size: var(--imp-font-wallet) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+
+.imp-connect-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 20px rgba(var(--imu-gold-rgb), 0.4) !important;
+    color: #000 !important;
+}
+
+.imp-disconnect-btn {
+    background: transparent !important;
+    border: 1px solid var(--imp-border) !important;
+    color: var(--imp-text-muted) !important;
+}
+
+.imp-disconnect-btn:hover {
+    border-color: var(--imp-error) !important;
+    color: var(--imp-error) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --- HAMBURGER MENU ICON --- */
+.imp-hamburger {
+    display: none !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    background: none !important;
+    border: none !important;
+}
+
+.imp-hamburger span {
+    width: 30px !important;
+    height: 3px !important;
+    background: var(--imp-gold) !important;
+    transition: all 0.3s !important;
+    display: block !important;
+    border-radius: 2px !important;
+}
+
+.imp-hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px) !important;
+}
+
+.imp-hamburger.active span:nth-child(2) {
+    opacity: 0 !important;
+}
+
+.imp-hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px) !important;
+}
+
+/* --- MOBILE MENU --- */
+.imp-mobile-menu {
+    display: none !important;
+    position: fixed !important;
+    top: var(--imp-header-height) !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(10, 10, 15, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    flex-direction: column !important;
+    padding: 1.25rem !important;
+    z-index: 9999 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+.imp-mobile-menu.active {
+    display: flex !important;
+}
+
+.imp-mobile-menu > a {
+    color: var(--imp-text) !important;
+    text-decoration: none !important;
+    padding: 1rem 1.25rem !important;
+    border-radius: 12px !important;
+    font-size: var(--imp-font-mobile) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    flex-shrink: 0 !important;
+    background: none !important;
+    border: none !important;
+}
+
+.imp-mobile-menu > a:hover,
+.imp-mobile-menu > a.active {
+    color: var(--imp-gold) !important;
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+}
+
+.imp-mobile-menu .menu-section {
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
+    border-top: 1px solid var(--imp-border) !important;
+    flex-shrink: 0 !important;
+}
+
+.imp-mobile-menu .menu-section-title {
+    color: var(--imp-gold) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    padding: 0.625rem 1.25rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+    flex-shrink: 0 !important;
+}
+
+.imp-mobile-menu .menu-section a {
+    color: var(--imp-text) !important;
+    text-decoration: none !important;
+    padding: 1rem 1.25rem !important;
+    border-radius: 12px !important;
+    font-size: var(--imp-font-mobile) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    flex-shrink: 0 !important;
+    background: none !important;
+    border: none !important;
+}
+
+.imp-mobile-menu .menu-section a:hover,
+.imp-mobile-menu .menu-section a.active {
+    color: var(--imp-gold) !important;
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+}
+
+.imp-mobile-wallet {
+    margin-top: 2rem !important;
+    padding-top: 1.25rem !important;
+    padding-bottom: 2.5rem !important;
+    border-top: 1px solid var(--imp-border) !important;
+    flex-shrink: 0 !important;
+}
+
+.imp-mobile-wallet .imp-wallet-status {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-bottom: 1.25rem !important;
+    font-size: var(--imp-font-mobile) !important;
+}
+
+.imp-mobile-wallet .imp-connect-btn {
+    width: 100% !important;
+    padding: 1.25rem !important;
+    text-align: center !important;
+    display: block !important;
+    font-size: var(--imp-font-mobile) !important;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 900px) {
+    .imp-nav-center {
+        display: none !important;
+    }
+    
+    .imp-hamburger {
+        display: flex !important;
+    }
+    
+    .imp-wallet-area .imp-wallet-status {
+        display: none !important;
+    }
+    
+    .imp-wallet-area > .imp-connect-btn {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .imp-top-bar {
+        padding: 0 1.25rem !important;
+    }
+    
+    .imp-logo span {
+        display: none !important;
+    }
+}
+
+/* --- HIDE OLD HEADER ELEMENTS --- */
+/* Keep existing rules that hide Astra's default header */
+.site-header, 
+.ast-site-header, 
+.main-header-bar, 
+.ast-main-header-wrap, 
+.ast-header-break-point .main-header-bar,
+.ast-mobile-header-wrap, 
+.ast-mobile-menu-buttons, 
+.main-navigation, 
+.ast-mobile-header,
+.ast-header-break-point .main-header-bar-navigation, 
+.ast-nav-menu, 
+.ast-header-custom-nav,
+.ast-above-header, 
+.ast-below-header, 
+.entry-header, 
+.entry-title,
+/* Old dropdown styles */
+.site-logo,
+.dropdown,
+.dropbtn,
+.dropdown-content {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (if not already defined)
+   ============================================================ */
+:root {
+  --imu-gold: #d6ba66;
+  --imu-gold-rgb: 214, 186, 102;
+  --imu-gold-secondary: #d4af37;
+  --imu-gold-glow: rgba(var(--imu-gold-rgb), 0.25);
+  --imu-black: #0a0b0e;
+  --imu-dark: #12131a;
+  --imu-grey-cloud: #3c3c50;
+  --imu-overlay: rgba(0, 0, 0, 0.35);
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND FOR TASKS & NFT PAGES
+   ============================================================ */
+.tasks-page-container,
+.nft-single-container,
+.marketplace-page,
+.stats-page-container,
+.drops-page-container,
+.redeem-page-container {
+  position: relative;
+  min-height: 100vh;
+  background: var(--imu-black, #0a0b0e);
+}
+
+.tasks-page-container::before,
+.nft-single-container::before,
+.marketplace-page::before,
+.stats-page-container::before,
+.drops-page-container::before,
+.redeem-page-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(var(--imu-gold-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(212, 175, 55, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(60, 60, 80, 0.40) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0b0e 0%, #12131a 50%, #0a0b0e 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  animation: imuBgPulse 8s ease-in-out infinite;
+  will-change: background-size, opacity;
+  transform: translateZ(0);
+}
+
+@keyframes imuBgPulse {
+  0%, 100% { 
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    opacity: 1;
+  }
+  50% { 
+    background-size: 130% 130%, 120% 120%, 110% 110%, 100% 100%;
+    opacity: 0.95;
+  }
+}
+
+.tasks-page-container::after,
+.nft-single-container::after,
+.marketplace-page::after,
+.stats-page-container::after,
+.drops-page-container::after,
+.redeem-page-container::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--imu-overlay, rgba(0, 0, 0, 0.35));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tasks-page-container::before,
+  .nft-single-container::before,
+  .marketplace-page::before,
+  .stats-page-container::before,
+  .drops-page-container::before,
+  .redeem-page-container::before { 
+    animation: none; 
+  }
+}
+
+/* Ensure content is above the background */
+.tasks-page-container > *,
+.nft-single-container > *,
+.marketplace-page > *,
+.stats-page-container > *,
+.drops-page-container > *,
+.redeem-page-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix for nested elements */
+.tasks-page,
+.nft-single-grid,
+.nft-single-error,
+.nft-single-breadcrumb {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   Z-INDEX FIX FOR MODALS (previously provided)
+   ============================================================ */
+.offer-modal {
+    z-index: 60000 !important;
+}
+
+.offer-modal-content {
+    z-index: 60001 !important;
+}
+
+.single-nft-toast,
+.tasks-toast {
+    z-index: 60002 !important;
+}
+
+
+/* ============================================================
+   FIX 1: TASKS PAGE CENTERING
+   ============================================================ */
+
+/* Tasks page container - center the content */
+.tasks-page-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tasks-page-container .tasks-page {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Fix for the grid - ensure it's centered */
+.tasks-page .tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Center the stats */
+.tasks-page .tasks-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Center the categories */
+.tasks-page .tasks-categories {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Center the leaderboard */
+.tasks-page .leaderboard-section {
+    width: 100%;
+    max-width: 700px;
+    margin: 3rem auto 0;
+}
+
+/* ============================================================
+   FIX 2: NFT SINGLE PAGE - DESCRIPTION BELOW IMAGE
+   ============================================================ */
+
+/* New layout: 3-column grid with description spanning under image */
+.nft-single-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem 3rem;
+    align-items: start;
+}
+
+/* Image section in top-left */
+.nft-single-image-section {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 2rem;
+}
+
+/* Description below image */
+.nft-single-description-section {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+}
+
+/* Details section (header, owner, actions, attributes, details) on right */
+.nft-single-details-section {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+/* Mobile: stack everything */
+@media (max-width: 900px) {
+    .nft-single-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 1.5rem;
+    }
+    
+    .nft-single-image-section,
+    .nft-single-description-section,
+    .nft-single-details-section {
+        grid-column: 1;
+        grid-row: auto;
+        position: relative;
+    }
+    
+    .nft-single-image-section {
+        position: relative;
+        top: 0;
+    }
+}
+
+/* ============================================================
+   FIX 3: MAKE OFFER BUTTON - BLACK TEXT
+   ============================================================ */
+
+.nft-single-actions .btn-primary,
+.nft-single-actions .btn.btn-primary,
+#nft-make-offer-btn {
+    background: linear-gradient(135deg, #FFD700, #DAA520) !important;
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.nft-single-actions .btn-primary:hover,
+#nft-make-offer-btn:hover {
+    background: linear-gradient(135deg, #FFC000, #C99700) !important;
+    color: #000 !important;
+}
+
+/* ============================================================
+   FIX 4: MARKETPLACE HEADER NAVIGATION
+   ============================================================ */
+
+.marketplace-header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.marketplace-header-nav .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    color: var(--gold, #FFD700);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.marketplace-header-nav .nav-link:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.marketplace-header-nav .nav-link.active {
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    color: #000;
+    border-color: #FFD700;
+}
+
+.marketplace-header-nav .nav-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Mobile nav adjustments */
+@media (max-width: 768px) {
+    .marketplace-header-nav {
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+    }
+    
+    .marketplace-header-nav .nav-link {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND (ensure it's included)
+   ============================================================ */
+
+.tasks-page-container::before,
+.nft-single-container::before,
+.marketplace-page::before,
+.stats-page-container::before,
+.drops-page-container::before,
+.redeem-page-container::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: 
+        radial-gradient(ellipse at 20% 0%, rgba(var(--imu-gold-rgb), 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(212, 175, 55, 0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(60, 60, 80, 0.40) 0%, transparent 70%),
+        linear-gradient(180deg, #0a0b0e 0%, #12131a 50%, #0a0b0e 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    animation: imuBgPulse 8s ease-in-out infinite;
+}
+
+@keyframes imuBgPulse {
+    0%, 100% { 
+        background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+        opacity: 1;
+    }
+    50% { 
+        background-size: 130% 130%, 120% 120%, 110% 110%, 100% 100%;
+        opacity: 0.95;
+    }
+}
+
+.tasks-page-container::after,
+.nft-single-container::after,
+.marketplace-page::after,
+.stats-page-container::after,
+.drops-page-container::after,
+.redeem-page-container::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.tasks-page-container > *,
+.nft-single-container > *,
+.marketplace-page > *,
+.stats-page-container > *,
+.drops-page-container > *,
+.redeem-page-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Z-index fix for modals */
+.offer-modal {
+    z-index: 60000 !important;
+}
+
+.offer-modal-content {
+    z-index: 60001 !important;
+}
+
+
+/* ============================================================
+   MARKETPLACE NAVIGATION HEADER
+   (For all marketplace pages)
+   ============================================================ */
+
+.marketplace-header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+}
+
+.marketplace-header-nav .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    color: var(--gold, #FFD700);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.marketplace-header-nav .nav-link:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.marketplace-header-nav .nav-link.active {
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    color: #000;
+    border-color: #FFD700;
+}
+
+.marketplace-header-nav .nav-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Mobile nav adjustments */
+@media (max-width: 768px) {
+    .marketplace-header-nav {
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+    }
+    
+    .marketplace-header-nav .nav-link {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .marketplace-header-nav .nav-link svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* ============================================================
+   LISTING MODAL
+   (For "List for Sale" functionality)
+   ============================================================ */
+
+.listing-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 60000;
+    padding: 1rem;
+}
+
+.listing-modal.active {
+    display: flex;
+}
+
+.listing-modal-content {
+    background: var(--bg-card, #12121a);
+    border: 1px solid var(--gold, #FFD700);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    z-index: 60001;
+}
+
+.listing-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary, #888);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem;
+}
+
+.listing-modal-close:hover {
+    color: var(--gold, #FFD700);
+}
+
+.listing-modal h3 {
+    color: var(--gold, #FFD700);
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem;
+    text-align: center;
+}
+
+.listing-form-group {
+    margin-bottom: 1.25rem;
+}
+
+.listing-form-group label {
+    display: block;
+    color: var(--text-secondary, #888);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.listing-form-group input,
+.listing-form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--input-bg, rgba(10, 11, 14, 0.8));
+    border: 1px solid var(--border-subtle, rgba(255, 215, 0, 0.15));
+    border-radius: 8px;
+    color: var(--text-primary, #fff);
+    font-size: 1rem;
+}
+
+.listing-form-group input:focus,
+.listing-form-group select:focus {
+    outline: none;
+    border-color: var(--gold, #FFD700);
+}
+
+/* v376: Fix transfer modal input — white text on white background.
+   base.css sets `color: white !important` on all inputs globally, but the
+   background was not being applied inside the transfer modal context.
+   Scoped by ID — only affects the single transfer destination field. */
+#transfer-destination {
+    color: #fff !important;
+    background: rgba(10, 11, 14, 0.9) !important;
+    caret-color: #d4af37;
+}
+
+#transfer-destination::placeholder {
+    color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.listing-fee-breakdown {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+.listing-fee-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+}
+
+.listing-fee-row.total {
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    font-weight: 600;
+    color: var(--gold, #FFD700);
+}
+
+.listing-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.listing-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+.listing-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================================
+   NFT LISTING BADGES
+   (Show "FOR SALE" badge on listed NFTs)
+   ============================================================ */
+
+.nft-card.listed .nft-image-wrapper::after {
+    content: "FOR SALE";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nft-price-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--gold, #FFD700);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ============================================================
+   MY LISTINGS SECTION
+   (For dashboard)
+   ============================================================ */
+
+.my-listings-section {
+    margin-top: 2rem;
+}
+
+.my-listings-section h4 {
+    color: var(--gold, #FFD700);
+    margin-bottom: 1rem;
+}
+
+.listing-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--card-bg, rgba(18, 19, 26, 0.9));
+    border: 1px solid var(--border-subtle, rgba(255, 215, 0, 0.12));
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+}
+
+.listing-item-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.listing-item-info {
+    flex: 1;
+}
+
+.listing-item-name {
+    font-weight: 600;
+    color: var(--text-primary, #fff);
+    margin-bottom: 0.25rem;
+}
+
+.listing-item-price {
+    color: var(--gold, #FFD700);
+    font-size: 0.9rem;
+}
+
+.listing-item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.listing-cancel-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    color: #f44336;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.listing-cancel-btn:hover {
+    background: rgba(244, 67, 54, 0.2);
+    border-color: #f44336;
+}
+
+
+/* Offer Preview Container */
+#offers-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.offer-preview-container {
+    background: var(--card-bg, #1a1a2e);
+    border: 1px solid var(--gold, #d4af37);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.offer-preview-container h4 {
+    margin: 0 0 1rem 0;
+    color: var(--gold, #d4af37);
+}
+
+/* Individual Offer Bubble */
+.offer-bubble {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.offer-bubble:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold, #d4af37);
+}
+
+.offer-bubble:last-child {
+    margin-bottom: 0;
+}
+
+/* Offer Content (left side) */
+.offer-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    /* v706: without min-width:0 a flex child's min-content width is set by the
+       longest unbreakable run -- a 40-char currency code then overflows the card.
+       overflow-wrap alone cannot fix this; the flex chain must be allowed to shrink. */
+    min-width: 0;
+}
+
+.offer-nft-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid var(--gold, #d4af37);
+}
+
+.offer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.offer-nft-name {
+    font-weight: 600;
+    color: var(--text-primary, #fff);
+    font-size: 1rem;
+}
+
+.offer-amount {
+    color: var(--gold, #d4af37);
+    font-size: 0.95rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.amount-value {
+    font-weight: 600;
+}
+
+.offer-status {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.offer-status.status-active {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+}
+
+.offer-status.status-pending {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.offer-from {
+    font-size: 0.85rem;
+    color: var(--text-muted, #888);
+}
+
+.offer-net {
+    font-size: 0.9rem;
+    color: #4caf50;
+}
+
+.net-value {
+    font-weight: 600;
+}
+
+/* Offer Actions (right side) */
+.offer-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.offer-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.offer-action.accept-btn {
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
+}
+
+.offer-action.accept-btn:hover {
+    background: linear-gradient(135deg, #5cbf60, #4caf50);
+    transform: translateY(-1px);
+}
+
+.offer-action.decline-btn {
+    background: rgba(244, 67, 54, 0.15);
+    color: #f44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.offer-action.decline-btn:hover {
+    background: rgba(244, 67, 54, 0.25);
+}
+
+.offer-action.cancel-btn {
+    background: rgba(255, 152, 0, 0.15);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.offer-action.cancel-btn:hover {
+    background: rgba(255, 152, 0, 0.25);
+}
+
+.offer-action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* No Offers Message */
+.no-offers {
+    text-align: center;
+    color: var(--text-muted, #888);
+    padding: 2rem;
+    font-size: 1rem;
+}
+
+/* Loading State */
+#offers-preview .loading {
+    text-align: center;
+    color: var(--text-muted, #888);
+    padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .offer-bubble {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .offer-content {
+        flex-direction: column;
+    }
+    
+    .offer-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .offer-details {
+        align-items: center;
+    }
+}
+
+/* Loading skeleton animation */
+.loading-skeleton {
+    background: linear-gradient(90deg, 
+        var(--surface-secondary, #2a2a2a) 25%, 
+        var(--surface-tertiary, #3a3a3a) 50%, 
+        var(--surface-secondary, #2a2a2a) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s infinite;
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--text-muted, #888);
+    font-size: 0.9rem;
+}
+
+@keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* No offers message */
+.no-offers-msg {
+    color: var(--text-muted, #888);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1rem;
+    font-style: italic;
+}
+
+/* Smooth offer bubble removal animation */
+.offer-bubble {
+    transition: opacity 0.3s ease, transform 0.3s ease, margin 0.3s ease;
+}
+
+.offer-bubble.removing {
+    opacity: 0;
+    transform: scale(0.9);
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Offer preview container improvements */
+.offer-preview-container {
+    margin-bottom: 1rem;
+}
+
+.offer-preview-container .section-title-bubble {
+    margin-bottom: 0.75rem;
+}
+
+/* Loading state for individual sections */
+.offer-preview-container .loading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted, #888);
+    padding: 0.5rem;
+}
+
+.offer-preview-container .loading::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--accent-gold, #d4af37);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Ledger source indicator */
+.ledger-source {
+    opacity: 0.7;
+    font-size: 0.75rem !important;
+    margin-top: 0.5rem !important;
+}
+
+/* ============================================
+   UNIFIED HEADER CSS ADDITIONS v3.0
+   Add this to the END of your custom.css
+   ============================================ */
+
+/* ============================================
+   HIDE SECONDARY MARKETPLACE NAV
+   This removes the hardcoded nav row from all pages
+   ============================================ */
+.marketplace-header-nav,
+nav.marketplace-header-nav,
+.trading-hub-page .marketplace-header-nav,
+.has-unified-nav .marketplace-header-nav {
+    display: none !important;
+}
+
+/* Adjust page content to account for removed secondary nav */
+.has-unified-nav .trading-hub-hero,
+.has-unified-nav .marketplace-hero,
+.has-unified-nav .page-content {
+    margin-top: 0;
+}
+
+/* ============================================
+   DROPDOWN MENU SECTION LABELS
+   Styled section headers within dropdown
+   ============================================ */
+.imp-nav-dropdown-menu .menu-section-label {
+    display: block;
+    padding: 8px 16px 4px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d4af37;
+    background: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+.imp-nav-dropdown-menu .menu-section-label:hover {
+    background: transparent;
+}
+
+/* ============================================
+   ENHANCED DROPDOWN STYLING
+   Larger dropdown to accommodate more items
+   ============================================ */
+.imp-nav-dropdown-menu {
+    min-width: 240px;
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #1a1a1a;
+}
+
+.imp-nav-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.imp-nav-dropdown-menu::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 3px;
+}
+
+.imp-nav-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 3px;
+}
+
+.imp-nav-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #e5c04b;
+}
+
+/* Divider styling */
+.imp-nav-dropdown-menu .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    margin: 8px 12px;
+}
+
+/* Dropdown link hover states */
+.imp-nav-dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.imp-nav-dropdown-menu a:hover {
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    padding-left: 20px;
+}
+
+.imp-nav-dropdown-menu a.active {
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+    border-left: 3px solid #d4af37;
+}
+
+/* External link indicator */
+.imp-nav-dropdown-menu a[target="_blank"]::after {
+    content: '↗';
+    font-size: 10px;
+    opacity: 0.5;
+    margin-left: auto;
+}
+
+/* ============================================
+   MOBILE MENU SECTION STYLING
+   ============================================ */
+.imp-mobile-menu .menu-section {
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 12px;
+    margin-top: 12px;
+}
+
+.imp-mobile-menu .menu-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #d4af37;
+    padding: 8px 20px;
+    margin-bottom: 4px;
+}
+
+.imp-mobile-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.imp-mobile-menu a:hover,
+.imp-mobile-menu a.active {
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+}
+
+/* ============================================
+   LOGO TEXT UPDATE (IMCollectibles)
+   ============================================ */
+.imp-logo span {
+    font-size: 22px;
+    font-weight: 700;
+    color: #d4af37;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 1100px) {
+    .imp-nav-center > a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    /* Hide desktop nav on mobile */
+    .imp-nav-center {
+        display: none;
+    }
+    
+    /* Mobile menu enhancements */
+    .imp-mobile-menu {
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        padding-bottom: 100px;
+    }
+}
+
+/* ============================================
+   FIX: Ensure proper spacing after header
+   ============================================ */
+.has-unified-nav #content {
+    padding-top: 0;
+}
+
+.has-unified-nav .site-content {
+    margin-top: 0;
+}
+
+/* Trading hub specific - remove gap from removed secondary nav */
+.has-unified-nav .trading-hub-hero {
+    padding-top: 40px;
+}
+
+/* Collections page specific */
+.has-unified-nav .collections-page-hero {
+    padding-top: 40px;
+}
+
+/* ============================================
+   IMCOLLECTIBLES UNIFIED HEADER v4.0
+   Add these styles to your custom.css
+   
+   Changes from v3.x:
+   - Hamburger menu replaces "More" dropdown
+   - Hamburger positioned RIGHT of wallet
+   - Gold gradient dividers
+   - New menu order: Marketplace, Dashboard, Profile, Tasks...
+   ============================================ */
+
+/* Override old nav-center styles - hide them */
+.imp-nav-center {
+    display: none !important;
+}
+
+/* New Controls Area (Wallet + Hamburger) */
+.imp-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+/* Hamburger is now always visible */
+.imp-hamburger {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: var(--imp-bg-card) !important;
+    border: 1px solid var(--imp-border) !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    gap: 5px !important;
+    transition: all 0.3s !important;
+}
+
+.imp-hamburger:hover {
+    border-color: var(--imp-gold) !important;
+}
+
+.imp-hamburger span {
+    display: block !important;
+    width: 20px !important;
+    height: 2px !important;
+    background: var(--imp-gold) !important;
+    border-radius: 2px !important;
+    transition: all 0.3s !important;
+}
+
+.imp-hamburger.active {
+    border-color: var(--imp-gold) !important;
+}
+
+.imp-hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px) !important;
+}
+
+.imp-hamburger.active span:nth-child(2) {
+    opacity: 0 !important;
+}
+
+.imp-hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px) !important;
+}
+
+/* New Dropdown Menu (slide from right) */
+.imp-dropdown-menu {
+    position: fixed !important;
+    top: var(--imp-header-height) !important;
+    right: 0 !important;
+    width: 280px !important;
+    max-height: calc(100vh - var(--imp-header-height)) !important;
+    overflow-y: auto !important;
+    background: var(--imp-bg-card) !important;
+    border: 1px solid var(--imp-border-gold) !important;
+    border-top: none !important;
+    border-radius: 0 0 0 16px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+    z-index: 99998 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateX(20px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.imp-dropdown-menu.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+}
+
+/* Menu Links */
+.imp-dropdown-menu a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.9rem 1.25rem !important;
+    color: var(--imp-text) !important;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    transition: all 0.2s !important;
+    border-left: 3px solid transparent !important;
+}
+
+.imp-dropdown-menu a:hover,
+.imp-dropdown-menu a.active {
+    background: rgba(var(--imu-gold-rgb), 0.1) !important;
+    color: var(--imp-gold) !important;
+    border-left-color: var(--imp-gold) !important;
+}
+
+/* External link indicator */
+.imp-dropdown-menu a[target="_blank"]::after {
+    content: '↗' !important;
+    margin-left: auto !important;
+    font-size: 0.85rem !important;
+    opacity: 0.5 !important;
+}
+
+/* GOLD GRADIENT DIVIDERS */
+.imp-dropdown-menu .divider {
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, var(--imp-gold), transparent) !important;
+    margin: 0.5rem 1rem !important;
+    opacity: 0.4 !important;
+}
+
+/* Section Labels */
+.imp-dropdown-menu .section-label {
+    padding: 0.6rem 1.25rem 0.4rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: var(--imp-gold) !important;
+    opacity: 0.7 !important;
+    pointer-events: none !important;
+}
+
+/* Wallet Section in Dropdown */
+.imp-dropdown-wallet {
+    padding: 1rem 1.25rem !important;
+    border-top: 1px solid var(--imp-border-gold) !important;
+    margin-top: 0.5rem !important;
+}
+
+.imp-dropdown-wallet .imp-wallet-status {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.imp-dropdown-wallet .imp-connect-btn,
+.imp-dropdown-wallet .imp-disconnect-btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+/* Backdrop overlay when menu open */
+.imp-backdrop {
+    position: fixed !important;
+    top: var(--imp-header-height) !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 99997 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s !important;
+}
+
+.imp-backdrop.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .imp-dropdown-menu {
+        width: 100% !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+}
+
+/* Hide old mobile menu (replaced by dropdown) */
+.imp-mobile-menu {
+    display: none !important;
+}
+
+
+/**
+ * IMCollectibles Mobile UI Fixes v3.0
+ * 
+ * COMPLETE MOBILE UI OVERHAUL
+ * Add this to the END of custom.css or trading-hub.css
+ * 
+ * FIXES INCLUDED:
+ * 1. Trading Hub - Browse Collections dropdown filter + row button positioning
+ * 2. Tasks Page - Stats reorder (Available+Completed / Total Points below) + centering
+ * 3. Stats Page - Scrollable leaderboard
+ * 4. Collections Page - Side-by-side filters, scrollable stats, smaller buttons, search bar fix
+ * 5. Recent Mints Page - Side-by-side stats
+ * 6. My NFTs Page - Proper NFT card sizing (taller)
+ * 7. Frequency Fountain - Center fountain, reduce gap
+ * 8. Chat Popup - Center in viewport
+ * 9. Single NFT Page - 40% smaller buttons + remove video/audio badge
+ * 10. Dropdown text cutoff fix (site-wide)
+ */
+
+
+/* ============================================================
+   1. TRADING HUB - BROWSE COLLECTIONS MOBILE DROPDOWN
+   Hide tabs, show dropdown selector on mobile
+   ============================================================ */
+
+/* Mobile Browse Filter Dropdown - Hidden by default */
+.browse-filter-dropdown {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Hide desktop tabs on mobile */
+    .browse-tabs {
+        display: none !important;
+    }
+    
+    /* Show mobile dropdown */
+    .browse-filter-dropdown {
+        display: block !important;
+    }
+    
+    .browse-filter-select {
+        padding: 0.5rem 2.5rem 0.5rem 1rem;
+        background: rgba(var(--imu-gold-rgb), 0.1);
+        border: 1px solid rgba(var(--imu-gold-rgb), 0.4);
+        border-radius: 8px;
+        color: var(--imu-gold, #d6ba66);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d6ba66' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        min-width: 90px;
+    }
+    
+    .browse-filter-select:focus {
+        outline: none;
+        border-color: var(--imu-gold, #d6ba66);
+    }
+    
+    /* Section header layout - row with title left, button right */
+    .browse-collections-section .section-header {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.75rem !important;
+    }
+    
+    .browse-collections-section .browse-header-left {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        flex: 1 !important;
+    }
+    
+    .browse-collections-section .browse-header-left h2 {
+        font-size: 1.1rem !important;
+        margin: 0 !important;
+    }
+}
+
+
+/* ============================================================
+   2. ROW BUTTONS - STYLING + POSITION RIGHT OF TITLE (ALL ROWS)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* All section headers - consistent layout */
+    .section-header,
+    .recent-mints-section .section-header,
+    .imu-collections-section .section-header {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+    }
+    
+    /* Title styling */
+    .section-header h2 {
+        font-size: 1.1rem !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Right side - buttons positioned right */
+    .th-header-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        margin-left: auto !important;
+    }
+    
+    /* Hide slider controls on mobile */
+    .slider-controls {
+        display: none !important;
+    }
+    
+    /* Style all row action buttons */
+    .view-all-link,
+    .th-header-right > a,
+    .section-header a:not(.slider-btn) {
+        display: inline-flex !important;
+        align-items: center !important;
+        padding: 0.4rem 0.85rem !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        background: rgba(var(--imu-gold-rgb), 0.15) !important;
+        border: 1px solid rgba(var(--imu-gold-rgb), 0.4) !important;
+        border-radius: 6px !important;
+        color: var(--imu-gold, #d6ba66) !important;
+        text-decoration: none !important;
+        white-space: nowrap !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .view-all-link:hover,
+    .th-header-right > a:hover {
+        background: rgba(var(--imu-gold-rgb), 0.25) !important;
+        border-color: var(--imu-gold, #d6ba66) !important;
+    }
+}
+
+
+/* ============================================================
+   3. TASKS PAGE - STATS REORDER + CENTER CARDS
+   Available + Completed side-by-side, Total Points below
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Stats grid - reorder with flexbox */
+    .tasks-stats {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.75rem !important;
+        max-width: 360px !important;
+        margin: 0 auto 1.5rem auto !important;
+    }
+    
+    /* All stat cards base */
+    .tasks-stats .stat-card {
+        flex: 1 1 calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
+        padding: 0.875rem !important;
+        text-align: center !important;
+        min-width: 140px !important;
+    }
+    
+    /* First card (Total Points) - move to end and full width */
+    .tasks-stats .stat-card:first-child {
+        order: 3 !important;
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Second card (Completed) - stays second */
+    .tasks-stats .stat-card:nth-child(2) {
+        order: 2 !important;
+    }
+    
+    /* Third card (Available) - move to first position */
+    .tasks-stats .stat-card:nth-child(3) {
+        order: 1 !important;
+    }
+    
+    .tasks-stats .stat-value {
+        font-size: 1.4rem !important;
+    }
+    
+    .tasks-stats .stat-label {
+        font-size: 0.75rem !important;
+    }
+    
+    /* Center task cards */
+    .tasks-page {
+        padding: 1rem !important;
+    }
+    
+    .tasks-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+    }
+    
+    .task-card {
+        width: 100% !important;
+        max-width: 380px !important;
+    }
+    
+    /* Center category dropdown */
+    .category-dropdown-wrapper {
+        max-width: 380px !important;
+        margin: 0 auto 1.5rem auto !important;
+    }
+}
+
+
+/* ============================================================
+   4. ALL LEADERBOARDS - HORIZONTAL SCROLL (MOBILE)
+   Tasks, Redeem, Collections, Stats pages
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Leaderboard section wrapper */
+    .leaderboard-section,
+    .leaderboard-wrapper,
+    .stats-table-wrapper,
+    .collection-stats-wrapper,
+    div[class*="leaderboard"]:not(.leaderboard-table) {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 0 -1rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    /* Tables need min-width to enable scroll */
+    .leaderboard-table,
+    .stats-table,
+    table[class*="leaderboard"] {
+        min-width: 500px !important;
+    }
+    
+    /* Scroll hint indicator — removed v326 */
+    .leaderboard-section::after,
+    .stats-table-wrapper::after {
+        content: none !important;
+        display: none !important;
+    }
+    
+    .leaderboard-section,
+    .stats-table-wrapper {
+        position: relative !important;
+    }
+    
+    @keyframes scrollHint {
+        0%, 100% { opacity: 0.3; transform: translateY(-50%) translateX(0); }
+        50% { opacity: 0.7; transform: translateY(-50%) translateX(5px); }
+    }
+}
+
+
+/* ============================================================
+   5. COLLECTIONS PAGE - FILTERS, STATS, BUTTONS, SEARCH
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Side-by-side filter dropdowns */
+    .collections-filter-section .filter-controls {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    .collections-filter-section .filter-group {
+        min-width: 0 !important;
+    }
+    
+    .collections-filter-section .filter-group label {
+        font-size: 0.65rem !important;
+        margin-bottom: 0.25rem !important;
+        display: block !important;
+    }
+    
+    .collections-filter-section .filter-group select {
+        width: 100% !important;
+        font-size: 0.8rem !important;
+        padding: 0.5rem 1.75rem 0.5rem 0.5rem !important;
+    }
+    
+    /* Search bar full width below filters */
+    .collections-filter-section .filter-group.search-group {
+        grid-column: 1 / -1 !important;
+    }
+    
+    /* Fix search bar visibility */
+    #collections-search,
+    .collections-filter-section input[type="text"] {
+        background: rgba(20, 20, 40, 0.9) !important;
+        border: 1px solid rgba(var(--imu-gold-rgb), 0.4) !important;
+        color: #fff !important;
+        padding: 0.65rem 1rem !important;
+    }
+    
+    #collections-search::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+    
+    /* Scrollable stats/leaderboard */
+    .collection-stats-section,
+    .collection-leaderboard-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    /* 40% smaller buttons */
+    .collection-actions .btn,
+    .nft-actions .btn,
+    .collection-page .btn {
+        padding: 0.45rem 0.9rem !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+
+/* ============================================================
+   6. RECENT MINTS PAGE - SIDE-BY-SIDE STATS
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .drops-stats-bar {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+    }
+    
+    .drops-stat {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 0.75rem !important;
+        background: rgba(var(--imu-gold-rgb), 0.05) !important;
+        border-radius: 8px !important;
+    }
+    
+    .drops-stat .label {
+        font-size: 0.6rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0.25rem !important;
+        word-wrap: break-word !important;
+    }
+    
+    .drops-stat .value {
+        font-size: 1.15rem !important;
+    }
+}
+
+
+/* ============================================================
+   7. MY NFTS PAGE - TALLER NFT CARDS
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 2-column grid for expanded NFT view */
+    .expanded-collection-view .nft-grid,
+    #expanded-nft-grid,
+    #my-nfts-page .nft-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.875rem !important;
+    }
+    
+    /* Card sizing */
+    .expanded-collection-view .nft-card,
+    #expanded-nft-grid .nft-card,
+    #my-nfts-page .expanded-collection-view .nft-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 280px !important;
+    }
+    
+    /* Taller image aspect ratio */
+    .expanded-collection-view .nft-card-image,
+    #expanded-nft-grid .nft-card-image {
+        aspect-ratio: 4 / 5 !important;
+        width: 100% !important;
+        min-height: 180px !important;
+    }
+    
+    .expanded-collection-view .nft-card-image img,
+    #expanded-nft-grid .nft-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Card info */
+    .expanded-collection-view .nft-card-info {
+        padding: 0.75rem !important;
+    }
+    
+    .expanded-collection-view .nft-card-info h4 {
+        font-size: 0.85rem !important;
+        margin: 0 0 0.25rem 0 !important;
+    }
+}
+
+
+/* ============================================================
+   8. FREQUENCY FOUNTAIN - CENTER + REDUCE GAP
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Reduce top padding */
+    .ffp-page {
+        padding-top: 65px !important;
+    }
+    
+    /* Center content */
+    .ffp-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    /* Reduce title gaps */
+    .ffp-title {
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .ffp-subtitle {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    /* Center fountain section */
+    .ffp-fountain-section {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        margin: 0 auto !important;
+    }
+    
+    /* Reduce space around ground coins */
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        margin-top: -15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ffp-page {
+        padding: 55px 10px 30px !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        width: 200px !important;
+        height: 250px !important;
+    }
+    
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 230px !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.35rem !important;
+    }
+    
+    .ffp-subtitle {
+        font-size: 0.7rem !important;
+    }
+}
+
+
+/* ============================================================
+   9. CHAT POPUP - CENTER IN MOBILE VIEWPORT
+   ============================================================ */
+
+@media (max-width: 600px) {
+    .chat-popup-container {
+        position: fixed !important;
+        bottom: auto !important;
+        right: auto !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 94vw !important;
+        max-width: 380px !important;
+        height: 60vh !important;
+        max-height: 420px !important;
+        border-radius: 12px !important;
+        z-index: 100001 !important;
+    }
+    
+    /* Ensure header is visible with close button */
+    .chat-popup-header,
+    .chat-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0.75rem 1rem !important;
+        background: #1a1a2e !important;
+        border-bottom: 1px solid rgba(var(--imu-gold-rgb), 0.3) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 10 !important;
+    }
+    
+    /* Close button visible */
+    .chat-close-btn,
+    #close-chat-popup,
+    .chat-popup-header button {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(var(--imu-gold-rgb), 0.3) !important;
+        border-radius: 6px !important;
+    }
+}
+
+
+/* ============================================================
+   10. SINGLE NFT PAGE - 40% SMALLER BUTTONS + REMOVE BADGE
+   ============================================================ */
+
+/* Remove Video NFT / Audio NFT badges - SITE WIDE */
+.media-type-badge,
+.video-badge,
+.audio-badge,
+.media-type-badge.video-badge,
+.media-type-badge.audio-badge {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    /* 40% smaller action buttons */
+    .nft-single-actions {
+        gap: 0.5rem !important;
+    }
+    
+    .nft-single-actions .btn,
+    #nft-make-offer-btn,
+    #nft-message-owner-btn,
+    #nft-list-btn {
+        padding: 0.55rem 1rem !important;
+        font-size: 0.85rem !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Also reduce section button sizes */
+    .nft-detail-actions .btn,
+    .nft-actions button {
+        padding: 0.5rem 0.9rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+
+/* ============================================================
+   11. DROPDOWN TEXT CUTOFF FIX - SITE WIDE
+   ============================================================ */
+
+/* All select dropdowns */
+select,
+.filter-group select,
+.category-dropdown,
+#category-select,
+#content-type-filter,
+#collections-sort,
+.browse-filter-select {
+    padding-right: 2.25rem !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    min-height: 38px !important;
+    line-height: 1.5 !important;
+}
+
+/* Dropdown options */
+select option {
+    padding: 0.5rem !important;
+    white-space: normal !important;
+    overflow: visible !important;
+}
+
+/* Ensure proper arrow spacing */
+select {
+    background-position: right 0.6rem center !important;
+    background-size: 10px !important;
+}
+
+/* Custom dropdown arrow for better visibility */
+@media (max-width: 768px) {
+    select,
+    .filter-group select {
+        font-size: 0.85rem !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23d6ba66' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 0.5rem center !important;
+    }
+}
+
+
+/**
+ * IMCollectibles Mobile UI Fixes v3.1 - PATCH
+ * Additional fixes for remaining issues
+ * Add this AFTER mobile-ui-fixes-v3.css in custom.css
+ */
+
+
+/* ============================================================
+   1. COLLECTION PAGE (SELECTED) - SCROLLABLE LEADERBOARD
+   When viewing a specific collection's stats/leaderboard
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Collection detail stats tables */
+    .collection-stats-section,
+    .collection-detail-stats,
+    .collection-leaderboard,
+    .th-stats-table-wrapper,
+    .stats-section,
+    [class*="stats-table"],
+    [class*="leaderboard"] {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .collection-stats-section table,
+    .collection-detail-stats table,
+    .th-stats-table,
+    .collection-leaderboard table {
+        min-width: 450px !important;
+    }
+    
+    /* Ensure proper scroll on page-specific leaderboards */
+    .leaderboard-table-wrapper,
+    .leaderboard-section {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .leaderboard-table {
+        min-width: 480px !important;
+    }
+}
+
+
+/* ============================================================
+   2. MY NFTS PAGE - TALLER NFT CARDS (FIXED)
+   Cards need to be taller when collection is selected
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Grid with 2 columns, minimal gap */
+    .expanded-collection-view .nft-grid,
+    #expanded-nft-grid,
+    #my-nfts-page .nft-grid,
+    #my-nfts-page .expanded-collection-view .nft-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        padding: 0 0.25rem !important;
+    }
+    
+    /* Card sizing - TALLER */
+    .expanded-collection-view .nft-card,
+    #expanded-nft-grid .nft-card,
+    #my-nfts-page .nft-card,
+    #my-nfts-page .expanded-collection-view .nft-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 320px !important;
+    }
+    
+    /* Image - TALLER aspect ratio (3:4 portrait) */
+    .expanded-collection-view .nft-card-image,
+    #expanded-nft-grid .nft-card-image,
+    #my-nfts-page .nft-card-image,
+    #my-nfts-page .expanded-collection-view .nft-card-image {
+        aspect-ratio: 3 / 4 !important;
+        width: 100% !important;
+        min-height: 220px !important;
+        height: auto !important;
+    }
+    
+    .expanded-collection-view .nft-card-image img,
+    #expanded-nft-grid .nft-card-image img,
+    #my-nfts-page .nft-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Card info section */
+    .expanded-collection-view .nft-card-info,
+    #expanded-nft-grid .nft-card-info,
+    #my-nfts-page .nft-card-info {
+        padding: 0.6rem 0.5rem !important;
+    }
+    
+    .expanded-collection-view .nft-card-info h4,
+    #expanded-nft-grid .nft-card-info h4,
+    #my-nfts-page .nft-card-info h4 {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+
+/* ============================================================
+   3. FREQUENCY FOUNTAIN - LARGER SIZE + CENTERED
+   Increase fountain to fill screen better
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .ffp-page {
+        padding: 60px 10px 30px !important;
+    }
+    
+    /* Center everything */
+    .ffp-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    /* Reduce title gaps */
+    .ffp-title {
+        margin-bottom: 0.25rem !important;
+        font-size: 1.6rem !important;
+    }
+    
+    .ffp-subtitle {
+        margin-bottom: 0.5rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* LARGER fountain wrapper - fills more screen */
+    .ffp-fountain-section {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        width: 85vw !important;
+        max-width: 340px !important;
+        height: 400px !important;
+        margin: 0 auto !important;
+    }
+    
+    .ffp-fountain {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    .ffp-fountain-svg {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 100% !important;
+    }
+    
+    /* Coins wrapper larger */
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 90vw !important;
+        max-width: 360px !important;
+        margin-top: -20px !important;
+    }
+    
+    /* Status card tighter */
+    .ffp-status-card {
+        padding: 15px !important;
+        margin-top: 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ffp-page {
+        padding: 55px 8px 25px !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .ffp-subtitle {
+        font-size: 0.65rem !important;
+    }
+    
+    /* Still large on small phones */
+    .ffp-fountain-wrapper {
+        width: 90vw !important;
+        max-width: 300px !important;
+        height: 350px !important;
+    }
+    
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 95vw !important;
+        max-width: 320px !important;
+    }
+}
+
+
+/* ============================================================
+   4. ALL NFT CARD GRIDS - BIGGER CARDS, LESS PADDING
+   Site-wide where 2 NFT cards show side by side
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Generic NFT grids - reduce gaps, fill screen */
+    .nft-grid,
+    .nfts-grid,
+    [class*="nft-grid"],
+    [class*="collections-grid"] {
+        gap: 0.5rem !important;
+        padding: 0 0.25rem !important;
+    }
+    
+    /* Browse collection cards on trading hub */
+    .browse-collection-card,
+    .collection-card,
+    .nft-card {
+        min-width: calc(50vw - 1rem) !important;
+    }
+    
+    /* Collection slider cards - bigger */
+    .collections-slider .collection-slide,
+    .collections-slider .browse-collection-card {
+        min-width: calc(48vw) !important;
+        max-width: calc(48vw) !important;
+    }
+    
+    /* Recent mints / drops grid */
+    .drops-grid,
+    .mints-grid {
+        gap: 0.5rem !important;
+        padding: 0 !important;
+    }
+    
+    .drops-card,
+    .mint-card {
+        min-width: 0 !important;
+    }
+    
+    /* Featured collections grid - tighter */
+    .th-featured-grid {
+        gap: 0.5rem !important;
+    }
+    
+    .th-featured-card {
+        flex: 0 0 calc(48vw) !important;
+    }
+    
+    /* Section padding reduce */
+    .recent-mints-section,
+    .browse-collections-section,
+    .imu-collections-section {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    /* Slider wrapper tighter */
+    .collections-slider-wrapper,
+    .nft-slider-wrapper {
+        margin-left: -0.25rem !important;
+        margin-right: -0.25rem !important;
+    }
+}
+
+
+/* ============================================================
+   5. COLLECTIONS BROWSE PAGE (/collections/) - BIGGER CARDS
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .collections-browse-grid,
+    .all-collections-grid,
+    #all-collections-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    .browse-collection-card {
+        width: 100% !important;
+        min-height: 200px !important;
+    }
+    
+    .browse-collection-card .card-image,
+    .browse-collection-card .collection-image {
+        aspect-ratio: 1 !important;
+        min-height: 120px !important;
+    }
+}
+
+/**
+ * IMCollectibles Mobile UI Fixes v3.2 - FINAL PATCH
+ * 
+ * Fixes:
+ * 1. Collections Page (/collections/) - Center the grid
+ * 2. Collection Detail Page (viewing specific collection) - Bigger cards like My NFTs
+ * 3. Frequency Fountain - DOUBLE the size
+ */
+
+
+/* ============================================================
+   1. COLLECTIONS BROWSE PAGE (/collections/) - CENTER GRID
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Center the entire collections section */
+    .all-collections-section,
+    .collections-browse-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 1rem 0.5rem !important;
+    }
+    
+    /* Center the grid container */
+    .collections-browse-grid,
+    #all-collections-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        justify-content: center !important;
+    }
+    
+    /* Collection count centered */
+    .collections-count,
+    #collections-count {
+        text-align: center !important;
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Filter section centered */
+    .collections-filter-section {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto 1rem auto !important;
+    }
+    
+    .collections-filter-section .filter-controls {
+        max-width: 100% !important;
+    }
+}
+
+
+/* ============================================================
+   2. COLLECTION DETAIL PAGE - BIGGER NFT CARDS
+   When viewing a specific collection's NFTs
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Collection detail NFT grid - match My NFTs styling */
+    .collection-nfts-grid,
+    .collection-detail-grid,
+    .collection-page .nft-grid,
+    .collection-nfts-section .nft-grid,
+    #collection-nfts-grid,
+    [class*="collection"] .nft-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        padding: 0 0.25rem !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* NFT Cards - taller like My NFTs page */
+    .collection-nfts-grid .nft-card,
+    .collection-detail-grid .nft-card,
+    .collection-page .nft-card,
+    .collection-nfts-section .nft-card,
+    #collection-nfts-grid .nft-card,
+    [class*="collection"] .nft-grid .nft-card {
+        width: 100% !important;
+        min-height: 280px !important;
+    }
+    
+    /* Card images - portrait aspect ratio */
+    .collection-nfts-grid .nft-card-image,
+    .collection-detail-grid .nft-card-image,
+    .collection-page .nft-card-image,
+    .collection-nfts-section .nft-card-image,
+    #collection-nfts-grid .nft-card-image,
+    [class*="collection"] .nft-grid .nft-card-image {
+        aspect-ratio: 3 / 4 !important;
+        min-height: 180px !important;
+        width: 100% !important;
+    }
+    
+    .collection-nfts-grid .nft-card-image img,
+    .collection-detail-grid .nft-card-image img,
+    .collection-page .nft-card-image img,
+    .collection-nfts-section .nft-card-image img,
+    #collection-nfts-grid .nft-card-image img,
+    [class*="collection"] .nft-grid .nft-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Card info */
+    .collection-nfts-grid .nft-card-info,
+    .collection-detail-grid .nft-card-info,
+    .collection-page .nft-card-info,
+    [class*="collection"] .nft-grid .nft-card-info {
+        padding: 0.6rem 0.5rem !important;
+    }
+    
+    .collection-nfts-grid .nft-card-info h4,
+    .collection-detail-grid .nft-card-info h4,
+    .collection-page .nft-card-info h4,
+    [class*="collection"] .nft-grid .nft-card-info h4 {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* Center the collection detail content */
+    .collection-detail-content,
+    .collection-page-content,
+    .collection-nfts-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+
+/* ============================================================
+   3. FREQUENCY FOUNTAIN - DOUBLE THE SIZE
+   Make fountain much larger to fill screen
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .ffp-page {
+        padding: 55px 5px 20px !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Tighter title spacing */
+    .ffp-title {
+        margin-bottom: 0.15rem !important;
+        font-size: 1.5rem !important;
+    }
+    
+    .ffp-subtitle {
+        margin-bottom: 0.25rem !important;
+        font-size: 0.7rem !important;
+    }
+    
+    /* MUCH LARGER fountain */
+    .ffp-fountain-section {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-bottom: 0.25rem !important;
+        padding: 0 !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        width: 95vw !important;
+        max-width: 420px !important;
+        height: 500px !important;
+        margin: 0 auto !important;
+    }
+    
+    .ffp-fountain {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    .ffp-fountain-svg {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 500px !important;
+    }
+    
+    /* Ground coins match larger fountain */
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 98vw !important;
+        max-width: 440px !important;
+        margin-top: -30px !important;
+    }
+    
+    /* Tighter status card */
+    .ffp-status-card {
+        padding: 12px !important;
+        margin-top: 0.25rem !important;
+    }
+    
+    .ffp-rewards-amount {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ffp-page {
+        padding: 50px 3px 15px !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .ffp-subtitle {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.15rem !important;
+    }
+    
+    /* Still very large on small phones */
+    .ffp-fountain-wrapper {
+        width: 98vw !important;
+        max-width: 360px !important;
+        height: 450px !important;
+    }
+    
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 100vw !important;
+        max-width: 380px !important;
+        margin-top: -25px !important;
+    }
+    
+    .ffp-status-card {
+        padding: 10px !important;
+    }
+    
+    .ffp-rewards-amount {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 380px) {
+    /* Extra small phones */
+    .ffp-fountain-wrapper {
+        width: 100vw !important;
+        max-width: 320px !important;
+        height: 400px !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.2rem !important;
+    }
+}
+
+
+/**
+ * IMCollectibles Mobile UI Fixes v3.3 - CRITICAL PATCH
+ * 
+ * STRONGER FIXES:
+ * 1. Frequency Fountain - CENTER and FILL the screen
+ * 2. Collection Detail Page NFTs - Match collections browse page card size
+ * 3. Collection Detail Stats/Leaderboard - Force scrollable
+ */
+
+
+/* ============================================================
+   1. FREQUENCY FOUNTAIN - CENTER + FILL SCREEN
+   The fountain SVG needs to be centered and fill available space
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Reset page padding */
+    .ffp-page {
+        padding: 55px 0 15px 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Center content wrapper */
+    .ffp-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+    
+    /* Title section - minimal spacing */
+    .ffp-title {
+        margin-bottom: 0.1rem !important;
+        font-size: 1.4rem !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .ffp-subtitle {
+        margin-bottom: 0.25rem !important;
+        font-size: 0.65rem !important;
+        text-align: center !important;
+    }
+    
+    /* FOUNTAIN SECTION - CENTERED AND LARGE */
+    .ffp-fountain-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto 0.5rem auto !important;
+        padding: 0 !important;
+    }
+    
+    /* Fountain wrapper - FILL THE SCREEN */
+    .ffp-fountain-wrapper {
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: 55vh !important;
+        min-height: 400px !important;
+        max-height: 550px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+    }
+    
+    /* Fountain container */
+    .ffp-fountain {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    /* SVG fills container */
+    .ffp-fountain-svg {
+        width: auto !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Ground coins centered below */
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin-top: -40px !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    /* Status card compact */
+    .ffp-status-card {
+        padding: 10px 15px !important;
+        margin-top: 0 !important;
+        width: calc(100% - 20px) !important;
+        max-width: 400px !important;
+    }
+    
+    .ffp-rewards-amount {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ffp-page {
+        padding: 50px 0 10px 0 !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .ffp-subtitle {
+        font-size: 0.6rem !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        height: 50vh !important;
+        min-height: 350px !important;
+        max-height: 480px !important;
+    }
+    
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        margin-top: -35px !important;
+    }
+}
+
+
+/* ============================================================
+   2. COLLECTION DETAIL PAGE - LARGER NFT CARDS
+   When viewing a specific collection, cards should match browse page
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Target the collection detail NFT grid specifically */
+    .collection-nfts-grid,
+    .collection-detail .nft-grid,
+    .collection-page .nft-grid,
+    .single-collection .nft-grid,
+    #collection-nfts,
+    [class*="collection-nfts"] .nft-grid,
+    .collection-content .nft-grid,
+    .nft-grid-container .nft-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        padding: 0 0.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* NFT Cards - MUCH LARGER to match browse page */
+    .collection-nfts-grid .nft-card,
+    .collection-detail .nft-card,
+    .collection-page .nft-card,
+    .single-collection .nft-card,
+    #collection-nfts .nft-card,
+    [class*="collection-nfts"] .nft-card,
+    .collection-content .nft-card,
+    .nft-grid-container .nft-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 260px !important;
+        background: rgba(18, 19, 26, 0.95) !important;
+        border: 1px solid rgba(var(--imu-gold-rgb), 0.2) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+    }
+    
+    /* Card images - SQUARE like browse page */
+    .collection-nfts-grid .nft-card-image,
+    .collection-detail .nft-card-image,
+    .collection-page .nft-card-image,
+    .single-collection .nft-card-image,
+    #collection-nfts .nft-card-image,
+    [class*="collection-nfts"] .nft-card-image,
+    .collection-content .nft-card-image,
+    .nft-grid-container .nft-card-image {
+        aspect-ratio: 1 / 1 !important;
+        width: 100% !important;
+        min-height: 160px !important;
+        overflow: hidden !important;
+    }
+    
+    .collection-nfts-grid .nft-card-image img,
+    .collection-detail .nft-card-image img,
+    .collection-page .nft-card-image img,
+    .single-collection .nft-card-image img,
+    #collection-nfts .nft-card-image img,
+    [class*="collection-nfts"] .nft-card-image img,
+    .collection-content .nft-card-image img,
+    .nft-grid-container .nft-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Card info */
+    .collection-nfts-grid .nft-card-info,
+    .collection-detail .nft-card-info,
+    .collection-page .nft-card-info,
+    .single-collection .nft-card-info,
+    #collection-nfts .nft-card-info,
+    [class*="collection-nfts"] .nft-card-info,
+    .collection-content .nft-card-info,
+    .nft-grid-container .nft-card-info {
+        padding: 0.75rem !important;
+    }
+    
+    .collection-nfts-grid .nft-card-info h4,
+    .collection-detail .nft-card-info h4,
+    .collection-page .nft-card-info h4,
+    [class*="collection-nfts"] .nft-card-info h4 {
+        font-size: 0.85rem !important;
+        margin: 0 0 0.25rem 0 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+}
+
+
+/* ============================================================
+   3. COLLECTION DETAIL STATS/LEADERBOARD - FORCE SCROLLABLE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Stats section wrapper */
+    .collection-stats,
+    .collection-stats-section,
+    .collection-detail-stats,
+    .collection-info-stats,
+    [class*="collection"] [class*="stats"],
+    .stats-wrapper,
+    .stats-container {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        padding-bottom: 10px !important;
+    }
+    
+    /* Stats table needs min-width */
+    .collection-stats table,
+    .collection-stats-section table,
+    .collection-detail-stats table,
+    [class*="collection"] [class*="stats"] table,
+    .stats-table {
+        min-width: 500px !important;
+        width: max-content !important;
+    }
+    
+    /* Leaderboard specific */
+    .collection-leaderboard,
+    .collection-detail .leaderboard,
+    [class*="collection"] .leaderboard-section,
+    [class*="collection"] .leaderboard-wrapper,
+    [class*="collection"] [class*="leaderboard"] {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        margin: 0 -0.5rem !important;
+        padding: 0 0.5rem 10px 0.5rem !important;
+    }
+    
+    .collection-leaderboard table,
+    .collection-detail .leaderboard table,
+    [class*="collection"] .leaderboard-table,
+    [class*="collection"] [class*="leaderboard"] table {
+        min-width: 480px !important;
+        width: max-content !important;
+    }
+    
+    /* Scroll indicator hint — removed v326 */
+    .collection-stats::after,
+    .collection-leaderboard::after,
+    [class*="collection"] [class*="stats"]::after {
+        content: none !important;
+        display: none !important;
+    }
+}
+
+
+/* ============================================================
+   4. EXTRA - Ensure all NFT grids site-wide are consistent
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Universal NFT grid fix */
+    .nft-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+    
+    .nft-card {
+        min-height: 240px !important;
+    }
+    
+    .nft-card-image {
+        aspect-ratio: 1 / 1 !important;
+    }
+}
+
+/**
+ * IMCollectibles Mobile UI Fixes v3.4 - FINAL PRECISION PATCH
+ * 
+ * FIXES:
+ * 1. Frequency Fountain - CENTER on page (target .ffp-container, not .ffp-content)
+ * 2. Collection Detail - Activity Table scrollable
+ * 3. Collection Detail - NFT Cards match browse page (2-column, larger)
+ * 
+ * Add this LAST in custom.css (after all other patches)
+ */
+
+
+/* ============================================================
+   1. FREQUENCY FOUNTAIN - CENTER THE FOUNTAIN ON PAGE
+   The fountain SVG is stuck left - need to center .ffp-container
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Main page wrapper - force center alignment */
+    .ffp-page {
+        padding: 55px 0 20px 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Container that holds everything - CENTER IT */
+    .ffp-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Header text centered */
+    .ffp-header {
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .ffp-title {
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 1.4rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .ffp-subtitle {
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Fountain section - CENTER */
+    .ffp-fountain-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto 0.5rem auto !important;
+        padding: 0 !important;
+    }
+    
+    /* Fountain wrapper - CENTERED and LARGE */
+    .ffp-fountain-wrapper {
+        width: 90vw !important;
+        max-width: 380px !important;
+        height: 55vh !important;
+        min-height: 380px !important;
+        max-height: 500px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+    }
+    
+    /* Inner fountain */
+    .ffp-fountain {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    /* SVG centered within wrapper */
+    .ffp-fountain-svg {
+        display: block !important;
+        width: auto !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Ground coins centered */
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 95vw !important;
+        max-width: 400px !important;
+        margin: -30px auto 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    /* Status/claim sections centered */
+    .ffp-status-card,
+    .ffp-claim-section,
+    .ffp-balances-section {
+        width: calc(100% - 20px) !important;
+        max-width: 380px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ffp-page {
+        padding: 50px 0 15px 0 !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        width: 95vw !important;
+        max-width: 340px !important;
+        height: 50vh !important;
+        min-height: 320px !important;
+        max-height: 420px !important;
+    }
+    
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 98vw !important;
+        max-width: 360px !important;
+        margin-top: -25px !important;
+    }
+}
+
+
+/* ============================================================
+   2. COLLECTION DETAIL - ACTIVITY TABLE SCROLLABLE
+   Force horizontal scroll on Recent Activity table
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Activity section wrapper */
+    .collection-activity-section {
+        padding: 0 0.5rem !important;
+        width: 100% !important;
+        overflow: visible !important;
+    }
+    
+    /* Table wrapper - enable scroll */
+    .activity-table-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding-bottom: 10px !important;
+    }
+    
+    /* Table needs min-width to enable scroll */
+    .activity-table {
+        min-width: 550px !important;
+        width: max-content !important;
+    }
+    
+    /* Smaller padding on mobile */
+    .activity-table th,
+    .activity-table td {
+        padding: 0.5rem 0.4rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .activity-item-thumb {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .activity-item-name {
+        max-width: 70px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* Scroll hint — removed v326 */
+    .activity-table-wrapper::after {
+        content: none !important;
+        display: none !important;
+    }
+}
+
+
+/* ============================================================
+   3. COLLECTION DETAIL - NFT CARDS MATCH BROWSE PAGE
+   Force 2-column grid with larger cards
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Target the collection detail NFT grid specifically */
+    #nft-collection-page .nft-grid,
+    #global-nft-grid,
+    .collection-nfts-section .nft-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        padding: 0 0.5rem !important;
+        width: 100% !important;
+    }
+    
+    /* NFT Cards - match browse page sizing */
+    #nft-collection-page .nft-card,
+    #global-nft-grid .nft-card,
+    .collection-nfts-section .nft-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 220px !important;
+        background: rgba(18, 19, 26, 0.95) !important;
+        border: 1px solid rgba(var(--imu-gold-rgb), 0.2) !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+    }
+    
+    /* Card images - square aspect */
+    #nft-collection-page .nft-card-image,
+    #global-nft-grid .nft-card-image,
+    .collection-nfts-section .nft-card-image {
+        aspect-ratio: 1 / 1 !important;
+        width: 100% !important;
+        min-height: 130px !important;
+        overflow: hidden !important;
+    }
+    
+    #nft-collection-page .nft-card-image img,
+    #global-nft-grid .nft-card-image img,
+    .collection-nfts-section .nft-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Card info section */
+    #nft-collection-page .nft-card-info,
+    #global-nft-grid .nft-card-info,
+    .collection-nfts-section .nft-card-info {
+        padding: 0.6rem 0.5rem !important;
+    }
+    
+    #nft-collection-page .nft-card-info h4,
+    #global-nft-grid .nft-card-info h4,
+    .collection-nfts-section .nft-card-info h4,
+    #nft-collection-page .nft-card-title,
+    #global-nft-grid .nft-card-title {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+        margin: 0 0 0.2rem 0 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    /* Section padding adjustment */
+    #nft-collection-page .marketplace-section {
+        padding: 1rem 0.5rem !important;
+    }
+    
+    /* Pagination controls compact */
+    #nft-collection-page .pagination-controls {
+        padding: 0.75rem !important;
+        gap: 0.5rem !important;
+    }
+    
+    #nft-collection-page .pagination-controls button {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+
+/* ============================================================
+   4. EXTRA - Stats page leaderboard scrollable
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .stats-table-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .stats-table {
+        min-width: 500px !important;
+    }
+}
+
+
+/* ============================================================
+   FREQUENCY FOUNTAIN - FINAL CENTERING FIX
+   Add this at the VERY END of custom.css
+   This overrides ALL previous fountain styles
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* Page wrapper - center everything */
+    .ffp-page {
+        padding: 55px 0 20px 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* THE KEY: .ffp-container must be centered */
+    .ffp-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* Header */
+    .ffp-header {
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .ffp-title {
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 1.4rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .ffp-subtitle {
+        text-align: center !important;
+        width: 100% !important;
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Fountain section - FORCE CENTER */
+    .ffp-fountain-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto 0.5rem auto !important;
+        padding: 0 !important;
+    }
+    
+    /* Fountain wrapper - CENTERED */
+    .ffp-fountain-wrapper {
+        width: 85vw !important;
+        max-width: 350px !important;
+        height: 50vh !important;
+        min-height: 350px !important;
+        max-height: 450px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+    }
+    
+    /* Inner fountain div */
+    .ffp-fountain {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+    }
+    
+    /* SVG - center within wrapper */
+    .ffp-fountain-svg {
+        display: block !important;
+        width: auto !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        margin: 0 auto !important;
+        left: auto !important;
+        right: auto !important;
+        position: relative !important;
+        transform: none !important;
+    }
+    
+    /* Ground coins */
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 90vw !important;
+        max-width: 380px !important;
+        margin: -25px auto 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    /* Status and claim sections centered */
+    .ffp-status-card,
+    .ffp-claim-section,
+    .ffp-balances-section {
+        width: calc(100% - 20px) !important;
+        max-width: 360px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    .ffp-rewards-amount {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ffp-page {
+        padding: 50px 0 15px 0 !important;
+    }
+    
+    .ffp-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .ffp-subtitle {
+        font-size: 0.6rem !important;
+    }
+    
+    .ffp-fountain-wrapper {
+        width: 90vw !important;
+        max-width: 320px !important;
+        height: 45vh !important;
+        min-height: 300px !important;
+        max-height: 400px !important;
+    }
+    
+    .ffp-ground-coins,
+    .ffp-coins-ground {
+        width: 95vw !important;
+        max-width: 340px !important;
+    }
+}
+/* ==========================================================================
+   v86: Global Select/Option Dark Theme Styling
+   ========================================================================== */
+
+/* Fix for all select dropdowns in dark theme */
+select,
+.offer-form-group select,
+#offer-currency,
+#listing-currency {
+    background-color: #1a1a2e !important;
+    color: #fff !important;
+}
+
+select option,
+.offer-form-group select option,
+#offer-currency option,
+#listing-currency option {
+    background-color: #1a1a2e !important;
+    color: #fff !important;
+    padding: 0.5rem;
+}
+
+select option:hover,
+select option:checked,
+select option:focus {
+    background-color: #2a2a4e !important;
+    color: #d4af37 !important;
+}
+
+/* Trustline warning styling */
+#offer-trustline-warning,
+.offer-trustline-warning {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #ffc107;
+}
+
+#offer-trustline-warning a,
+.offer-trustline-warning a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+#offer-trustline-warning a:hover,
+.offer-trustline-warning a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   M2: GLOBAL FOCUS-VISIBLE STYLES
+   Consistent keyboard navigation indicator across all interactive elements.
+   Only shows on keyboard focus (not mouse clicks) via :focus-visible.
+   ============================================================ */
+*:focus-visible {
+    outline: 2px solid var(--imp-gold, var(--imu-gold, #d6ba66)) !important;
+    outline-offset: 2px !important;
+}
+
+/* Remove default outline on mouse click (focus-visible handles keyboard) */
+*:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
+/* Inputs and textareas get a subtler glow on focus */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--imp-gold, var(--imu-gold, #d6ba66)) !important;
+    outline-offset: 0 !important;
+    box-shadow: 0 0 0 3px rgba(var(--imu-gold-rgb), 0.2) !important;
+}
+
+/* ============================================================
+   M3: COMPREHENSIVE REDUCED-MOTION SUPPORT
+   Respects user preference across ALL animations and transitions.
+   Existing page-specific rules in custom.css and trading-hub.css
+   handle background animations; this catches everything else.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* v455: Album track card styling — title input was unstyled (white on white) */
+.album-track-title-input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 0;
+}
+.album-track-title-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+.album-track-title-input:focus {
+    outline: none;
+    border-color: var(--imc-gold, #c9a84c);
+}

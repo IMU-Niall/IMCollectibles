@@ -1,0 +1,95 @@
+/* Text glow */
+@keyframes text-glow {
+    0%, 100% { text-shadow: 0 0 5px rgba(var(--imu-gold-rgb), 0.5); }
+    50% { text-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.7); }
+}
+
+/* Box glow */
+@keyframes box-glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(var(--imu-gold-rgb), 0.3); }
+    50% { box-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.5); }
+}
+
+/* Circle banner */
+@keyframes circleBanner {
+    0% { transform: translateX(-50%) rotate(0deg) translateY(-15px) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg) translateY(-15px) rotate(-360deg); }
+}
+
+/* Spin */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* NFT glow */
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 192, 203, 0.85); }
+    20% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.85); }
+    40% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.85); }
+    60% { box-shadow: 0 0 20px rgba(0, 0, 255, 0.85); }
+    80% { box-shadow: 0 0 20px rgba(128, 0, 128, 0.85); }
+    100% { box-shadow: 0 0 20px rgba(255, 192, 203, 0.85); }
+}
+
+/* Smoke swirl */
+@keyframes smokeSwirl {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10px, -10px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@-webkit-keyframes smokeSwirl {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10px, -10px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Rotate card */
+@keyframes rotateCard {
+    0% { transform: perspective(500px) rotateX(5deg) rotateY(5deg); }
+    50% { transform: perspective(500px) rotateX(-5deg) rotateY(-5deg); }
+    100% { transform: perspective(500px) rotateX(5deg) rotateY(5deg); }
+}
+
+/* Pulse */
+@keyframes pulse {
+    0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+    100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Popup fade-in */
+@keyframes popupFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply animations — protector-specific elements only */
+.mission-h1, .mission-h3, .mission-guardians .guardians-question, .highlight-gold,
+.highlight-gold-italic, .perk-link, a.gold-link, .whitepaper-btn, div.champion-title,
+H21, H22, H23 {
+    animation: text-glow 2s infinite ease-in-out !important;
+}
+
+.nft-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    animation: smokeSwirl 8s infinite ease-in-out;
+}
+
+.nft-card:hover::before {
+    opacity: 0.6;
+}
+
+.nft-card:nth-child(3n) { animation-delay: 0.5s; }
+.nft-card:nth-child(3n+1) { animation-delay: 1s; }
+.nft-card:nth-child(3n+2) { animation-delay: 1.5s; }

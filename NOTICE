@@ -1,0 +1,48 @@
+IM Collectibles Marketplace
+Copyright (c) 2024-2026 IMU, LLC. All rights reserved.
+
+================================================================================
+PATENT NOTICE
+================================================================================
+
+IMU, LLC has PATENT APPLICATIONS PENDING covering inventions relating to:
+
+  * Dual-asset NFT minting — binding a publicly distributed asset to a
+    separately stored, access-controlled master asset at mint time.
+
+  * NFT-gated media playback — determining entitlement to stream or download
+    a protected master asset from on-ledger NFT ownership.
+
+The source code in this repository is published for review and evaluation
+only. It does not include the implementation of those mechanisms.
+
+NO PATENT LICENCE IS GRANTED BY THE PUBLICATION OF THIS SOURCE CODE, BY ITS
+USE, OR BY ANY PROVISION OF THE ACCOMPANYING LICENCE. All patent rights are
+expressly reserved. Publication is not a dedication to the public and is not
+evidence of abandonment of any claim.
+
+================================================================================
+THIRD-PARTY SOFTWARE
+================================================================================
+
+This repository contains IMU's own code only. No third-party software is
+redistributed here. The components below are required at build or runtime and
+are obtained from their own publishers, under their own licences:
+
+  * WordPress                  GPL-2.0-or-later
+  * Astra theme                GPL-2.0-or-later   (Brainstorm Force)
+  * Mozilla PDF.js             Apache-2.0
+  * WalletConnect              Apache-2.0
+  * Chart.js                   MIT
+  * particles.js               MIT
+  * Hardcastle XRPL PHP        per its own licence
+  * Xaman (XUMM) platform      used via its public API
+  * OneSignal Web SDK          used via its hosted SDK
+
+Each remains the property of its respective owner and is not covered by the
+accompanying LICENCE.
+
+The XRP Ledger protocol and the XLS-20 and XLS-24d standards are open standards
+of the XRP Ledger community. This software is an independent implementation and
+is not affiliated with, endorsed by, or an official product of Ripple Labs Inc.
+or the XRP Ledger Foundation.

@@ -1,0 +1,525 @@
+/* Profile page */
+#profile-page,
+#profile-page.logged-in {
+    color: var(--imu-gold, #d6ba66) !important;
+    font-size: 1.1em;
+}
+
+.xaman-profile p,
+.xaman-profile li,
+.xaman-profile a,
+.xaman-profile .span,
+.xaman-profile .h2,
+.xaman-profile .h3,
+.xaman-profile .nft-counters p,
+.xaman-profile .nft-counters a,
+.xaman-profile .social-links a,
+.xaman-profile .claim-section p,
+.xaman-profile .claim-section .span {
+    color: var(--imu-gold, #d6ba66) !important;
+
+}
+
+/* Profile header */
+.xaman-profile .profile-header h2 {
+    font-size: 1.65em;
+    margin-bottom: 16px !important;
+}
+
+.xaman-profile .profile-header p,
+.xaman-profile .profile-header .account p,
+.xaman-profile .profile-header .bio p,
+.xaman-profile .nft-counters p,
+.xaman-profile p.bio,
+.xaman-profile p.account {
+    font-size: 1.27em;
+    margin: 12px 0 !important;
+}
+
+.xaman-profile .profile-header img {
+    width: 372.3px !important;
+    height: 372.3px !important;
+    border-radius: 50% !important;
+    margin-top: -75px !important;
+}
+
+/* Profile buttons */
+.xaman-profile .btn .xaman-profile button,
+.xaman-profile input[type="submit"],
+.xaman-profile .profile-action-buttons .btn,
+.xaman-profile #edit-profile-toggle.btn,
+.xaman-profile .logout-section a.btn,
+.xaman-profile .balance-buttons .btn {
+    font-size: 14.4px !important;
+    padding: 9.6px 19.2px !important;
+    border-radius: 4px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.5 !important;
+    transition: background-color 0.3s, color 0.3s;
+    animation: box-glow 2s infinite ease-in-out;
+    pointer-events: auto;
+    z-index: 1000 !important;
+}
+
+.xaman-profile .balance-buttons .claim-xft,
+.xaman-profile .balance-buttons .claim-imutv {
+    font-size: 17.28px !important;
+    padding: 11.52px 23.04px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    z-index: 1000 !important;
+    animation: box-glow 2s infinite ease-in-out;
+}
+
+.xaman-profile .balance-buttons .claim-xft:disabled,
+.xaman-profile .balance-buttons .claim-imutv:disabled {
+    background-color: #151515 !important;
+    color: #666 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    animation: none !important;
+}
+
+.xaman-profile .refresh-balances {
+    border: 1px solid red !important;
+}
+
+/* Fountain Link Button */
+.xaman-profile .fountain-link-section {
+    margin: 25px 0;
+}
+
+.xaman-profile .fountain-link {
+    font-size: 18px !important;
+    padding: 15px 30px !important;
+    background: linear-gradient(135deg, #d4af37 0%, #996515 100%) !important;
+    color: #0a0805 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+    animation: fountain-pulse 2s ease-in-out infinite !important;
+}
+
+.xaman-profile .fountain-link:hover {
+    background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%) !important;
+    color: #0a0805 !important;
+    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+}
+
+@keyframes fountain-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 35px rgba(212, 175, 55, 0.7);
+    }
+}
+
+.xaman-profile .btn:hover:not(:disabled),
+.xaman-profile button:hover:not(:disabled),
+.xaman-profile input[type="submit"]:hover:not(.disabled),
+.xaman-profile .profile-action-buttons .btn:hover,
+.xaman-profile #edit-profile-toggle.btn:hover,
+.xaman-profile .logout-section a.btn:hover,
+.xaman-profile .balance-buttons .btn:hover {
+    background-color: #e0c77a !important;
+    color: #1a1a1a !important;
+}
+
+/* Coming soon banner */
+.xaman-profile .coming-soon-banner {
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff0000;
+    color: #fff;
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    animation: circleBanner 4s infinite linear;
+    transform-origin: center center;
+    white-space: nowrap;
+}
+
+/* Profile action buttons */
+.xaman-profile .profile-action-buttons,
+.xaman-profile .balance-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+/* Form inputs */
+.xaman-profile input[type="text"],
+.xaman-profile input[type="url"],
+.xaman-profile textarea,
+.xaman-profile input[type="file"],
+.xaman-profile input[type="number"],
+.xaman-profile select {
+    background-color: #333;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 5px;
+    border-radius: 3px;
+    color: var(--imu-gold, #d6ba66) !important;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.xaman-profile input[type="number"]::-webkit-inner-spin-button,
+.xaman-profile input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.xaman-profile input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.xaman-profile button:disabled {
+    background-color: #ccc !important;
+    color: #666 !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    animation: none !important;
+    pointer-events: none !important;
+}
+
+/* Edit profile popup */
+.edit-profile-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 50000 !important;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
+.edit-profile-popup.active {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+.edit-profile-content {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid var(--imu-gold, #d6ba66);
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    border-radius: 5px;
+    color: #fff;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 50001 !important;
+    pointer-events: auto !important;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.edit-profile-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--imu-gold, #d6ba66);
+    cursor: pointer;
+    z-index: 50003 !important;
+    pointer-events: auto !important;
+}
+
+.edit-profile-close:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.edit-profile-content h3,
+.edit-profile-content h4 {
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    margin: 20px 0 10px;
+}
+
+.edit-profile-content .label {
+    display: block;
+    margin: 10px auto;
+    color: #fff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    max-width: 400px;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.edit-profile-content input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--imu-gold, #d6ba66);
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.edit-profile-content input[type="email"],
+.edit-profile-content .input[type="text"],
+.edit-profile-content .textarea,
+.edit-profile-content .input[type="file"] {
+    padding: 8px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 5px;
+    background: #333;
+    color: #fff !important;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.edit-profile-content .email-required {
+    background-color: #4a4a4a !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 10px !important;
+    text-align: center;
+    max-width: 500px;
+    margin: 10px auto;
+}
+
+.edit-profile-content p {
+    margin: 5px auto;
+    max-width: 400px;
+    pointer-events: auto !important;
+}
+
+/* Premium features */
+.xaman-profile .premium-features {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.xaman-profile .premium-features h4 {
+    color: var(--imu-gold, #d6ba66);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    margin-bottom: 10px;
+}
+
+.xaman-profile .premium-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.xaman-profile .premium-links .gold-link {
+    font-size: 14.4px !important;
+    padding: 9.6px 19.2px !important;
+    border-radius: 4px !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    background-color: #1a1a1a !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.5 !important;
+    transition: background-color 0.3s, color 0.3s;
+    animation: box-glow 2s infinite ease-in-out;
+    z-index: 1000 !important;
+}
+
+/* Notification messages */
+.xaman-profile .xaman-notification-message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    animation: box-glow 2s infinite ease-in-out !important;
+}
+
+.xaman-profile .xaman-notification-message.success {
+    background-color: #333;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.xaman-profile .xaman-notification-message.error {
+    background-color: #4a2c2c;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+/* Email input */
+.xaman-profile .email-oval {
+    background-color: #000 !important;
+    border: 2px solid var(--imu-gold, #d6ba66) !important;
+    padding: 8px 15px;
+    border-radius: 75px !important;
+    color: var(--imu-gold, #d6ba66) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 300px;
+    margin: 5px auto;
+    display: block;
+    animation: box-glow 2s infinite ease-in-out;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.xaman-profile .email-oval:focus {
+    outline: none;
+    border-color: #e0c77a !important;
+    animation: none !important;
+}
+
+.xaman-profile .email-oval::placeholder {
+    color: var(--imu-gold, #d6ba66) !important;
+    opacity: 0.7;
+}
+
+/* Logout section */
+.xaman-profile .logout-section {
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.xaman-profile .logout-section a.gold-link {
+    display: none;
+}
+
+/* NFT counters box */
+.xaman-profile .nft-counters-box {
+    background: rgba(26, 26, 26, 0.85) !important;
+    border: 1px solid var(--imu-gold, #d6ba66) !important;
+    border-radius: 10px !important;
+    padding: 15px !important;
+    margin: 20px auto !important;
+    max-width: 600px !important;
+    text-align: center !important;
+    animation: box-glow 2s infinite ease-in-out !important;
+    z-index: 1000 !important;
+    position: relative !important;
+    box-shadow: 0 0 10px rgba(var(--imu-gold-rgb), 0.3) !important;
+}
+
+.xaman-profile .nft-counters-box p {
+    font-size: 1.27em !important;
+    margin: 10px 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.xaman-profile .nft-counters-box .counter-name {
+    color: #fff !important;
+}
+
+.xaman-profile .nft-counters-box p,
+.xaman-profile .nft-counters-box a,
+.xaman-profile .nft-counters-box span:not(.counter-name) {
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+/* Additional profile styles */
+#profile-page .username-link {
+    text-decoration: underline;
+}
+
+#profile-page .edit-profile-toggle {
+    cursor: pointer;
+    margin: 20px 0px;
+    font-size: 1.44em;
+}
+
+#profile-page .owner-only {
+    display: none;
+}
+
+#profile-page.owner-view .owner-only {
+    display: inline-block;
+}
+
+.xaman-profile {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    position: static;
+    z-index: 1 !important;
+}
+
+.xaman-profile .section:not(.claim-section):not(.profile-header):not(.nft-counters) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+
+/* Bell Emoji Button */
+#notification-prefs-toggle {
+    padding: 9.6px !important; /* Compact padding for icon-only button */
+    font-size: 16px !important; /* Emoji size */
+    line-height: 1 !important;
+    width: 38.4px; /* Square button */
+    text-align: center;
+}
+
+#notification-prefs-toggle .bell-emoji {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Notification Preferences Popup */
+.notification-prefs-popup {
+    z-index: 50010 !important; /* Higher than edit-profile-popup */
+}
+
+.notification-prefs-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: var(--imu-gold, #d6ba66);
+    cursor: pointer;
+    z-index: 50013 !important;
+    pointer-events: auto !important;
+}
+
+.notification-prefs-close:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Form Elements */
+.notification-prefs-popup .edit-profile-content input[type="checkbox"],
+.notification-prefs-popup .edit-profile-content input[type="email"] {
+    margin: 10px auto;
+    display: block;
+    max-width: 400px;
+}
+
+.notification-prefs-popup .edit-profile-content label {
+    text-align: left;
+    max-width: 400px;
+    margin: 10px auto;
+}

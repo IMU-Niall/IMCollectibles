@@ -1,0 +1,77 @@
+# ─── Credentials and configuration ──────────────────────────────────────────
+.env
+.env.*
+wp-config.php
+wp-config-*.php
+*.pem
+*.key
+*.p12
+*.keystore
+secrets.*
+credentials.*
+
+# ─── Logs ───────────────────────────────────────────────────────────────────
+# Never commit logs: request bodies here carry wallet addresses, amounts and
+# session bearers.
+logs/
+imc-logs/
+*.log
+error_log
+php-error.log
+debug.log
+
+# ─── Production data ────────────────────────────────────────────────────────
+# Database exports and table dumps contain customer wallets and transaction
+# hashes belonging to third-party artists and buyers.
+*.sql
+*.sql.gz
+*.sqlite
+wp_*.csv
+*-export.csv
+*-dump.*
+backup/
+backups/
+*.bak
+*.orig
+*.rej
+
+# ─── Uploads and generated media ────────────────────────────────────────────
+uploads/
+wp-content/uploads/
+cache/
+img-cache/
+tmp/
+temp/
+*.tmp
+
+# ─── Third-party code (see NOTICE — obtained from its publisher) ────────────
+node_modules/
+vendor/
+pdf.min.js
+pdf.worker.min.js
+*.bundle.js
+*.min.js.map
+
+# ─── Diagnostic and admin surfaces ──────────────────────────────────────────
+onesignal-debug.html
+onesignal-diagnostic.html
+onesignal-fix.html
+onesignal-reset.html
+onesignal-test.php
+
+# ─── Server configuration ───────────────────────────────────────────────────
+php.ini
+*-php.ini
+.htpasswd
+nginx.conf
+
+# ─── Editor and OS ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
+*~

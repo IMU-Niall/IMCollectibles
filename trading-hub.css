@@ -1,0 +1,3480 @@
+/**
+ * IMU Marketplace v3.0 - Complete UI Overhaul
+ * IMUTV Brand Theme with Animated Gold Cloudy Gradient
+ * 
+ * Color Palette (from IMUTV Brand Guide):
+ * - IMU Gold (Primary): var(--imu-gold, #d6ba66)
+ * - IMU Gold (Secondary): #d4af37  
+ * - IMU Black: #0a0b0e
+ * - IMU Dark: #12131a
+ * - IMU Grey Cloud: #3c3c50
+ */
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --imu-gold: #d6ba66;
+  --imu-gold-rgb: 214, 186, 102;
+  --imu-gold-secondary: #d4af37;
+  --imu-gold-shine: #ffe066;
+  --imu-gold-dark: #996515;
+  --imu-gold-glow: rgba(var(--imu-gold-rgb), 0.25);
+  --imu-gold-subtle: rgba(var(--imu-gold-rgb), 0.08);
+  --imu-black: #0a0b0e;
+  --imu-dark: #12131a;
+  --imu-grey-cloud: #3c3c50;
+  --imu-overlay: rgba(0, 0, 0, 0.35);
+  
+  --card-bg: rgba(18, 19, 26, 0.9);
+  --card-bg-solid: #14151c;
+  --card-border: rgba(var(--imu-gold-rgb), 0.12);
+  --card-border-hover: rgba(var(--imu-gold-rgb), 0.35);
+  --input-bg: rgba(10, 11, 14, 0.8);
+  
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  
+  --success: #4ade80;
+  --error: #f87171;
+  --warning: #fbbf24;
+  
+  --section-padding: clamp(1.5rem, 4vw, 3rem);
+  --card-gap: clamp(0.875rem, 2vw, 1.25rem);
+  --content-max-width: 100%;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 0 30px var(--imu-gold-glow);
+  
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND (IMUTV Brand)
+   ============================================================ */
+.trading-hub-container,
+#nft-collection-page,
+.marketplace-page {
+  position: relative;
+  background: var(--imu-black);
+}
+
+.trading-hub-container::before,
+#nft-collection-page::before,
+.marketplace-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(var(--imu-gold-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(212, 175, 55, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(60, 60, 80, 0.40) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0b0e 0%, #12131a 50%, #0a0b0e 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  animation: imuBgPulse 8s ease-in-out infinite;
+  will-change: background-size, opacity;
+  transform: translateZ(0);
+}
+
+@keyframes imuBgPulse {
+  0%, 100% { 
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    opacity: 1;
+  }
+  50% { 
+    background-size: 130% 130%, 120% 120%, 110% 110%, 100% 100%;
+    opacity: 0.95;
+  }
+}
+
+.trading-hub-container::after,
+#nft-collection-page::after,
+.marketplace-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--imu-overlay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trading-hub-container::before,
+  #nft-collection-page::before { animation: none; }
+}
+
+.trading-hub-container > *,
+#nft-collection-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   FIX: FOOTER LAYOUT — Full flex chain
+   body > #page > #content > .ast-container > content
+/* v160: HTML background matches footer — prevents gradient bleed below #page */
+html {
+  background-color: #0a0a0f !important;
+}
+
+/* ============================================================
+   FLEX CHAIN: body → #page → #content → .ast-container
+   Footer sits inside #page, after #content.
+   The flex chain ensures footer stays at the bottom of the page
+   without being pushed off-screen by min-height: 100vh.
+   ============================================================ */
+body.has-imp-header {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body.has-imp-header #page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body.has-imp-header #content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body.has-imp-header #content > .ast-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.trading-hub-container,
+#nft-collection-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer,
+footer.site-footer,
+#colophon,
+.imc-footer {
+  position: relative !important;
+  z-index: 100 !important;
+  margin-top: auto !important;
+  flex-shrink: 0;
+  background: #0a0a0f !important;
+  border-top: 1px solid var(--card-border);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.trading-hub-container,
+#nft-collection-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.marketplace-hero {
+  padding: clamp(3rem, 10vw, 6rem) var(--section-padding) clamp(2rem, 6vw, 4rem);
+  text-align: center;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.marketplace-hero h1 {
+  font-family: 'Cinzel Decorative', 'Cinzel', 'Times New Roman', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0 0 1rem;
+  background: linear-gradient(135deg,
+    var(--imu-gold-shine, #ffe066) 0%,
+    var(--imu-gold, var(--imu-gold, #d6ba66)) 30%,
+    var(--imu-gold-secondary, #d4af37) 60%,
+    var(--imu-gold-shine, #ffe066) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.4));
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.marketplace-hero .hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.hero-search {
+  max-width: 560px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.hero-search input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  padding-right: 3.5rem;
+  font-size: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 50px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero-search input::placeholder { color: var(--text-muted); }
+
+.hero-search input:focus {
+  border-color: var(--imu-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.hero-search button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: var(--imu-gold);
+  border: none;
+  border-radius: 50%;
+  color: var(--imu-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero-search button:hover {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: var(--shadow-gold);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   STATS BAR
+   ============================================================ */
+.marketplace-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding: 1.5rem var(--section-padding);
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  flex-wrap: wrap;
+}
+
+.stat-item { text-align: center; min-width: 100px; }
+.stat-value {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--imu-gold);
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   SECTION LAYOUT
+   ============================================================ */
+.marketplace-section,
+.featured-collections-section,
+.global-nft-section,
+.minting-launchpad-placeholder {
+  padding: var(--section-padding);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* ================================================================
+   SECTION HEADERS — v165 Clean Contained Bar
+   ================================================================ */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(var(--imu-gold-rgb), 0.04) 0%, rgba(18, 19, 26, 0.6) 100%);
+  border: 1px solid var(--card-border, rgba(var(--imu-gold-rgb), 0.15));
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Gold accent stripe on left edge */
+.section-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--imu-gold), var(--imu-gold-secondary));
+  border-radius: 3px 0 0 3px;
+}
+
+/* ============================================================
+   IMU GOLD HEADING — Sitewide typographic standard (v333 Phase 3)
+   Matches the Frequency Fountain title treatment.
+   Apply .imu-heading-gold to any heading, or reference these rules
+   directly on named selectors below.
+   ============================================================ */
+
+/* Gold gradient + Cinzel — the hero treatment for major headings */
+.imu-heading-gold,
+.section-header h2,
+.browse-header-left h2,
+.th-stats-header-left h2,
+.collection-hero-title,
+.activity-section-title,
+.mint-listings-title,
+.drops-page-header h1,
+.nft-single-header h1,
+.my-nfts-header h1,
+.recently-minted-heading,
+/* v334 Phase 3 — card titles */
+.nft-single-section h3,
+.offer-modal h3,
+.listing-modal h3,
+.qr-modal h3,
+.nft-single-error h2,
+.mint-card-info h3 {
+    font-family: 'Cinzel Decorative', 'Cinzel', 'Times New Roman', serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background: linear-gradient(180deg,
+        var(--imu-gold-shine, #ffe066) 0%,
+        var(--imu-gold, var(--imu-gold, #d6ba66)) 40%,
+        var(--imu-gold-dark, #996515) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none; /* gradient-clip + text-shadow conflict — glow handled by filter below */
+    filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.35));
+}
+
+/* Smaller card/item titles — Cinzel (not Decorative): compact, truncation-safe */
+.offer-section-title,
+.marketplace-nav-title,
+.th-featured-card h3,
+.section-title,
+.global-nft-section h2,
+.collection-card h3,
+.nft-card h4,
+.nft-card .nft-name,
+.nft-card .nft-card-info h4,
+.browse-collection-card .card-info h4 {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    letter-spacing: 0.04em;
+    background: linear-gradient(180deg,
+        var(--imu-gold-shine, #ffe066) 0%,
+        var(--imu-gold, var(--imu-gold, #d6ba66)) 40%,
+        var(--imu-gold-dark, #996515) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.25));
+    /* Remove any flat color that would compete with the gradient */
+    color: transparent;
+}
+
+/* Individual size overrides so each context keeps its own sizing */
+.section-header h2 {
+  font-size: 1.05rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+
+
+/* Legacy section-title support (used outside trading hub) */
+.section-title,
+.global-nft-section h2 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  /* colour handled by .imu-heading-gold block above */
+}
+
+.section-title::before,
+.global-nft-section h2::before {
+  content: "";
+  width: 4px;
+  height: 1.1em;
+  background: linear-gradient(180deg, var(--imu-gold), var(--imu-gold-secondary));
+  border-radius: 2px;
+}
+
+.view-all-link {
+  color: var(--imu-gold, var(--imu-gold, #d6ba66));
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: 1px solid var(--card-border, rgba(var(--imu-gold-rgb), 0.15));
+  border-radius: 6px;
+  padding: 0.35rem 0.85rem;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.view-all-link:hover {
+  background: rgba(var(--imu-gold-rgb), 0.12);
+  color: #fff;
+  border-color: var(--imu-gold, var(--imu-gold, #d6ba66));
+}
+
+/* ============================================================
+   COLLECTION CARDS
+   ============================================================ */
+.collections-grid,
+.featured-collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--card-gap);
+}
+
+.collection-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.collection-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+.collection-card .nft-image-wrapper,
+.collection-card .card-image {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  background: var(--imu-dark);
+}
+
+.collection-card .nft-image-wrapper::after,
+.collection-card .card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.collection-card .nft-image-wrapper img,
+.collection-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.collection-card:hover .nft-image-wrapper img,
+.collection-card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+.collection-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  /* colour via Cinzel block */
+  margin: 0 0 0.5rem;
+  padding: 1.25rem 1.25rem 0;
+}
+
+.collection-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 0 1.25rem 1.25rem;
+  margin: 0;
+}
+
+/* ============================================================
+   NFT GRID
+   ============================================================ */
+.nft-grid,
+#global-nft-grid,
+#recent-drops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--card-gap);
+}
+
+.nft-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.nft-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.nft-card .nft-image-wrapper {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--imu-dark);
+  position: relative;
+}
+
+.nft-card .nft-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.nft-card:hover .nft-image-wrapper img {
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   MEDIA PLAY OVERLAY (Audio/Video NFT Cards)
+   ============================================================ */
+
+/* Media type small corner icon (matches Browse Collections style) */
+.nft-card.is-audio::before,
+.nft-card.is-video::before {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.nft-card.is-audio::before {
+  content: "♪";
+  background: linear-gradient(135deg, var(--imu-gold), #DAA520);
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nft-card.is-video::before {
+  content: "▶";
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.6rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .nft-card.is-audio::before,
+  .nft-card.is-video::before {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6rem;
+  }
+}
+
+.nft-card .nft-details {
+  padding: 1rem;
+}
+
+.nft-card .nft-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  /* colour via Cinzel block */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 0.25rem;
+}
+
+.nft-card .nft-collection-name {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Loading */
+.nft-grid-loading {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.nft-loading-spinner,
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--card-border);
+  border-top-color: var(--imu-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--imu-gold) 0%, var(--imu-gold-secondary) 100%);
+  color: var(--imu-black);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--imu-gold);
+  border: 1px solid var(--imu-gold);
+}
+
+.btn-secondary:hover {
+  background: var(--imu-gold-subtle);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+/* ============================================================
+   NAV & CONTROLS
+   ============================================================ */
+.marketplace-nav,
+.trading-hub-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem var(--section-padding);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--imu-gold);
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-bar input,
+#marketplace-search-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.search-bar input:focus { border-color: var(--imu-gold); }
+
+.search-bar button,
+#marketplace-search-btn {
+  padding: 0.6rem 1rem;
+  background: var(--imu-gold);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--imu-black);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nft-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+#nft-sort {
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d6ba66' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+}
+
+.pagination-controls button {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  border-color: var(--imu-gold);
+  color: var(--imu-gold);
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#page-info {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   COLLECTION PAGE HEADER
+   ============================================================ */
+.collection-hero {
+  padding: var(--section-padding);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.collection-hero-inner {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.collection-hero-image {
+  width: 180px;
+  height: 180px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid var(--card-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.collection-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-hero-info { flex: 1; }
+
+.collection-hero-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  /* colour handled by .imu-heading-gold block */
+}
+
+.collection-hero-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 0 1.5rem;
+}
+
+.collection-hero-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.collection-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--imu-gold);
+}
+
+.collection-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .collection-hero-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .collection-hero-stats { justify-content: center; }
+}
+
+/* ============================================================
+   POPUPS
+   ============================================================ */
+.nft-popup,
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.nft-popup-content,
+.popup-content {
+  background: var(--card-bg-solid);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.nft-popup-close,
+.popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  background: var(--input-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.nft-popup-close:hover,
+.popup-close:hover {
+  background: var(--imu-gold);
+  color: var(--imu-black);
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toast {
+  padding: 1rem 1.25rem;
+  background: var(--card-bg-solid);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-lg);
+  animation: toastIn 0.3s ease;
+}
+
+.toast.success { border-left: 3px solid var(--success); }
+.toast.error { border-left: 3px solid var(--error); }
+.toast.warning { border-left: 3px solid var(--warning); }
+
+@keyframes toastIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ============================================================
+   LAUNCHPAD
+   ============================================================ */
+.launchpad-coming-soon {
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.launchpad-coming-soon p {
+  font-size: 1.25rem;
+  color: var(--imu-gold);
+  margin: 0;
+}
+
+/* ============================================================
+   LOADING OVERLAY
+   ============================================================ */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .collections-grid,
+  .featured-collections-grid { grid-template-columns: repeat(2, 1fr); }
+  .nft-grid, #global-nft-grid { grid-template-columns: repeat(2, 1fr); }
+  .marketplace-nav, .trading-hub-nav { flex-direction: column; align-items: stretch; }
+  .nav-buttons { justify-content: center; }
+  .search-bar { max-width: 100%; }
+  /* v341: reduce side padding so cards fill mobile screen */
+  #nft-collection-page, #xrpl-marketplace-root {
+    --section-padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collections-grid, .featured-collections-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+  .hero-actions .btn { width: 100%; }
+  #nft-collection-page, #xrpl-marketplace-root {
+    --section-padding: 0.3rem;
+  }
+}
+
+/* Hide old banner */
+.marketplace-banner { display: none; }
+.marketplace-header { padding: 0; background: transparent; }
+/* ============================================================
+   NFT GRID FIX - Add to end of trading-hub.css
+   Forces proper 4-5 column layout on desktop, 2 on mobile
+   ============================================================ */
+
+/* Force grid on marketplace pages */
+#xrpl-marketplace-root .nft-grid,
+#xrpl-marketplace-root #global-nft-grid,
+#xrpl-marketplace-root #recent-drops-grid,
+#nft-collection-page .nft-grid,
+#nft-collection-page #global-nft-grid,
+.trading-hub-container .nft-grid,
+.trading-hub-container #global-nft-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: start !important;
+}
+
+/* Ensure parent sections expand properly */
+#xrpl-marketplace-root .marketplace-section,
+#nft-collection-page .marketplace-section,
+.trading-hub-container .marketplace-section {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 1.5rem !important;
+}
+
+/* Mobile: strip side padding so NFT cards fill edge-to-edge */
+@media (max-width: 768px) {
+    #xrpl-marketplace-root .marketplace-section,
+    #nft-collection-page .marketplace-section,
+    .trading-hub-container .marketplace-section {
+        padding: 1rem 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #xrpl-marketplace-root .marketplace-section,
+    #nft-collection-page .marketplace-section,
+    .trading-hub-container .marketplace-section {
+        padding: 0.75rem 0 !important;
+    }
+}
+
+/* NFT Card sizing - consistent across all pages */
+.nft-grid .nft-card,
+#global-nft-grid .nft-card,
+#recent-drops-grid .nft-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    align-self: start !important;
+}
+
+/* Desktop: 4-5 cards per row */
+@media (min-width: 1200px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+/* Medium desktop: 4 cards per row */
+@media (min-width: 992px) and (max-width: 1199px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Tablet: 3 cards per row */
+@media (min-width: 769px) and (max-width: 991px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Mobile: 2 cards per row */
+@media (max-width: 768px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.4rem !important;
+    }
+}
+
+/* Small mobile: 2 cards, tightest gap */
+@media (max-width: 480px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.3rem !important;
+        padding: 0 0.35rem !important;
+    }
+
+    /* Ensure info section stays compact */
+    .nft-grid .nft-card .nft-card-info,
+    #global-nft-grid .nft-card .nft-card-info,
+    #nft-collection-page .nft-card .nft-card-info {
+        padding: 0.3rem 0.45rem 0.28rem !important;
+    }
+}
+
+/* Ensure loading state doesn't break grid */
+.nft-grid-loading {
+    grid-column: 1 / -1 !important;
+}
+
+/* Fix any potential scroll containers */
+#xrpl-marketplace-root,
+#nft-collection-page,
+.trading-hub-container {
+    overflow-x: hidden;
+}
+/* ============================================================
+   IMUTV MARKETPLACE FIX v3.1 - WIDER CARDS
+   
+   Fixes:
+   1. 5 Collection cards (wider)
+   2. 5 NFT cards (wider) on desktop
+   3. Bigger card sizes overall
+   
+   REPLACE the grid section at end of trading-hub.css
+   ============================================================ */
+
+/* ============================================================
+   GLOBAL SCROLLBARS - Black & Gold Theme
+   ============================================================ */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--imu-gold) var(--imu-dark);
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--imu-dark);
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--imu-gold) 0%, var(--imu-gold-secondary) 100%);
+    border-radius: 5px;
+    border: 2px solid var(--imu-dark);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--imu-gold);
+}
+
+*::-webkit-scrollbar-corner {
+    background: var(--imu-dark);
+}
+
+/* ============================================================
+   NFT CARD BUTTONS - REMOVED (Cards now navigate to NFT page)
+   Button styles kept for potential future use or other contexts
+   ============================================================ */
+
+/* Button row - hidden on NFT cards, kept for compatibility */
+.nft-card .button-row {
+    display: none !important;
+}
+
+/* ============================================================
+   NFT CARD LAYOUT - CLEAN, NO BUTTONS
+   ============================================================ */
+
+/* Card structure — display:block avoids flex height quirks on Android */
+.nft-card {
+    display: block !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.nft-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--imu-gold) !important;
+    box-shadow: 0 8px 25px rgba(var(--imu-gold-rgb), 0.25) !important;
+}
+
+/* Card info section — v343: transparent, title floats on card gradient */
+.nft-card .nft-card-info {
+    padding: 0.38rem 0.55rem 0.35rem !important;
+    gap: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+    background: transparent !important;
+    border-top: none !important;
+}
+
+/* Card title — colour/font via .imu-heading-gold Cinzel block above */
+.nft-card h4,
+.nft-card .nft-name,
+.nft-card .nft-card-info h4 {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Listing badge */
+.nft-card .listing-badge {
+    display: inline-block !important;
+    background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%) !important;
+    color: #000 !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    padding: 0.2rem 0.5rem !important;
+    margin-top: 0.5rem !important;
+    border-radius: 4px !important;
+    text-transform: uppercase !important;
+}
+
+/* Retry button for failed images */
+.nft-card .refresh-nft {
+    display: block;
+    width: calc(100% - 1rem);
+    margin: 0.4rem auto 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    transition: background 0.2s ease;
+}
+.nft-card .refresh-nft:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+.nft-card .refresh-nft:active {
+    transform: scale(0.97);
+}
+
+/* Skeleton loading cards */
+.skeleton-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    padding: 0 !important;
+    flex-direction: unset !important;
+    align-items: unset !important;
+}
+.skeleton-card {
+    pointer-events: none;
+    background: linear-gradient(135deg, #1a1a2e 0%, #252540 100%);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.skeleton-card .nft-image-wrapper {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+}
+.skeleton-text {
+    height: 14px;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+.skeleton-shimmer {
+    background: linear-gradient(90deg, #1a1a2e 25%, #252545 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+@keyframes skeletonShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Skeleton cards used as direct grid/flex children (browse page, slider, trading hub) */
+.skeleton-shimmer-card {
+    animation: none !important; /* Override cardFadeIn which starts at opacity:0 */
+    opacity: 1 !important;
+    pointer-events: none;
+    cursor: default;
+    background: linear-gradient(135deg, #1a1a2e 0%, #252540 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.skeleton-shimmer-card .card-image,
+.skeleton-shimmer-card .nft-image-wrapper {
+    background: linear-gradient(90deg, #1a1a2e 25%, #2a2a4a 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+.skeleton-shimmer-card .card-info {
+    padding: 0.75rem;
+}
+
+/* Per-card image loading: shimmer overlay instead of gold spinner */
+.nft-card .nft-image-wrapper.loading::after,
+.collection-card .nft-image-wrapper.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, #1a1a2e 25%, #252545 50%, #1a1a2e 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+/* Hide the old gold spinner — shimmer replaces it */
+.nft-image-wrapper.loading .nft-loading-spinner {
+    display: none !important;
+}
+/* Fade in image when loaded */
+.nft-card .nft-image-wrapper.loading img {
+    opacity: 0;
+}
+.nft-card .nft-image-wrapper:not(.loading) img {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Smooth card entrance */
+.nft-card {
+    animation: cardFadeIn 0.3s ease-out both;
+}
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* GTC listing badge */
+.offer-type-badge.listing-badge {
+    background: linear-gradient(135deg, #00d4ff, #00ff88);
+    color: #000;
+}
+
+/* ============================================================
+   FEATURED COLLECTIONS - Square Images & 5 COLUMNS
+   ============================================================ */
+
+/* Force square images on collection cards */
+.collection-card .nft-image-wrapper,
+.collection-card .card-image,
+.featured-collections-grid .collection-card .nft-image-wrapper,
+.featured-collections-grid .collection-card .card-image {
+    aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Featured collections grid - 5 COLUMNS on desktop */
+.featured-collections-grid {
+    display: grid !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+}
+
+/* Desktop: 5 collection cards */
+@media (min-width: 1200px) {
+    .featured-collections-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+/* Medium desktop: 4 collection cards */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .featured-collections-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Tablet: 3 collection cards */
+@media (min-width: 769px) and (max-width: 991px) {
+    .featured-collections-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Small tablet: 2 collection cards */
+@media (min-width: 500px) and (max-width: 768px) {
+    .featured-collections-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Mobile: 1 collection card */
+@media (max-width: 499px) {
+    .featured-collections-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Collection card styling */
+.collection-card {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.collection-card h3 {
+    /* colour/font via Cinzel block — just size/spacing here */
+    font-size: 1rem !important;
+    padding: 1rem 1rem 0.5rem !important;
+    margin: 0 !important;
+}
+
+.collection-card p {
+    color: var(--text-secondary, #a1a1aa) !important;
+    font-size: 0.85rem !important;
+    padding: 0 1rem 1rem !important;
+    margin: 0 !important;
+    flex: 1 !important;
+}
+
+/* Collection card hover effect */
+.collection-card:hover {
+    border-color: var(--imu-gold) !important;
+    box-shadow: 0 8px 30px rgba(var(--imu-gold-rgb), 0.2) !important;
+}
+
+/* ============================================================
+   SECTIONS - FULL WIDTH CONTAINERS
+   ============================================================ */
+
+.marketplace-section,
+.featured-collections-section,
+.global-nft-section,
+.minting-launchpad-placeholder,
+#xrpl-marketplace-root .marketplace-section,
+#xrpl-marketplace-root .global-nft-section,
+#nft-collection-page .marketplace-section {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 1.5rem 3rem !important;
+    box-sizing: border-box !important;
+}
+
+/* ============================================================
+   NFT GRIDS - 5 COLUMNS with WIDER CARDS
+   ============================================================ */
+
+#xrpl-marketplace-root .nft-grid,
+#xrpl-marketplace-root #global-nft-grid,
+#nft-collection-page .nft-grid,
+#nft-collection-page #global-nft-grid,
+.trading-hub-container .nft-grid,
+.trading-hub-container #global-nft-grid {
+    display: grid !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+}
+
+/* Desktop: 5 cards - WIDER */
+@media (min-width: 1200px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+/* Medium desktop: 4 cards */
+@media (min-width: 992px) and (max-width: 1199px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Tablet: 3 cards */
+@media (min-width: 769px) and (max-width: 991px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Mobile: 2 cards */
+@media (max-width: 768px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    #nft-collection-page .nft-grid,
+    #nft-collection-page #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .marketplace-section,
+    .featured-collections-section,
+    .global-nft-section {
+        padding: 1rem !important;
+    }
+    
+    .nft-card .button-row {
+        padding: 0.5rem 0.75rem 0.75rem !important;
+    }
+    
+    .nft-card .nft-view-more {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .nft-card .watchlist-toggle {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+    }
+}
+
+/* ============================================================
+   VIEW COLLECTION BUTTON (in collection grid)
+   ============================================================ */
+.view-collection-btn,
+button.view-collection-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: calc(100% - 2rem) !important;
+    margin: 0 1rem 1rem !important;
+    padding: 0.65rem 1rem !important;
+    background: transparent !important;
+    color: var(--imu-gold) !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    border: 1px solid var(--imu-gold) !important;
+    border-radius: var(--radius-sm, 6px) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.view-collection-btn:hover,
+button.view-collection-btn:hover {
+    background: var(--imu-gold) !important;
+    color: var(--imu-black) !important;
+}
+
+/* ============================================================
+   LOADING STATE FIX
+   ============================================================ */
+.nft-grid-loading {
+    grid-column: 1 / -1 !important;
+}
+
+/* ============================================================
+   PREVENT HORIZONTAL SCROLL
+   ============================================================ */
+#xrpl-marketplace-root,
+#nft-collection-page,
+.trading-hub-container {
+    overflow-x: hidden !important;
+}
+
+/* ============================================================
+   STATS BAR SCROLLBAR FIX
+   ============================================================ */
+.marketplace-stats-bar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.marketplace-stats-bar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.marketplace-stats-bar::-webkit-scrollbar-thumb {
+    background: var(--imu-gold-secondary);
+    border-radius: 3px;
+}
+
+/* ============================================================
+   IMU COLLECTIONS & RECENT MINTS - HORIZONTAL SLIDER
+   ============================================================ */
+
+.imu-collections-section,
+.recent-mints-section {
+    padding: 1.5rem 2rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+.imu-collections-section .section-header,
+.recent-mints-section .section-header {
+    margin-bottom: 1.25rem !important;
+}
+
+/* Slider Controls */
+.slider-controls {
+    display: flex !important;
+    gap: 0.35rem !important;
+}
+
+.slider-btn {
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: 1px solid var(--card-border, rgba(var(--imu-gold-rgb), 0.15)) !important;
+    border-radius: 6px !important;
+    color: var(--text-muted, rgba(255, 255, 255, 0.5)) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.slider-btn:hover {
+    background: var(--imu-gold) !important;
+    border-color: var(--imu-gold) !important;
+    color: var(--imu-black) !important;
+}
+
+.slider-btn:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+}
+
+.slider-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+/* Slider Wrapper */
+.collections-slider-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+}
+
+/* Slider Track */
+.collections-slider {
+    display: flex !important;
+    gap: 1rem !important;
+    overflow-x: auto !important;
+    scroll-behavior: smooth !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    padding: 0.5rem 0 1rem !important;
+}
+
+.collections-slider::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Collection Cards in Slider - 5 visible on desktop */
+.collections-slider .collection-card {
+    flex: 0 0 calc((100% - 4rem) / 5) !important; /* 5 cards with 4 gaps of 1rem = 4rem */
+    min-width: calc((100% - 4rem) / 5) !important;
+    max-width: 18% !important; /* Force smaller to fit 5 */
+}
+
+/* Slightly smaller images for tighter fit */
+.collections-slider .collection-card .nft-image-wrapper {
+    aspect-ratio: 1 / 1;
+}
+
+/* Responsive: 3 cards on tablet, 2 on mobile */
+@media (max-width: 1024px) {
+    .collections-slider .collection-card {
+        flex: 0 0 calc((100% - 2rem) / 3) !important;
+        min-width: calc((100% - 2rem) / 3) !important;
+        max-width: calc((100% - 2rem) / 3) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .collections-slider .collection-card {
+        flex: 0 0 calc((100% - 1rem) / 2) !important;
+        min-width: calc((100% - 1rem) / 2) !important;
+        max-width: calc((100% - 1rem) / 2) !important;
+    }
+}
+
+/* Collection card text sizing for smaller cards */
+.collections-slider .collection-card h3 {
+    font-size: 0.95rem !important;
+    padding: 0.75rem 0.75rem 0 !important;
+}
+
+.collections-slider .collection-card p {
+    font-size: 0.8rem !important;
+    padding: 0 0.75rem 0.75rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Empty Mints Placeholder */
+.empty-mints-placeholder {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 200px !important;
+    text-align: center !important;
+    color: var(--text-muted) !important;
+    padding: 2rem !important;
+}
+
+.empty-mints-placeholder p {
+    margin-bottom: 1rem !important;
+    font-size: 1rem !important;
+}
+
+/* ============================================================
+   FIX: GLOBAL NFT SECTION FULL WIDTH ON LANDING PAGE
+   ============================================================ */
+
+/* Override ANY max-width constraints on the main landing page */
+#xrpl-marketplace-root .global-nft-section,
+#xrpl-marketplace-root .marketplace-section,
+.trading-hub-container .global-nft-section,
+.trading-hub-container .marketplace-section,
+body .global-nft-section,
+body .marketplace-section {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    box-sizing: border-box !important;
+}
+
+/* NFT Grid - full width */
+#xrpl-marketplace-root #global-nft-grid,
+#xrpl-marketplace-root .nft-grid,
+.trading-hub-container #global-nft-grid,
+.trading-hub-container .nft-grid,
+body #global-nft-grid,
+body .nft-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Collection Page - Slightly Narrower (balanced) */
+#nft-collection-page .marketplace-section {
+    max-width: 95% !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding: 1.5rem 2rem !important;
+}
+
+/* Mobile Slider Adjustments */
+@media (max-width: 768px) {
+    .imu-collections-section,
+    .recent-mints-section {
+        padding: 1rem !important;
+    }
+    
+    /* 2 cards visible on mobile */
+    .collections-slider .collection-card {
+        flex: 0 0 calc((100% - 0.75rem) / 2) !important;
+        min-width: calc((100% - 0.75rem) / 2) !important;
+        max-width: calc((100% - 0.75rem) / 2) !important;
+    }
+    
+    .collections-slider .collection-card h3 {
+        font-size: 0.85rem !important;
+    }
+    
+    .collections-slider .collection-card p {
+        font-size: 0.75rem !important;
+        -webkit-line-clamp: 2;
+    }
+    
+    .slider-btn {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    #xrpl-marketplace-root .global-nft-section,
+    .trading-hub-container .global-nft-section {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* ============================================================
+   FIX V5 - GRID WIDTH BALANCE & SCROLLBAR SLIDERS
+   ============================================================ */
+
+/* Hide arrow buttons completely */
+.slider-controls {
+    display: none !important;
+}
+
+/* Make slider scrollbar visible and styled */
+.collections-slider {
+    display: flex !important;
+    gap: 1.25rem !important;
+    overflow-x: auto !important;
+    scroll-behavior: smooth !important;
+    padding: 0.5rem 0 1rem !important;
+    /* Show scrollbar */
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--imu-gold, var(--imu-gold, #d6ba66)) var(--imu-dark, #12131a) !important;
+}
+
+/* Webkit scrollbar styling for slider */
+.collections-slider::-webkit-scrollbar {
+    height: 8px !important;
+    display: block !important;
+}
+
+.collections-slider::-webkit-scrollbar-track {
+    background: var(--imu-dark, #12131a) !important;
+    border-radius: 4px !important;
+}
+
+.collections-slider::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--imu-gold, var(--imu-gold, #d6ba66)), var(--imu-gold-secondary, #d4af37)) !important;
+    border-radius: 4px !important;
+    cursor: grab !important;
+}
+
+.collections-slider::-webkit-scrollbar-thumb:hover {
+    background: var(--imu-gold, var(--imu-gold, #d6ba66)) !important;
+}
+
+.collections-slider::-webkit-scrollbar-thumb:active {
+    cursor: grabbing !important;
+}
+
+/* ============================================================
+   BALANCED GRID WIDTHS - LANDING PAGE WIDER
+   ============================================================ */
+
+/* Landing page - 92% width, centered */
+#xrpl-marketplace-root,
+.trading-hub-container,
+body[class*="trading-hub"] #xrpl-marketplace-root {
+    max-width: 92% !important;
+    width: 92% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+/* Sections inside landing page - full width of container */
+#xrpl-marketplace-root .global-nft-section,
+#xrpl-marketplace-root .marketplace-section,
+#xrpl-marketplace-root .imu-collections-section,
+#xrpl-marketplace-root .recent-mints-section,
+.trading-hub-container .global-nft-section,
+.trading-hub-container .marketplace-section,
+.trading-hub-container .imu-collections-section,
+.trading-hub-container .recent-mints-section {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* NFT Grid inside landing page */
+#xrpl-marketplace-root .nft-grid,
+#xrpl-marketplace-root #global-nft-grid,
+.trading-hub-container .nft-grid,
+.trading-hub-container #global-nft-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: grid !important;
+    gap: 1.25rem !important;
+}
+
+/* Collection Page - 88% width on desktop only */
+#nft-collection-page,
+body.single-collection #nft-collection-page,
+.page-template-page-collection #nft-collection-page {
+    max-width: 88% !important;
+    width: 88% !important;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+    #nft-collection-page,
+    body.single-collection #nft-collection-page,
+    .page-template-page-collection #nft-collection-page {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+#nft-collection-page .marketplace-section,
+#nft-collection-page .nft-grid {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* ============================================================
+   NFT GRID COLUMNS - 5 on desktop
+   ============================================================ */
+
+@media (min-width: 1200px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid,
+    #nft-collection-page .nft-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid,
+    #nft-collection-page .nft-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid,
+    #nft-collection-page .nft-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #xrpl-marketplace-root .nft-grid,
+    #xrpl-marketplace-root #global-nft-grid,
+    .trading-hub-container .nft-grid,
+    .trading-hub-container #global-nft-grid,
+    #nft-collection-page .nft-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    #xrpl-marketplace-root,
+    .trading-hub-container,
+    #nft-collection-page {
+        max-width: 96% !important;
+        width: 96% !important;
+    }
+}
+
+/* ============================================================
+   COLLECTION CARDS IN SLIDER - 5 visible
+   ============================================================ */
+
+.collections-slider .collection-card {
+    flex: 0 0 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+}
+
+@media (max-width: 768px) {
+    .collections-slider .collection-card {
+        flex: 0 0 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+}
+
+/* v331 2A: Collection NFT grid must grow naturally with the page — no internal scroll.
+   IntersectionObserver on window handles infinite scroll. These rules beat any theme
+   or legacy CSS that might add height/overflow to the grid or its section. */
+#nft-collection-page .nft-grid,
+#nft-collection-page #global-nft-grid {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-y: visible !important;
+}
+#nft-collection-page .marketplace-section {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* v329 1E: Hide broken-image carousel cards — must beat display:flex !important */
+.imc-card-hidden {
+    display: none !important;
+}
+
+/* ============================================================
+   NFT SINGLE PAGE STYLING
+   ============================================================ */
+
+#nft-single-page {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+}
+
+.nft-single-loading,
+.nft-single-error {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted, #a1a1aa);
+}
+
+.nft-single-error h2 {
+    /* colour/font via Cinzel block */
+    margin-bottom: 1rem;
+}
+
+/* ============================================================
+   FIX V7 - LANDING PAGE WIDTH TO MATCH COLLECTION PAGES (88%)
+   ============================================================ */
+
+/* CRITICAL: Force landing page container to 88% width */
+body.page-template-page-trading-hub #xrpl-marketplace-root,
+body[class*="trading"] #xrpl-marketplace-root,
+.page-trading-hub #xrpl-marketplace-root,
+#xrpl-marketplace-root {
+    max-width: 88% !important;
+    width: 88% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Inner sections should be full width of container */
+#xrpl-marketplace-root > *,
+#xrpl-marketplace-root .global-nft-section,
+#xrpl-marketplace-root .imu-collections-section,
+#xrpl-marketplace-root .recent-mints-section,
+#xrpl-marketplace-root .marketplace-section {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* NFT Grid inside landing page */
+#xrpl-marketplace-root .nft-grid,
+#xrpl-marketplace-root #global-nft-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Mobile: 96% width */
+@media (max-width: 768px) {
+    body.page-template-page-trading-hub #xrpl-marketplace-root,
+    body[class*="trading"] #xrpl-marketplace-root,
+    .page-trading-hub #xrpl-marketplace-root,
+    #xrpl-marketplace-root {
+        max-width: 96% !important;
+        width: 96% !important;
+    }
+}
+
+/* ============================================================
+   FIX V8 - FINAL WIDTH AND IMAGE FIXES
+   ============================================================ */
+
+/* Landing page container - 85% width (narrower) */
+body.page-template-page-trading-hub #xrpl-marketplace-root,
+body[class*="trading"] #xrpl-marketplace-root,
+.page-trading-hub #xrpl-marketplace-root,
+#xrpl-marketplace-root,
+.trading-hub-container {
+    max-width: 85% !important;
+    width: 85% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Collection page - same 85% width */
+#nft-collection-page {
+    max-width: 85% !important;
+    width: 85% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Mobile: 96% width */
+@media (max-width: 768px) {
+    body.page-template-page-trading-hub #xrpl-marketplace-root,
+    body[class*="trading"] #xrpl-marketplace-root,
+    #xrpl-marketplace-root,
+    .trading-hub-container,
+    #nft-collection-page {
+        max-width: 96% !important;
+        width: 96% !important;
+    }
+}
+
+/* ============================================================
+   NFT CARD IMAGES - PERFECT 1:1 ASPECT RATIO
+   ============================================================ */
+
+/* NFT Card Image Wrapper - padding-bottom hack: works on all browsers without quirks */
+.nft-card .nft-image-wrapper,
+.nft-grid .nft-card .nft-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    padding-bottom: 100% !important; /* 1:1 ratio — works everywhere */
+    height: 0 !important;
+    overflow: hidden !important;
+    background: var(--imu-dark, #12131a) !important;
+}
+
+/* NFT Card Image - fill the wrapper */
+.nft-card .nft-image-wrapper img,
+.nft-grid .nft-card .nft-image-wrapper img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* Collection Card Images - Also 1:1 */
+.collection-card .nft-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    padding-top: 100% !important;
+    overflow: hidden !important;
+}
+
+.collection-card .nft-image-wrapper img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* Retry link button style */
+.retry-link {
+    background: transparent;
+    border: none;
+    color: var(--imu-gold, var(--imu-gold, #d6ba66));
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    margin-left: 0.25rem;
+}
+.retry-link:hover {
+    color: var(--imu-gold-secondary, #d4af37);
+}
+/* ============================================================
+   BROWSE COLLECTIONS SECTION
+   ============================================================ */
+.browse-collections-section {
+  padding: 3rem 0;
+}
+
+.browse-collections-section .section-header {
+  margin-bottom: 1.25rem;
+}
+
+.browse-collections-section .section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.collections-browse-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--card-gap);
+  min-height: 200px;
+}
+
+/* Initial state: show 2 rows (10 items) on desktop */
+.collections-browse-grid .browse-collection-card:nth-child(n+11) {
+  display: none;
+}
+
+/* When expanded, show all */
+.collections-browse-grid.expanded .browse-collection-card {
+  display: block !important;
+}
+
+/* Mobile: 2 columns, 3 rows (6 items) initially */
+@media (max-width: 768px) {
+  .collections-browse-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .collections-browse-grid .browse-collection-card:nth-child(n+7) {
+    display: none;
+  }
+  
+  .collections-browse-grid.expanded .browse-collection-card {
+    display: block !important;
+  }
+}
+
+.collections-loading {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.collections-loading:not(.active) {
+  display: none;
+}
+
+.browse-collection-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  text-decoration: none;
+  display: block;
+}
+
+.browse-collection-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+.browse-collection-card .card-image {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  position: relative;
+  background: var(--imu-dark);
+}
+
+.browse-collection-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.browse-collection-card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+.browse-collection-card .card-info {
+  padding: 0.75rem;
+}
+
+.browse-collection-card .card-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browse-collection-card .card-stats {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.browse-collection-card .card-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.browse-collection-card.is-music .card-image::after {
+  content: "♪";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0,0,0,0.7);
+  color: var(--imu-gold);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.browse-collection-card.is-imu .card-image::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 24px;
+  height: 24px;
+  background: url('https://imcollectibles.io/wp-content/uploads/2025/03/Protectors-Logo.png') center/contain no-repeat;
+  z-index: 2;
+}
+
+.collections-pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.collections-pagination .btn {
+  min-width: 200px;
+}
+
+.no-collections-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   TRADING HUB v4.0 - CSS ADDITIONS
+   File: trading-hub-v4-additions.css
+   
+   INSTRUCTIONS: Append this CSS to your existing trading-hub.css
+   These are NEW styles that don't conflict with existing ones.
+   ============================================================ */
+
+/* ============================================================
+   MARKETING BANNER
+   ============================================================ */
+.th-marketing-banner {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.th-banner-link {
+    display: block;
+    transition: transform var(--transition-normal);
+}
+
+.th-banner-link:hover {
+    transform: scale(1.005);
+}
+
+.th-banner-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .th-marketing-banner {
+        border-radius: var(--radius-md);
+        margin-bottom: 1.5rem;
+    }
+    
+    .th-banner-image {
+        max-height: 200px;
+    }
+}
+
+/* ============================================================
+   STATS SECTION
+   ============================================================ */
+.th-stats-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.th-stats-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.th-stats-header-left h2 {
+    margin: 0;
+}
+
+.th-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Period Tabs */
+.th-period-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.th-period-tab {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-muted);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.th-period-tab:hover {
+    border-color: var(--imu-gold);
+    color: var(--imu-gold);
+}
+
+.th-period-tab.active {
+    background: var(--imu-gold);
+    border-color: var(--imu-gold);
+    color: var(--imu-black);
+}
+
+/* Stats Table */
+.th-stats-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.th-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.th-stats-table th {
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.th-stats-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.th-stats-table tbody tr {
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.th-stats-table tbody tr:hover {
+    background: var(--imu-gold-subtle);
+}
+
+.th-stats-table tbody tr.hidden {
+    display: none;
+}
+
+.th-col-rank { width: 50px; text-align: center; }
+.th-col-collection { width: auto; }
+.th-col-volume, .th-col-floor, .th-col-sales, .th-col-owners { width: 100px; text-align: right; }
+
+.th-collection-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.th-collection-cell img {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    background: var(--imu-dark);
+}
+
+.th-collection-name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+/* Rank badges */
+.th-rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.th-rank-1 { background: linear-gradient(135deg, #ffd700, #ffb700); color: #000; }
+.th-rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
+.th-rank-3 { background: linear-gradient(135deg, #cd7f32, #a0522d); color: #fff; }
+
+.th-volume { color: var(--success); font-weight: 600; }
+.th-floor { color: var(--imu-gold); }
+
+.th-loading-row td {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+}
+
+.th-loading-row td .nft-loading-spinner {
+    margin: 0 auto 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .th-stats-section {
+        padding: 1rem;
+    }
+    
+    .th-stats-header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .th-period-tabs {
+        width: 100%;
+    }
+    
+    .th-period-tab {
+        flex: 1;
+        text-align: center;
+        padding: 0.5rem;
+    }
+    
+    .th-collection-name {
+        max-width: 120px;
+    }
+}
+
+/* ============================================================
+   FEATURED COLLECTIONS
+   ============================================================ */
+.th-featured-section {
+    margin-bottom: 2rem;
+}
+
+.th-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--card-gap);
+}
+
+@media (max-width: 1200px) {
+    .th-featured-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile: Convert to horizontal slider like other rows */
+@media (max-width: 768px) {
+    .th-featured-grid {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0.5rem 0 1rem;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .th-featured-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .th-featured-card {
+        flex: 0 0 calc((100% - 1rem) / 2.2);
+        min-width: calc((100% - 1rem) / 2.2);
+        scroll-snap-align: start;
+    }
+}
+
+.th-featured-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.th-featured-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--card-border-hover);
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+.th-featured-card .th-card-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--imu-dark);
+    position: relative; /* v23 FIX: contain position:absolute mint-sold-out-badge within its own card */
+}
+
+.th-featured-card .th-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.th-featured-card:hover .th-card-image img {
+    transform: scale(1.08);
+}
+
+.th-featured-card .th-card-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+.th-featured-card h3 {
+    /* colour/font via Cinzel block */
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================================
+   RECENT MINTS SLIDER CARDS (NFT Cards in slider)
+   ============================================================ */
+.collections-slider .th-mint-card {
+    flex: 0 0 180px !important;
+    min-width: 180px !important;
+    max-width: 180px !important;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.collections-slider .th-mint-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-border-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.th-mint-card .th-card-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--imu-dark);
+}
+
+.th-mint-card .th-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.th-mint-card:hover .th-card-image img {
+    transform: scale(1.05);
+}
+
+.th-mint-card .th-card-info {
+    padding: 0.75rem;
+}
+
+.th-mint-card h4 {
+    /* colour/font via Cinzel card-titles block */
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    letter-spacing: 0.04em;
+    background: linear-gradient(180deg,
+        var(--imu-gold-shine, #ffe066) 0%,
+        var(--imu-gold, var(--imu-gold, #d6ba66)) 40%,
+        var(--imu-gold-dark, #996515) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.2));
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.th-mint-card .th-card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.th-mint-card .th-collection-name {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.th-mint-card .th-time-ago {
+    color: var(--imu-gold);
+}
+
+@media (max-width: 768px) {
+    .collections-slider .th-mint-card {
+        flex: 0 0 150px !important;
+        min-width: 150px !important;
+        max-width: 150px !important;
+    }
+    
+    .th-mint-card h4 {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================================
+   SECTION HEADER ENHANCEMENTS — v165
+   ============================================================ */
+.section-header .th-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.section-header .view-all-link {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        padding: 0.6rem 0.75rem;
+    }
+    .section-header h2 {
+        font-size: 0.95rem;
+    }
+    .section-header .th-header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* ========================================================================
+   BROWSE COLLECTIONS FILTER & SLIDER STYLES
+   ======================================================================== */
+
+/* Browse Filter Dropdown */
+.browse-filter-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.browse-filter-select {
+    background: rgba(var(--imu-gold-rgb), 0.06);
+    color: var(--text-primary, #fff);
+    border: 1px solid var(--card-border, rgba(var(--imu-gold-rgb), 0.15));
+    border-radius: 6px;
+    padding: 0.35rem 2rem 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23d6ba66' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    transition: all 0.2s ease;
+}
+
+.browse-filter-select:hover,
+.browse-filter-select:focus {
+    border-color: var(--imu-gold, var(--imu-gold, #d6ba66));
+    background-color: rgba(var(--imu-gold-rgb), 0.1);
+    outline: none;
+}
+
+.browse-filter-select option {
+    background: var(--card-bg, #1a1a2e);
+    color: var(--text-primary, #fff);
+}
+
+/* Type Badge on Cards */
+.type-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--imu-gold, var(--imu-gold, #d6ba66));
+    color: var(--imu-dark, #0a0a14);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.nft-image-wrapper {
+    position: relative;
+}
+
+/* Browse Cards - same styling as IMU cards */
+.browse-card {
+    cursor: pointer;
+}
+
+.browse-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(var(--imu-gold-rgb), 0.2);
+}
+
+/* No collections message styling */
+.no-collections-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 200px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Mobile adjustments for browse filter */
+@media (max-width: 768px) {
+    .browse-filter-select {
+        padding: 0.35rem 0.75rem;
+        padding-right: 1.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .th-header-right {
+        gap: 0.5rem !important;
+    }
+}
+
+/* ========================================================================
+   BROWSE COLLECTIONS TABS
+   ======================================================================== */
+
+.browse-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.browse-header-left h2 {
+    margin: 0;
+}
+
+.browse-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.browse-tab {
+    background: transparent;
+    border: 1px solid var(--card-border, rgba(var(--imu-gold-rgb), 0.2));
+    color: var(--text-muted, rgba(255, 255, 255, 0.6));
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.browse-tab:hover {
+    border-color: var(--imu-gold, var(--imu-gold, #d6ba66));
+    color: var(--imu-gold, var(--imu-gold, #d6ba66));
+    background: rgba(var(--imu-gold-rgb), 0.1);
+}
+
+.browse-tab.active {
+    background: var(--imu-gold, var(--imu-gold, #d6ba66));
+    border-color: var(--imu-gold, var(--imu-gold, #d6ba66));
+    color: var(--imu-dark, #0a0a14);
+    font-weight: 600;
+}
+
+/* Responsive tabs */
+@media (max-width: 768px) {
+    .browse-header-left {
+        width: 100%;
+    }
+    
+    .browse-tabs {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .browse-tab {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .browse-collections-section .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+
+/* ============================================================
+   MINT COLLECTION CARDS - Recent Mints Slider
+   ============================================================ */
+
+.mint-collection-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+.mint-collection-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.mint-collection-card.sold-out {
+    opacity: 0.75;
+}
+
+.mint-collection-card.sold-out:hover {
+    opacity: 0.9;
+}
+
+/* Type Badge (music/video indicator) */
+.mint-type-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+/* Sold Out Badge */
+.mint-sold-out-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* v65: Paused Badge */
+.mint-paused-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(245, 158, 11, 0.95);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.mint-collection-card.paused .nft-image-wrapper img {
+    filter: grayscale(20%) brightness(0.85);
+}
+
+.mint-paused-text {
+    font-size: 0.75rem;
+    color: #f59e0b;
+    font-weight: 500;
+}
+
+/* v233: Scheduled mint badge */
+.mint-scheduled-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(139, 92, 246, 0.95));
+    color: #fff;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-align: center;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+/* v475: Open Mint badge — wide strip beside the type icon, with live countdown.
+   Same visual language as mint-scheduled-badge but offset from left edge so it
+   sits SIDE BY SIDE with the .mint-type-badge icon (top-left, ~2.5rem wide). */
+.mint-open-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;      /* v532: full-width centred strip (type-icon badge removed) */
+    right: 0.5rem;
+    background: #00ff00;
+    color: #000 !important;
+    border: 1px solid #000;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.65rem;   /* v477: reduced from 0.72rem to fit "Mint Closes in XD YH" comfortably */
+    text-align: center;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mint-open-badge-countdown {
+    color: #000 !important;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+/* Mobile: smaller cards mean tighter padding; keep readable at 2-col grid */
+@media (max-width: 768px) {
+    .mint-open-badge {
+        font-size: 0.6rem;   /* v477: matched the desktop reduction; further -0.05 for 2-col phone grid */
+        padding: 0.3rem 0.5rem;
+        left: 0.5rem;
+    }
+}
+
+/* Card Info Section */
+.mint-card-info {
+    padding: 0.75rem;
+}
+
+.mint-card-info h3 {
+    /* colour/font via Cinzel block */
+    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mint-card-artist {
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted, #888);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Progress Bar */
+.mint-progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mint-progress-bar-bg {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.mint-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--imu-gold, var(--imu-gold, #d6ba66)), #10b981);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.mint-progress-text {
+    font-size: 0.7rem;
+    color: var(--text-muted, #888);
+    min-width: 45px;
+    text-align: right;
+}
+
+/* Card Footer */
+.mint-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mint-card-price {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--imu-gold, var(--imu-gold, #d6ba66));
+}
+
+.mint-available-badge {
+    font-size: 0.75rem;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* Empty State */
+.empty-mints-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    min-height: 200px;
+}
+
+.empty-mints-placeholder .empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.empty-mints-placeholder p {
+    color: var(--text-muted, #888);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.empty-mints-placeholder .btn {
+    background: var(--imu-gold, var(--imu-gold, #d6ba66));
+    color: #000;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.empty-mints-placeholder .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .mint-card-info h3 {
+        font-size: 0.85rem;
+    }
+    
+    .mint-card-price {
+        font-size: 0.8rem;
+    }
+    
+    .mint-available-badge {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+}
+
+/* ============================================================
+   CUSTOM.CSS OVERRIDE — v345
+   custom.css loads sitewide and sets:
+     .nft-card { padding: 15px }            → adds dead space
+     .nft-image-wrapper { height: 200px }   → fixed height breaks ratio
+     @media mobile: { height: 150px }       → still breaks ratio
+     .nft-image { max-height: 200px/150px } → fights cover
+   All overridden here with high-specificity selectors.
+   ============================================================ */
+
+/* Kill the padding that creates dead space inside the card */
+#nft-collection-page .nft-card,
+#xrpl-marketplace-root .nft-card,
+.nft-grid .nft-card,
+#global-nft-grid .nft-card {
+    padding: 0 !important;
+}
+
+/* Kill the fixed height — use padding-bottom ratio instead */
+#nft-collection-page .nft-card .nft-image-wrapper,
+#xrpl-marketplace-root .nft-card .nft-image-wrapper,
+.nft-grid .nft-card .nft-image-wrapper,
+#global-nft-grid .nft-card .nft-image-wrapper {
+    height: 0 !important;
+    padding-bottom: 100% !important;
+    max-height: none !important;
+}
+
+/* Kill the max-height on the image itself */
+#nft-collection-page .nft-card .nft-image,
+#nft-collection-page .nft-card .nft-image-wrapper img,
+#xrpl-marketplace-root .nft-card .nft-image,
+#xrpl-marketplace-root .nft-card .nft-image-wrapper img,
+.nft-grid .nft-card .nft-image,
+.nft-grid .nft-card .nft-image-wrapper img,
+#global-nft-grid .nft-card .nft-image,
+#global-nft-grid .nft-card .nft-image-wrapper img {
+    max-height: none !important;
+    max-width: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* Mobile: same override (custom.css sets height:150px at max-width:768px) */
+@media (max-width: 768px) {
+    #nft-collection-page .nft-card .nft-image-wrapper,
+    #xrpl-marketplace-root .nft-card .nft-image-wrapper,
+    .nft-grid .nft-card .nft-image-wrapper,
+    #global-nft-grid .nft-card .nft-image-wrapper {
+        height: 0 !important;
+        padding-bottom: 100% !important;
+        max-height: none !important;
+    }
+
+    #nft-collection-page .nft-card,
+    #xrpl-marketplace-root .nft-card,
+    .nft-grid .nft-card,
+    #global-nft-grid .nft-card {
+        padding: 0 !important;
+    }
+}
+
+/* =========================================================================
+   Featured Scheduled Drops - one wide banner card at a time.
+   Zones: square cover | left-aligned identity | right-aligned actions.
+   Uses the brand token --imu-gold (an earlier build used --gold, which does
+   not exist here and fell back to a non-brand yellow).
+   ========================================================================= */
+.featured-drops-section { margin: 0 0 30px; }
+/* Narrower than full width so the card reads as a feature, not a band. */
+.featured-drops-viewport { position: relative; padding: 0 30px; max-width: 1080px; margin: 0 auto; }
+.featured-drops-track {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -ms-overflow-style: none;
+}
+.featured-drops-track::-webkit-scrollbar { display: none; }
+.featured-drop-card {
+    flex: 0 0 100%; scroll-snap-align: start;
+    display: grid; grid-template-columns: 180px minmax(0, 1fr) auto;
+    gap: 22px; align-items: center;
+    background: linear-gradient(120deg, rgba(var(--imu-gold-rgb), 0.10), rgba(0,0,0,0.30) 46%);
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.26); border-radius: 14px;
+    padding: 16px 26px;
+}
+/* Bigger cover without a taller card: it overhangs the padding top and bottom. */
+.fd-cover { position: relative; margin: -14px 0; }
+.fd-cover img { width: 180px; height: 180px; object-fit: cover; border-radius: 10px; display: block; }
+.fd-flip {
+    position: absolute; left: 8px; bottom: 8px; z-index: 2;
+    background: rgba(0,0,0,0.72); color: #ece7d8;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.5);
+    border-radius: 6px; padding: 3px 10px; font-size: 11px; cursor: pointer; line-height: 1.4;
+}
+.fd-flip:hover { border-color: var(--imu-gold, #d6ba66); }
+
+/* middle: identity - explicitly left aligned, the page centres h3 by default */
+.fd-main { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; min-width: 0; text-align: left; }
+.fd-toprow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.fd-eyebrow { font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--imu-gold, #d6ba66); font-weight: 600; }
+.fd-chip {
+    padding: 3px 11px; border-radius: 999px; font-size: 11.5px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+}
+.fd-chip-type { border-color: rgba(var(--imu-gold-rgb), 0.45); color: var(--imu-gold, #d6ba66); }
+.fd-title {
+    margin: 0; text-align: left; width: 100%;
+    font-size: clamp(21px, 2.1vw, 29px); line-height: 1.12; font-weight: 700;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fd-artist { margin: 0; text-align: left; width: 100%; font-size: 13.5px; opacity: 0.72; }
+.fd-player {
+    display: flex; align-items: center; gap: 10px; margin-top: 2px; width: 100%; max-width: 440px;
+    background: rgba(0,0,0,0.30); border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 999px; padding: 5px 14px 5px 6px;
+}
+.fd-play {
+    width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; cursor: pointer;
+    background: var(--imu-gold, #d6ba66); color: #10100c; border: none; font-size: 12px; line-height: 1;
+}
+.fd-track { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.14); overflow: hidden; }
+.fd-track-fill { width: 0; height: 100%; background: var(--imu-gold, #d6ba66); transition: width .2s linear; }
+.fd-time { font-size: 11.5px; opacity: 0.65; white-space: nowrap; }
+.fd-preview-tag { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.5; }
+
+/* right: countdown, then action, then price in its own bubble */
+.fd-side { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
+.fd-countdown-value {
+    display: block; text-align: center; padding: 7px 18px; border-radius: 999px; white-space: nowrap;
+    background: rgba(var(--imu-gold-rgb), 0.14); border: 1px solid rgba(var(--imu-gold-rgb), 0.5);
+    color: var(--imu-gold, #d6ba66); font-weight: 700; font-size: 14.5px;
+}
+.fd-cta {
+    display: block; text-align: center; padding: 10px 26px; border-radius: 9px; white-space: nowrap;
+    background: var(--imu-gold, #d6ba66); color: #10100c; font-weight: 700; text-decoration: none; font-size: 14.5px;
+}
+.fd-cta:hover { filter: brightness(1.08); }
+.fd-price {
+    display: block; text-align: center; padding: 6px 18px; border-radius: 999px; white-space: nowrap;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
+    color: #ece7d8; font-weight: 700; font-size: 14px;
+}
+
+/* arrows flank the card; hidden unless several drops are pending */
+.fd-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+    width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+    background: rgba(12,10,16,0.85); color: #ece7d8; cursor: pointer;
+    border: 1px solid rgba(var(--imu-gold-rgb), 0.45); border-radius: 50%;
+}
+.fd-nav:hover { border-color: var(--imu-gold, #d6ba66); background: rgba(12,10,16,0.96); }
+.fd-nav-prev { left: 0; }
+.fd-nav-next { right: 0; }
+
+@media (max-width: 900px) {
+    .featured-drop-card { grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 14px; }
+    .fd-cover { margin: 0; }
+    .fd-cover img { width: 110px; height: 110px; }
+    .fd-title { font-size: 19px; white-space: normal; }
+    .fd-side { grid-column: 1 / -1; flex-direction: row; align-items: center; width: 100%; }
+    .fd-side > * { flex: 1; }
+    .featured-drops-viewport { padding: 0 6px; }
+    .fd-nav { width: 32px; height: 32px; }
+    .fd-nav-prev { left: 2px; } .fd-nav-next { right: 2px; }
+}

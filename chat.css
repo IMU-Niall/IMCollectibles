@@ -1,0 +1,439 @@
+/* chat.css - Unified NFT Card Styling and Remove Toast Notifications */
+.chat-popup-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 500px;
+    height: 600px;
+    background-color: #111;
+    border: 2px solid var(--imu-gold, #d6ba66);
+    border-radius: 8px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.chat-popup {
+    display: flex;
+    height: 100%;
+    color: white;
+}
+
+.chat-sidebar {
+    width: 100%;
+    background-color: #1c1c1c;
+    border-right: 1px solid var(--imu-gold, #d6ba66);
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    transition: width 0.3s ease;
+}
+
+.chat-sidebar.minimized {
+    width: 60px;
+}
+
+.chat-sidebar.minimized #chat-user-search,
+.chat-sidebar.minimized .chat-name,
+.chat-sidebar.minimized .unread-badge {
+    display: none;
+}
+
+.chat-sidebar.minimized #chat-user-list li {
+    padding: 5px;
+    justify-content: center;
+}
+
+#sidebar-toggle {
+    align-self: flex-start;
+    margin: 10px 0;
+}
+
+.chat-sidebar input {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 8px;
+    margin: 0 0 10px 0;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chat-sidebar input:focus {
+    background: #2a2a2a;
+    color: white;
+    outline: none;
+}
+
+#chat-user-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+    width: 100%;
+}
+
+#chat-user-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin: 0;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    color: var(--imu-gold, #d6ba66);
+    transition: background 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#chat-user-list li:hover {
+    background: #2a2a2a;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+.status-dot.online {
+    background: #00ff00;
+    box-shadow: 0 0 8px #00ff00;
+}
+
+.status-dot.offline {
+    background: #cccccc;
+}
+
+.unread-badge {
+    background: #ff0000;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 10px;
+    animation: pulse 2s infinite;
+}
+
+#global-unread-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff0000;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.chat-main {
+    flex-grow: 1;
+    display: none;
+    flex-direction: column;
+    background: #181818;
+    width: 100%;
+}
+
+#chat-header {
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--imu-gold, #d6ba66);
+    color: var(--imu-gold, #d6ba66);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-to-chats {
+    background: none;
+    border: none;
+    color: var(--imu-gold, #d6ba66);
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+}
+
+.chat-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 10px 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin: 8px 10px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 100%;
+    animation: slide-in 0.3s ease;
+}
+
+.message.sent {
+    background: #333;
+    color: white;
+    align-self: flex-end;
+}
+
+.message.incoming {
+    background: #111;
+    color: var(--imu-gold, #d6ba66);
+    align-self: flex-start;
+}
+
+.message.incoming .message-content {
+    color: var(--imu-gold, #d6ba66) !important;
+}
+
+.message-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.message-body {
+    flex-grow: 1;
+}
+
+.message-content {
+    word-break: break-word;
+}
+
+.message.sent .timestamp {
+    font-size: 12px;
+    color: var(--imu-gold, #d6ba66) !important;
+    margin-top: 4px;
+}
+
+.message.incoming .timestamp {
+    font-size: 12px;
+    color: white;
+    margin-top: 4px;
+}
+
+.reactions {
+    display: flex;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.reaction {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.reaction-picker {
+    position: absolute;
+    background: #2a2a2a;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 4px;
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.reaction-picker button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#typing-indicator {
+    font-size: 14px;
+    color: #999;
+    padding: 5px;
+}
+
+#typing-indicator::before {
+    content: '• • •';
+    animation: bounce 1.2s infinite;
+}
+
+#chat-form {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #333;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#chat-input {
+    flex-grow: 1;
+    background: #2a2a2a;
+    color: white;
+    padding: 8px;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 4px;
+    margin-right: 10px;
+    height: 36px;
+}
+
+#emoji-picker-btn {
+    background: #111;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#emoji-picker {
+    position: absolute;
+    bottom: 60px;
+    background: #2a2a2a;
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 4px;
+    padding: 10px;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#emoji-picker emoji-picker {
+    --background: #2a2a2a;
+    --border-color: var(--imu-gold, #d6ba66);
+    --button-background: #111;
+    --button-color: var(--imu-gold, #d6ba66);
+    --input-background: #2a2a2a;
+    --input-border-color: var(--imu-gold, #d6ba66);
+    --input-text-color: white;
+}
+
+#chat-form button[type="submit"] {
+    background: #111;
+    color: var(--imu-gold, #d6ba66);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 36px;
+}
+
+.nft-card-message {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #000000 0%, #1a2a44 100%);
+    border: 1px solid var(--imu-gold, #d6ba66);
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 300px;
+}
+
+.message.sent .nft-card-message,
+.message.incoming .nft-card-message {
+    background: linear-gradient(135deg, #000000 0%, #1a2a44 100%);
+    border: 1px solid var(--imu-gold, #d6ba66);
+}
+
+.nft-card-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.nft-card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.nft-card-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--imu-gold, #d6ba66);
+}
+
+.message.sent .nft-card-name,
+.message.incoming .nft-card-name {
+    color: var(--imu-gold, #d6ba66);
+}
+
+.nft-card-description {
+    font-size: 12px;
+    color: #cccccc;
+}
+
+.message.sent .nft-card-description,
+.message.incoming .nft-card-description {
+    color: #cccccc;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slide-in {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+@media (max-width: 600px) {
+    .chat-popup-container {
+        position: fixed;
+        bottom: auto;
+        right: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 94vw;
+        max-width: 380px;
+        height: 60vh;
+        max-height: 420px;
+        border-radius: 12px;
+        z-index: 100001;
+    }
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
